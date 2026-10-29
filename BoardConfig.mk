@@ -4,6 +4,7 @@
 DEVICE_PATH := device/transsion/tecno/CM6
 CONFIGS_PATH := $(DEVICE_PATH)/configs
 PREBUILTS_PATH := $(DEVICE_PATH)-prebuilts
+MODULES_PATH := $(PREBUILTS_PATH)/modules
 
 # A/B
 AB_OTA_UPDATER := true
@@ -73,6 +74,28 @@ TARGET_NO_KERNEL_OVERRIDE := true
 LOCAL_KERNEL := $(PREBUILTS_PATH)/Image.lz4
 PRODUCT_COPY_FILES += \
 	$(LOCAL_KERNEL):kernel
+
+# vendor_ramdisk modules
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(strip $(shell cat $(MODULES_PATH)/ramdisk/modules.load))
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES := $(addprefix $(MODULES_PATH)/ramdisk/, $(BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD))
+
+BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD := $(strip $(shell cat $(MODULES_PATH)/ramdisk/modules.load.recovery))
+RECOVERY_MODULES := $(addprefix $(MODULES_PATH)/ramdisk/, $(BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD))
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES := $(sort $(BOARD_VENDOR_RAMDISK_KERNEL_MODULES) $(RECOVERY_MODULES))
+
+BOARD_VENDOR_KERNEL_MODULES_LOAD := $(strip $(shell cat $(MODULES_PATH)/vendor_dlkm/modules.load))
+BOARD_VENDOR_KERNEL_MODULES := $(wildcard $(MODULES_PATH)/vendor_dlkm/*.ko)
+
+# system_dlkm
+BOARD_SYSTEM_KERNEL_MODULES_LOAD := $(strip $(shell cat $(MODULES_PATH)/system_dlkm/modules.load))
+BOARD_SYSTEM_KERNEL_MODULES := $(addprefix $(MODULES_PATH)/system_dlkm/, $(BOARD_SYSTEM_KERNEL_MODULES_LOAD))
+
+# odm_dlkm
+BOARD_ODM_KERNEL_MODULES_LOAD := $(strip $(shell cat $(MODULES_PATH)/odm_dlkm/modules.load))
+BOARD_ODM_KERNEL_MODULES := $(addprefix $(MODULES_PATH)/odm_dlkm/, $(BOARD_ODM_KERNEL_MODULES_LOAD))
+
+# Kernel (dummy headers)
+TARGET_KERNEL_SOURCE := $(PREBUILTS_PATH)/kernel-headers
 
 # Partitions
 BOARD_FLASH_BLOCK_SIZE := 262144 # (BOARD_KERNEL_PAGESIZE * 64)
