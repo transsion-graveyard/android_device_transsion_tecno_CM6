@@ -98,6 +98,10 @@ BOARD_ODM_KERNEL_MODULES := $(addprefix $(MODULES_PATH)/odm_dlkm/, $(BOARD_ODM_K
 TARGET_KERNEL_SOURCE := $(PREBUILTS_PATH)/kernel-headers
 
 # Partitions
+SSI_PARTITIONS := product system system_ext system_dlkm
+TREBLE_PARTITIONS := vendor_dlkm odm_dlkm vendor odm
+ALL_PARTITIONS := $(SSI_PARTITIONS) $(TREBLE_PARTITIONS)
+
 BOARD_FLASH_BLOCK_SIZE := 262144 # (BOARD_KERNEL_PAGESIZE * 64)
 BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
 BOARD_VENDOR_BOOTIMAGE_PARTITION_SIZE := 67108864
@@ -106,9 +110,31 @@ BOARD_SUPER_PARTITION_SIZE := 13335613440
 # partition-size:super: 31add5000 (from liblp metadata)
 BOARD_SUPER_PARTITION_GROUPS := mtk_dynamic_partitions
 BOARD_MTK_DYNAMIC_PARTITIONS_PARTITION_LIST := $(ALL_PARTITIONS)
-# $(ALL_PARTITIONS) currently expands to: odm odm_dlkm product system system_dlkm system_ext tr_carrier tr_company tr_manifest tr_misc tr_overlayfs tr_preload tr_product tr_region vendor vendor_dlkm
 BOARD_MTK_DYNAMIC_PARTITIONS_SIZE := 13331419136
 # 13335613440 - 4194304 (4 MiB) = 13331419136
+
+BOARD_EROFS_PCLUSTER_SIZE := 262144
+BOARD_USES_METADATA_PARTITION := true
+BOARD_USES_ODM_DLKIMAGE := true
+
+# for user builds use erofs else build as ext4
+ifneq ($(filter userdebug eng,$(TARGET_BUILD_VARIANT)),)
+$(foreach p, $(call to-upper, $(SSI_PARTITIONS)), \
+    $(eval BOARD_$(p)IMAGE_FILE_SYSTEM_TYPE := ext4) \
+    $(eval TARGET_COPY_OUT_$(p) := $(call to-lower, $(p))))
+
+$(foreach p, $(call to-upper, $(TREBLE_PARTITIONS)), \
+    $(eval BOARD_$(p)IMAGE_FILE_SYSTEM_TYPE := ext4) \
+    $(eval TARGET_COPY_OUT_$(p) := $(call to-lower, $(p))))
+else
+$(foreach p, $(call to-upper, $(SSI_PARTITIONS)), \
+    $(eval BOARD_$(p)IMAGE_FILE_SYSTEM_TYPE := erofs) \
+    $(eval TARGET_COPY_OUT_$(p) := $(call to-lower, $(p))))
+
+$(foreach p, $(call to-upper, $(TREBLE_PARTITIONS)), \
+    $(eval BOARD_$(p)IMAGE_FILE_SYSTEM_TYPE := erofs) \
+    $(eval TARGET_COPY_OUT_$(p) := $(call to-lower, $(p))))
+endif
 
 # Platform
 TARGET_BOARD_PLATFORM := mt6789
