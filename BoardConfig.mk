@@ -21,8 +21,6 @@ AB_OTA_PARTITIONS += \
     vbmeta_system \
     vbmeta_vendor
 
-BOARD_USES_RECOVERY_AS_BOOT := true
-
 # Architecture
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-2a-dotprod
@@ -34,6 +32,9 @@ TARGET_CPU_VARIANT_RUNTIME := cortex-a76
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := TECNO-CM6
 TARGET_NO_BOOTLOADER := true
+
+# Device OTA Asserts
+TARGET_OTA_ASSERT_DEVICE := TECNO-CM6,CM6,CM6-OP
 
 # Display
 TARGET_SCREEN_DENSITY := 480
