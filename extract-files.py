@@ -27,6 +27,7 @@ from extract_utils.utils import (
 
 namespace_imports = [
     'device/transsion/tecno/CM6',
+    'hardware/mediatek',
 ]
 
 
