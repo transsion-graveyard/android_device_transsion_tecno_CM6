@@ -2441,9 +2441,6 @@ vendor/lib64/hw/mt6789/vulkan.mali.so;SYMLINK=vendor/lib64/hw/vulkan.mali.so
 vendor/lib64/libOpenCL.so
 
 # Health
-vendor/bin/hw/android.hardware.health-service.example
-vendor/etc/init/android.hardware.health-service.example.rc
--vendor/etc/vintf/manifest/android.hardware.health-service.example.xml
 vendor/lib64/android.hardware.health-V1-ndk.so
 vendor/lib64/android.hardware.health-V4-ndk.so
 
@@ -4037,7 +4034,6 @@ vendor/bin/gps_dump
 vendor/bin/gsm0710muxd
 vendor/bin/hs20-osu-client
 vendor/bin/hw/aegis
-vendor/bin/hw/android.hardware.boot-service.mtk
 vendor/bin/hw/android.hardware.contexthub-service.tinysys
 vendor/bin/hw/android.hardware.security.keymint@3.0-service.trustonic
 vendor/bin/hw/android.hardware.security.secretkeeper@1.0-service.trustonic
@@ -4210,7 +4206,6 @@ vendor/etc/init.insmod.touch.cfg
 vendor/etc/init/FastSwitch.rc
 vendor/etc/init/aee_aedv64_v2.rc
 vendor/etc/init/aegis.rc
-vendor/etc/init/android.hardware.boot-service.mtk.rc
 vendor/etc/init/android.hardware.security.keymint@3.0-service.trustonic_rkpv1.rc
 vendor/etc/init/atcid.rc
 vendor/etc/init/audiocmdservice_atci.rc
