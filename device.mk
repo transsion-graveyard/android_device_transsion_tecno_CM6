@@ -1,7 +1,7 @@
 # SPDX-FileCopyrightText: The LineageOS Project
 # SPDX-License-Identifier: Apache-2.0
 
-LOCAL_PATH := device/tecno/CM6
+LOCAL_PATH := device/transsion/tecno/CM6
 
 # Enable updating of APEXes
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
@@ -105,4 +105,4 @@ PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH)
 
 # Inherit the proprietary files
-$(call inherit-product, vendor/tecno/CM6/CM6-vendor.mk)
+$(call inherit-product, vendor/transsion/tecno/CM6/CM6-vendor.mk)

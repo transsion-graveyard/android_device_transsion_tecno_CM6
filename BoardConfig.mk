@@ -1,7 +1,7 @@
 # SPDX-FileCopyrightText: The LineageOS Project
 # SPDX-License-Identifier: Apache-2.0
 
-DEVICE_PATH := device/tecno/CM6
+DEVICE_PATH := device/transsion/tecno/CM6
 CONFIGS_PATH := $(DEVICE_PATH)/configs
 
 # A/B
@@ -46,7 +46,7 @@ BOARD_KERNEL_IMAGE_NAME := Image
 BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 BOARD_KERNEL_SEPARATED_DTBO := true
 TARGET_KERNEL_CONFIG := CM6_defconfig
-TARGET_KERNEL_SOURCE := kernel/tecno/CM6
+TARGET_KERNEL_SOURCE := kernel/transsion/tecno/CM6
 
 # Kernel - prebuilt
 TARGET_FORCE_PREBUILT_KERNEL := true
@@ -111,4 +111,4 @@ BOARD_AVB_VENDOR_BOOT_ROLLBACK_INDEX_LOCATION := 1
 
 
 # Inherit the proprietary files
-include vendor/tecno/CM6/BoardConfigVendor.mk
+include vendor/transsion/tecno/CM6/BoardConfigVendor.mk

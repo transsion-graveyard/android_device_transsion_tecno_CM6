@@ -1,4 +1,4 @@
-#!/usr/bin/env -S PYTHONPATH=../../../tools/extract-utils python3
+#!/usr/bin/env -S PYTHONPATH=../../../../tools/extract-utils python3
 #
 # SPDX-FileCopyrightText: The LineageOS Project
 # SPDX-License-Identifier: Apache-2.0
@@ -9,12 +9,12 @@ from extract_utils.main import (
 )
 
 namespace_imports = [
-    'device/tecno/CM6',
+    'device/transsion/tecno/CM6',
 ]
 
 module = ExtractUtilsModule(
     'CM6',
-    'tecno',
+    'transsion/tecno',
     namespace_imports=namespace_imports,
 )
 
