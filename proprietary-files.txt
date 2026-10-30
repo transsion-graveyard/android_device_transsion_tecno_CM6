@@ -1957,7 +1957,6 @@ vendor/lib64/libCamera_s5kjn1cl7submipiraw_Video_720P.so
 vendor/lib64/libCamera_s5kjn1cl7submipiraw_Video_Filter.so
 vendor/lib64/libCamera_s5kjn1cl7submipiraw_Video_Makeup.so
 vendor/lib64/libCamera_s5kjn1cl7submipiraw_Video_Zoom1.so
-vendor/lib64/libmtkcam.mcsspolicy.so
 vendor/lib64/libmtkcam.uievent.so
 vendor/lib64/libmtkcam_3rdparty.thread.so
 vendor/lib64/libmtkcam_capture_request_monitor.so
