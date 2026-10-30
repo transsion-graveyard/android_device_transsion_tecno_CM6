@@ -4455,7 +4455,6 @@ vendor/lib64/libcharon-ss.so
 vendor/lib64/libcmdl.so
 vendor/lib64/libcmdl_ndk.mtk.vndk.so
 vendor/lib64/libcodec2_fsr.so
-vendor/lib64/libcodec2_hidl_plugin.so
 vendor/lib64/libcodec2_mtk_c2store.so
 vendor/lib64/libcodec2_mtk_vdec.so
 vendor/lib64/libcodec2_mtk_venc.so
