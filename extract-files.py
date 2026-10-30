@@ -141,9 +141,16 @@ blob_fixups: blob_fixups_user_type = {
         .replace_needed('vendor.mediatek.hardware.bluetooth.audio-V1-ndk.so', 'vendor.mediatek.hardware.bluetooth.audio-V5-ndk.so'),
     'vendor/lib64/libpowerhal.so': blob_fixup()
         .replace_needed('android.hardware.bluetooth.audio-V4-ndk.so', 'android.hardware.bluetooth.audio-V6-ndk.so'),
-    ('vendor/lib64/libaudioprimarydevicehalifclient.so',
-     'vendor/lib64/libnotifyaudiohal.so'): blob_fixup()
+    'vendor/lib64/libaudioprimarydevicehalifclient.so': blob_fixup()
         .replace_needed('android.hardware.audio.core-V3-ndk.so', 'android.hardware.audio.core-V4-ndk.so'),
+    'vendor/lib64/libnotifyaudiohal.so': blob_fixup()
+        .replace_needed('android.hardware.audio.core-V3-ndk.so', 'android.hardware.audio.core-V4-ndk.so')
+        .fix_soname(),
+    ('vendor/lib64/hw/sensors.elliptic.so',
+     'vendor/lib64/libspeech_enh_lib.so',
+     'vendor/lib64/libnir_neon_driver_ndk.mtk.vndk.so',
+     'odm/lib64/mt6789/libFy-3A-Param.so'): blob_fixup()
+        .fix_soname(),
     ('vendor/lib64/libcodec2_mtk_vdec.so', 'vendor/lib64/libcodec2_mtk_venc.so'): blob_fixup()
         .replace_needed('libformatter.so', 'libformatter_mtk.so'),
     'vendor/etc/init/nfc2-service-nxp_w.rc': blob_fixup()
