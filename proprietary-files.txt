@@ -19,13 +19,6 @@ vendor/lib64/libaudiotoolkit_vendor.so
 vendor/lib64/libtinycompress.so
 
 # Audio-Hardware
-system/lib64/av-audio-types-aidl-ndk.so:system/lib64/av-audio-types-aidl-ndk_prebuilt.so;DISABLE_DEPS;FIX_SONAME
-vendor/lib64/libaudio_aidl_conversion_common_ndk.so:vendor/lib64/libaudio_aidl_conversion_common_ndk_prebuilt.so;DISABLE_DEPS;FIX_SONAME
-vendor/lib64/vendor.mediatek.hardware.bluetooth.audio-V1-ndk.so:vendor/lib64/vendor.mediatek.hardware.bluetooth.audio-V1-ndk_prebuilt.so;DISABLE_DEPS;FIX_SONAME
-vendor/lib64/android.hardware.bluetooth.audio-V4-ndk.so:vendor/lib64/android.hardware.bluetooth.audio-V4-ndk_prebuilt.so;DISABLE_DEPS;FIX_SONAME
-vendor/lib64/android.hardware.audio.effect-V2-ndk.so:vendor/lib64/android.hardware.audio.effect-V2-ndk_prebuilt.so;DISABLE_DEPS;FIX_SONAME
-vendor/lib64/android.hardware.audio.common-V3-ndk.so:vendor/lib64/android.hardware.audio.common-V3-ndk_prebuilt.so;DISABLE_DEPS;FIX_SONAME
-vendor/lib64/android.media.audio.common.types-V3-ndk.so:vendor/lib64/android.media.audio.common.types-V3-ndk_prebuilt.so;DISABLE_DEPS;FIX_SONAME
 system_ext/bin/hw/android.hardware.audio.parameter_parser.service
 system_ext/etc/init/android.hardware.audio.parameter_parser.service.rc
 system_ext/lib64/vendor.mediatek.hardware.audio@7.1.so
@@ -177,28 +170,18 @@ vendor/etc/audio_param/VoWVoiceCommand_AudioParam.xml
 vendor/etc/audio_param/VoWVoiceCommand_ParamUnitDesc.xml
 
 # Bluetooth
-vendor/bin/hw/android.hardware.bluetooth-service-mediatek
-vendor/bin/hw/android.hardware.bluetooth.finder-service-mediatek
-vendor/bin/hw/android.hardware.bluetooth.ranging-service.mediatek
 vendor/etc/audio_policy_configuration_bluetooth_legacy_hal.xml
 vendor/etc/bluetooth_audio_policy_configuration.xml
 vendor/etc/bluetooth_offload_audio_policy_configuration.xml
-vendor/etc/init/android.hardware.bluetooth-service-mediatek.rc
 -vendor/etc/vintf/manifest/android.hardware.bluetooth-service-mediatek.xml
 -vendor/etc/vintf/manifest/bluetooth_audio.xml
 vendor/lib64/android.hardware.bluetooth.audio-impl-mediatek.so
 vendor/lib64/hw/android.hardware.bluetooth.audio@2.0-impl.so
 vendor/lib64/hw/android.hardware.bluetooth.audio@2.1-impl.so
-vendor/lib64/hw/audio.bluetooth.default.so
 vendor/lib64/hw/vendor.mediatek.hardware.bluetooth.audio@2.1-impl.so
 vendor/lib64/hw/vendor.mediatek.hardware.bluetooth.audio@2.2-impl.so
 vendor/lib64/libbluetooth_audio_session.so
-vendor/lib64/libbluetooth_audio_session_aidl_displayone.so
-vendor/lib64/libbluetooth_audio_session_aidl_displaytwo.so
 vendor/lib64/libbluetooth_audio_session_aidl_mtk.so
-vendor/lib64/libbluetooth_audio_session_control_adapter1.so
-vendor/lib64/libbluetooth_audio_session_control_adapter2.so
-vendor/lib64/libbluetooth_audio_session_control_adapter3.so
 vendor/lib64/libbluetooth_audio_session_mediatek.so
 vendor/lib64/libbluetooth_hw_test.so
 vendor/lib64/libbluetooth_mtk.so
@@ -2193,9 +2176,6 @@ system_ext/lib64/libtranshowlogo.so
 vendor/lib64/liboemcrypto.so
 
 # DRM-Hardware
-vendor/bin/hw/android.hardware.drm-service.clearkey
-vendor/etc/init/android.hardware.drm-service.clearkey.rc
--vendor/etc/vintf/manifest/android.hardware.drm-service.clearkey.xml
 
 # DRM-Widevine
 vendor/lib64/mediadrm/libdrmclearkeyplugin.so
@@ -3912,20 +3892,12 @@ vendor/etc/aconfig_flags.pb
 vendor/etc/aee-commit
 vendor/etc/aee-config
 vendor/etc/aidl/hfp/hfp_codec_capabilities.xml
-vendor/etc/aidl/hfp/hfp_codec_capabilities.xml_displayone
-vendor/etc/aidl/hfp/hfp_codec_capabilities.xml_displaytwo
 vendor/etc/aidl/hfp/hfp_codec_capabilities.xml_mtk
 vendor/etc/aidl/le_audio/aidl_audio_set_configurations.bfbs
-vendor/etc/aidl/le_audio/aidl_audio_set_configurations.bfbs_displayone
-vendor/etc/aidl/le_audio/aidl_audio_set_configurations.bfbs_displaytwo
 vendor/etc/aidl/le_audio/aidl_audio_set_configurations.bfbs_mtk
 vendor/etc/aidl/le_audio/aidl_audio_set_scenarios.bfbs
-vendor/etc/aidl/le_audio/aidl_audio_set_scenarios.bfbs_displayone
-vendor/etc/aidl/le_audio/aidl_audio_set_scenarios.bfbs_displaytwo
 vendor/etc/aidl/le_audio/aidl_audio_set_scenarios.bfbs_mtk
 vendor/etc/aidl/le_audio/aidl_default_audio_set_configurations.json
-vendor/etc/aidl/le_audio/aidl_default_audio_set_configurations.json_displayone
-vendor/etc/aidl/le_audio/aidl_default_audio_set_configurations.json_displaytwo
 vendor/etc/aidl/le_audio/aidl_default_audio_set_configurations.json_mtk
 vendor/etc/aidl/le_audio/aidl_default_audio_set_scenarios.json
 vendor/etc/aurisys_config.xml
@@ -4102,8 +4074,6 @@ vendor/etc/ipsec/ipsec.d/cacerts/thawte.der
 vendor/etc/ipsec/ssl/openssl.cnf
 vendor/etc/ipsec/strongswan.conf
 vendor/etc/le_audio_codec_capabilities.xml
-vendor/etc/le_audio_codec_capabilities.xml_displayone
-vendor/etc/le_audio_codec_capabilities.xml_displaytwo
 vendor/etc/linker.config.pb
 vendor/etc/mali_platform.config
 vendor/etc/mbrain/mbrain_passthrough_config.json

@@ -47,20 +47,15 @@ PRODUCT_PACKAGES += \
 # Audio
 PRODUCT_PACKAGES += \
     android.hardware.audio.common-util \
-    android.hardware.audio.common-V3-ndk \
-    android.hardware.audio.common-V4-ndk \
     android.hardware.audio.common@5.0 \
     android.hardware.audio.common@6.0 \
     android.hardware.audio.common@6.0-util \
     android.hardware.audio.common@7.0 \
-    android.hardware.audio.core-V3-ndk \
-    android.hardware.audio.core.sounddose-V3-ndk \
-    android.hardware.audio.effect-V2-ndk \
-    android.hardware.audio.effect-V3-ndk \
     android.hardware.audio.effect@6.0 \
     android.hardware.audio.effect@7.0 \
     android.hardware.audio@6.0 \
     android.hardware.audio@7.0 \
+    libaudio_aidl_conversion_common_ndk \
     libaudioaidlcommon \
     libaudioutils \
     vendor.mediatek.hardware.audio-V1-ndk
@@ -76,15 +71,11 @@ PRODUCT_SHIPPING_API_LEVEL := 36
 
 # Bluetooth
 PRODUCT_PACKAGES += \
-    android.hardware.bluetooth-V1-ndk \
-    android.hardware.bluetooth.audio-V4-ndk \
-    android.hardware.bluetooth.audio-V5-ndk \
+    android.hardware.bluetooth-service.mediatek \
     android.hardware.bluetooth.audio@2.0 \
     android.hardware.bluetooth.audio@2.1 \
-    android.hardware.bluetooth.finder-V1-ndk \
-    android.hardware.bluetooth.ranging-V1-ndk \
     libbluetooth_audio_session_aidl \
-    vendor.mediatek.hardware.bluetooth.audio-V1-ndk \
+    vendor.mediatek.hardware.bluetooth.audio-V5-ndk \
     vendor.mediatek.hardware.bluetooth.audio@2.1 \
     vendor.mediatek.hardware.bluetooth.audio@2.2
 
@@ -94,7 +85,6 @@ PRODUCT_PACKAGES += \
     android.frameworks.cameraservice.device-V3-ndk \
     android.frameworks.cameraservice.service-V3-ndk \
     android.hardware.camera.common-V1-ndk \
-    android.hardware.camera.common-V2-ndk \
     android.hardware.camera.common@1.0 \
     android.hardware.camera.device-V3-ndk \
     android.hardware.camera.device@1.0 \
@@ -264,6 +254,7 @@ PRODUCT_PACKAGES += \
 
 # Media - hidltransport
 PRODUCT_PACKAGES += \
+    android.hardware.drm-service.clearkey \
     android.hardware.media@1.0 \
     android.hidl.memory.token@1.0 \
     android.hidl.memory@1.0 \
