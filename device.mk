@@ -193,7 +193,8 @@ PRODUCT_PACKAGES += \
     android.hardware.graphics.mapper@3.0 \
     android.hardware.graphics.mapper@4.0 \
     libgralloctypes \
-    libgrallocusage
+    libgrallocusage \
+    android.hardware.memtrack-service.mediatek
 
 # Hardware
 PRODUCT_PACKAGES += \

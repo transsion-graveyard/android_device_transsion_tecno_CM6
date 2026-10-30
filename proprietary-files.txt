@@ -2186,7 +2186,6 @@ vendor/lib64/libdtsdsec.so
 vendor/bin/hw/android.hardware.graphics.composer@3.2-service
 vendor/bin/hw/android.hardware.graphics.composer@3.3-service
 vendor/bin/hw/android.hardware.graphics.composer@3.4-service
-vendor/bin/hw/android.hardware.memtrack-service.mediatek
 vendor/bin/hw/mt6789/android.hardware.graphics.allocator-V2-service-mediatek.mt6789;SYMLINK=vendor/bin/hw/android.hardware.graphics.allocator-V2-service-mediatek,vendor/bin/hw/android.hardware.graphics.allocator-V2-service-mediatek.mt6789
 vendor/etc/init/android.hardware.graphics.allocator-V2-service-mediatek.rc
 vendor/etc/init/android.hardware.graphics.composer@3.4-service.rc
@@ -2388,7 +2387,6 @@ vendor/etc/init/android.hardware.media.c2-mediatek-64b.rc
 vendor/etc/init/android.hardware.secure_element@1.2-service-mediatek.rc
 vendor/etc/init/android.hardware.usb-aidl-service.mediatek.rc
 vendor/etc/init/android.hardware.usb.gadget-aidl-service.mediatek.rc
-vendor/etc/init/memtrack-mediatek.rc
 vendor/etc/init/thermal-mediatek.rc
 vendor/etc/init/vendor.mediatek.hardware.aee@1.1-service.rc
 vendor/etc/init/vendor.mediatek.hardware.aee@V1-service.rc
