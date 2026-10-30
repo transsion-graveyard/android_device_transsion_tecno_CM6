@@ -213,5 +213,8 @@ BOARD_AVB_VENDOR_DLKM_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
 BOARD_AVB_ODM_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
 BOARD_AVB_SYSTEM_DLKM_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
 
+# Inherit the MediaTek base vendor policy
+include device/mediatek/sepolicy_vndr/SEPolicy.mk
+
 # Inherit the proprietary files
 include vendor/transsion/tecno/CM6/BoardConfigVendor.mk
