@@ -99,6 +99,8 @@ blob_fixups: blob_fixups_user_type = {
         .replace_needed('android.hardware.camera.common-V2-ndk.so', 'android.hardware.camera.common-V1-ndk.so'),
     'vendor/lib64/hw/android.hardware.soundtrigger3-impl.so': blob_fixup()
         .replace_needed('libaudio_aidl_conversion_common_ndk.so', 'libaudio_aidl_conversion_common_ndk_prebuilt.so'),
+    'vendor/bin/hw/android.hardware.drm-service.clearkey': blob_fixup()
+        .replace_needed('android.hardware.drm-V1-ndk.so', 'android.hardware.drm-V2-ndk.so'),
     ('vendor/lib64/libcodec2_mtk_vdec.so', 'vendor/lib64/libcodec2_mtk_venc.so'): blob_fixup()
         .replace_needed('libformatter.so', 'libformatter_mtk.so'),
 
