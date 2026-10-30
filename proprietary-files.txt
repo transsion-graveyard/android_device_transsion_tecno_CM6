@@ -2529,7 +2529,7 @@ vendor/bin/hw/vendor.transsion.nfc-service
 vendor/etc/init/init.thn31.nfc.rc
 vendor/etc/init/nfc-service-st.rc
 vendor/etc/init/nfc-service-tms.rc
-vendor/etc/init/nfc2-service-nxp.rc
+vendor/etc/init/nfc2-service-nxp.rc:vendor/etc/init/nfc2-service-nxp_w.rc
 vendor/etc/init/vendor.transsion.nfc-service.rc
 vendor/lib64/libnxp_extamp_intf.so
 vendor/lib64/libpn560_fw.so

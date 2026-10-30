@@ -146,6 +146,8 @@ blob_fixups: blob_fixups_user_type = {
         .replace_needed('android.hardware.audio.core-V3-ndk.so', 'android.hardware.audio.core-V4-ndk.so'),
     ('vendor/lib64/libcodec2_mtk_vdec.so', 'vendor/lib64/libcodec2_mtk_venc.so'): blob_fixup()
         .replace_needed('libformatter.so', 'libformatter_mtk.so'),
+    'vendor/etc/init/nfc2-service-nxp_w.rc': blob_fixup()
+        .regex_replace(r'(?m)^([ \t]*)#interface aidl', r'\1interface aidl'),
 
 }  # fmt: skip
 
