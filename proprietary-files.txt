@@ -3839,7 +3839,6 @@ vendor/bin/hw/vendor.transsion.hardware.security.trancriticalparavfy-service
 vendor/bin/hw/vendor.transsion.hardware.tranfacaidl-service
 vendor/bin/hw/vendor.transsion.hardware.tranthp-service
 vendor/bin/hw/vendor.transsion.performance.sched.aidl-service
-vendor/bin/hw/vendor.transsion.tranHwInfo-service
 vendor/bin/hw/vendor.trustonic.tee-service
 vendor/bin/hw/vtservice_aidl
 vendor/bin/ipsec_mon
@@ -3850,7 +3849,6 @@ vendor/bin/mcDriverDaemon
 vendor/bin/md_monitor
 vendor/bin/md_monitor_ctrl
 vendor/bin/memfusion
-vendor/bin/meta_tst
 vendor/bin/mnld
 vendor/bin/mrdump_tool
 vendor/bin/mt6789/jpegtool;SYMLINK=vendor/bin/jpegtool
@@ -4076,7 +4074,6 @@ vendor/etc/init/vendor.transsion.hardware.security.trancriticalparavfy@1.0-servi
 vendor/etc/init/vendor.transsion.hardware.tranfacaidl-service.rc
 vendor/etc/init/vendor.transsion.performance.sched.aidl-service.rc
 vendor/etc/init/vendor.transsion.rc
-vendor/etc/init/vendor.transsion.tranHwInfo-service.rc
 vendor/etc/init/vendor.trustonic.tee-service.rc
 vendor/etc/init/vgoservice.rc
 vendor/etc/init/volte_clientapi_ua.rc
@@ -4944,7 +4941,6 @@ vendor/lib64/vendor.transsion.hardware.tranradio-V11-ndk.so
 vendor/lib64/vendor.transsion.hardware.transtorage.storage-V1-ndk.so
 vendor/lib64/vendor.transsion.hardware.tranthp-V1-ndk.so
 vendor/lib64/vendor.transsion.performance.sched.aidl-V2-ndk.so
-vendor/lib64/vendor.transsion.tranHwInfo-V1-ndk.so
 vendor/lib64/vendor.trustonic.tee-V1-ndk.so
 vendor/lib64/vendor.trustonic.tui-V1-ndk.so
 vendor/lib64/vpp_hdrmeta_handler_plugin.so
