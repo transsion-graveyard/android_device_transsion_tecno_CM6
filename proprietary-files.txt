@@ -3855,7 +3855,6 @@ vendor/etc/aidl/le_audio/aidl_audio_set_scenarios.bfbs_mtk
 vendor/etc/aidl/le_audio/aidl_default_audio_set_configurations.json_mtk
 vendor/etc/aurisys_config.xml
 vendor/etc/aurisys_config_adsp.xml
-vendor/etc/build_flags.json
 vendor/etc/command.csv
 vendor/etc/default_pd_calibration.bin
 vendor/etc/ecc_list.xml
