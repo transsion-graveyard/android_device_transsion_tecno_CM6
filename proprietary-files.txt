@@ -3754,7 +3754,6 @@ vendor/bin/audiocmdservice_atci
 vendor/bin/autobt
 vendor/bin/bip
 vendor/bin/bip_ap
-vendor/bin/boringssl_self_test64
 vendor/bin/bt_dump
 vendor/bin/ccci_mdinit
 vendor/bin/ccci_rpcd
@@ -3887,8 +3886,6 @@ vendor/etc/aidl/le_audio/aidl_default_audio_set_configurations.json_mtk
 vendor/etc/aidl/le_audio/aidl_default_audio_set_scenarios.json
 vendor/etc/aurisys_config.xml
 vendor/etc/aurisys_config_adsp.xml
-vendor/etc/boringssl_self_test.zygote64.rc
-vendor/etc/boringssl_self_test.zygote64_32.rc;SYMLINK=vendor/etc/boringssl_self_test.no_zygote.rc,vendor/etc/boringssl_self_test.zygote32.rc
 vendor/etc/bpf/filterPowerSupplyEvents.o
 vendor/etc/build_flags.json
 vendor/etc/command.csv
@@ -3945,7 +3942,6 @@ vendor/etc/init/android.hardware.security.keymint@3.0-service.trustonic_rkpv1.rc
 vendor/etc/init/atcid.rc
 vendor/etc/init/audiocmdservice_atci.rc
 vendor/etc/init/bootperf.rc
-vendor/etc/init/boringssl_self_test.rc
 vendor/etc/init/camerahalserver.rc
 vendor/etc/init/chg_sence_init.rc
 vendor/etc/init/dmc_core.rc
