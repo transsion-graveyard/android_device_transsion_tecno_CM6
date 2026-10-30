@@ -97,9 +97,9 @@ blob_fixups: blob_fixups_user_type = {
         .replace_needed('av-audio-types-aidl-ndk.so', 'av-audio-types-aidl-ndk_prebuilt.so'),
     'vendor/lib64/mt6789/libmtkcam_hal_aidl_common.so': blob_fixup()
         .replace_needed('android.hardware.camera.common-V2-ndk.so', 'android.hardware.camera.common-V1-ndk.so'),
-    'vendor/lib64/hw/android.hardware.soundtrigger3-impl.so': blob_fixup()
-        .replace_needed('libaudio_aidl_conversion_common_ndk.so', 'libaudio_aidl_conversion_common_ndk_prebuilt.so'),
-    'vendor/lib64/hw/android.hardware.audio.effect.aidl-impl-mediatek.so': blob_fixup()
+    ('vendor/lib64/android.hardware.audio.core-impl-mediatek.so',
+     'vendor/lib64/hw/android.hardware.audio.effect.aidl-impl-mediatek.so',
+     'vendor/lib64/hw/android.hardware.soundtrigger3-impl.so'): blob_fixup()
         .replace_needed('libaudio_aidl_conversion_common_ndk.so', 'libaudio_aidl_conversion_common_ndk_prebuilt.so'),
     'vendor/lib64/hw/audio.primary.mediatek.so': blob_fixup()
         .replace_needed('android.hardware.audio.effect-V2-ndk.so', 'android.hardware.audio.effect-V2-ndk_prebuilt.so')
