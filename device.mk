@@ -110,6 +110,10 @@ PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.6 \
     libcamera_metadata
 
+# Chipinfo
+PRODUCT_PACKAGES += \
+    chipinfo
+
 # Common
 PRODUCT_PACKAGES += \
     android.hardware.common-V2-ndk \
