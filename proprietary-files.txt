@@ -2181,6 +2181,7 @@ vendor/bin/hw/mt6789/camerahalserver;SYMLINK=vendor/bin/hw/camerahalserver
 # Charger
 system_ext/bin/kpoc_charger
 system_ext/etc/init/kpoc_charger.rc
+system_ext/lib64/libtranshowlogo.so
 
 # DRM
 vendor/lib64/liboemcrypto.so
