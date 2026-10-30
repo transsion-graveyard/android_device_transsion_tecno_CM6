@@ -2204,7 +2204,6 @@ vendor/lib64/vendor.dolby.hardware.dms@2.0.so
 odm/etc/init/fingerprint-default.rc
 odm/lib64/hw/jiiov.fingerprint.default.so
 odm/lib64/vendor.anc.fingerprint.extension-V1-ndk.so
-vendor/bin/hw/android.hardware.biometrics.face-service
 vendor/bin/hw/android.hardware.biometrics.fingerprint-service
 vendor/etc/permissions/android.hardware.biometrics.face.xml
 vendor/lib64/hw/tran_fingerprint.default.so
@@ -3911,7 +3910,6 @@ vendor/etc/init/camerahalserver.rc
 vendor/etc/init/chg_sence_init.rc
 vendor/etc/init/dmc_core.rc
 vendor/etc/init/eara-io-service.rc
-vendor/etc/init/face-default.rc
 vendor/etc/init/fpsgo.rc
 vendor/etc/init/fuelgauged_init.rc
 vendor/etc/init/fuelgauged_nvram_init.rc
@@ -4405,7 +4403,6 @@ vendor/lib64/TranTetrasMomentJsonCon.so
 vendor/lib64/VP9SecureVdecCA.so
 vendor/lib64/android.frameworks.displayservice@1.0.so
 vendor/lib64/android.system.suspend@1.0.so
-vendor/lib64/hw/face.default.so
 vendor/lib64/hw/libmbrainImpl.so
 vendor/lib64/hw/mtkflp.default.so
 vendor/lib64/hw/mtkgeofence.default.so
