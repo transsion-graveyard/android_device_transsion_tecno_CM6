@@ -172,6 +172,8 @@ blob_fixups: blob_fixups_user_type = {
      'vendor/lib64/mt6789/libneuron_adapter_mgvi.so',
      'vendor/lib64/libneuralnetworks_sl_driver_mtk_prebuilt.so',
      'vendor/lib64/libtflite_mtk.so'): CLEAR_AHARDWAREBUFFER_SYMBOLS,
+    'odm/lib64/libTranssionTone.so': blob_fixup()
+        .add_needed('libTranColorEffectEngine.so'),
     ('vendor/lib64/libcodec2_mtk_vdec.so', 'vendor/lib64/libcodec2_mtk_venc.so'): blob_fixup()
         .replace_needed('libformatter.so', 'libformatter_mtk.so'),
     'vendor/etc/init/nfc2-service-nxp_w.rc': blob_fixup()
