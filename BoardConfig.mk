@@ -213,6 +213,10 @@ BOARD_AVB_VENDOR_DLKM_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
 BOARD_AVB_ODM_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
 BOARD_AVB_SYSTEM_DLKM_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
 
+# Device vendor sepolicy
+SEPOLICIES_PATH := $(CONFIGS_PATH)/sepolicies
+BOARD_VENDOR_SEPOLICY_DIRS += $(SEPOLICIES_PATH)/vendor
+
 # Inherit the MediaTek base vendor policy
 include device/mediatek/sepolicy_vndr/SEPolicy.mk
 

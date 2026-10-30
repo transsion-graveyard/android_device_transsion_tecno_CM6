@@ -1,0 +1,8 @@
+type mtk_hal_bgs_service, protected_service, hal_service_type, service_manager_type;
+
+hal_attribute_service(hal_mtk_bgs, mtk_hal_bgs_service)
+
+# Stock CM6: platform_app_202504 was also a hal_mtk_bgs_client. The camera
+# runs as platform_app_36 here, so enroll both platform app types.
+typeattribute platform_app hal_mtk_bgs_client;
+typeattribute platform_app_36 hal_mtk_bgs_client;
