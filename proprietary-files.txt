@@ -3424,7 +3424,6 @@ odm/etc/asset/camera/watermark/watermark_3840x2160.nv21
 odm/etc/asset/camera/watermark/watermark_640x480.nv21
 odm/etc/asset/camera/watermark/watermark_config
 odm/etc/asset/face/license.lic
-odm/etc/build.prop
 odm/etc/displayconfig/display_id_4627039422300187648.xml
 odm/etc/fs_config_dirs
 odm/etc/fs_config_files
@@ -3696,7 +3695,6 @@ odm/lib64/libwa_sat.so
 odm/lib64/mt6789/libFy-3A-Core.so;SYMLINK=odm/lib64/libFy-3A-Core.so
 odm/lib64/mt6789/libFy-3A-Param.so;SYMLINK=odm/lib64/libFy-3A-Param.so
 odm/lib64/mt6789/libyuvenhance.so;SYMLINK=odm/lib64/libyuvenhance.so
-odm_dlkm/etc/build.prop
 odm_dlkm/etc/fs_config_dirs
 odm_dlkm/etc/fs_config_files
 vendor/apex/com.android.hardware.cas.apex
@@ -4894,6 +4892,5 @@ vendor/res/sound/ringtone.wav
 vendor/res/sound/testpattern1.wav
 vendor/ro.prop
 vendor/rw.prop
-vendor_dlkm/etc/build.prop
 vendor_dlkm/etc/fs_config_dirs
 vendor_dlkm/etc/fs_config_files
