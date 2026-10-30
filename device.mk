@@ -121,7 +121,9 @@ PRODUCT_PACKAGES += \
 
 # Contexthub
 PRODUCT_PACKAGES += \
-    android.hardware.contexthub-V4-ndk
+    android.hardware.contexthub-service.tinysys \
+    chre_atoms_log \
+    chremetrics-cpp
 
 # CPU
 PRODUCT_PACKAGES += \

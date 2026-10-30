@@ -3811,7 +3811,6 @@ vendor/bin/gps_dump
 vendor/bin/gsm0710muxd
 vendor/bin/hs20-osu-client
 vendor/bin/hw/aegis
-vendor/bin/hw/android.hardware.contexthub-service.tinysys
 vendor/bin/hw/android.hardware.security.keymint@3.0-service.trustonic
 vendor/bin/hw/android.hardware.security.secretkeeper@1.0-service.trustonic
 vendor/bin/hw/mtkfusionrild
@@ -4489,8 +4488,6 @@ vendor/lib64/TranTetrasMomentJsonCon.so
 vendor/lib64/VP9SecureVdecCA.so
 vendor/lib64/android.frameworks.displayservice@1.0.so
 vendor/lib64/android.system.suspend@1.0.so
-vendor/lib64/chre_atoms_log.so
-vendor/lib64/chremetrics-cpp.so
 vendor/lib64/hw/face.default.so
 vendor/lib64/hw/libmbrainImpl.so
 vendor/lib64/hw/mtkflp.default.so
