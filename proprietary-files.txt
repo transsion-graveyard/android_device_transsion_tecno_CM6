@@ -2638,10 +2638,7 @@ vendor/lib64/hw/vibrator.default.so
 vendor/lib64/vendor.aac.hardware.richtap.vibrator-V1-ndk.so
 
 # WiFi
-vendor/bin/hw/android.hardware.wifi-service-lazy
-vendor/etc/init/android.hardware.wifi-service-lazy.rc
 vendor/etc/init/android.hardware.wifi.supplicant-service.rc
--vendor/etc/vintf/manifest/android.hardware.wifi-service.xml
 -vendor/etc/vintf/manifest/android.hardware.wifi.hostapd.xml
 -vendor/etc/vintf/manifest/android.hardware.wifi.supplicant.xml
 vendor/lib64/vendor.transsion.hardware.wifi.hostapd-V1-ndk.so

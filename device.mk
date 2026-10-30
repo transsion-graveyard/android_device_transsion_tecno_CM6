@@ -489,6 +489,7 @@ PRODUCT_PACKAGES += \
 
 # Wifi
 PRODUCT_PACKAGES += \
+    android.hardware.wifi-service \
     android.hardware.wifi-V3-ndk \
     android.hardware.wifi.common-V2-ndk \
     android.hardware.wifi.hostapd-V3-ndk \
