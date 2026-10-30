@@ -2338,9 +2338,6 @@ vendor/lib64/hw/mt6789/vulkan.mali.so;SYMLINK=vendor/lib64/hw/vulkan.mali.so
 vendor/lib64/libOpenCL.so
 
 # HotwordEnrollment
-system_ext/etc/permissions/com.android.hotwordenrollment.common.util.xml
--system_ext/framework/com.android.hotwordenrollment.common.util.jar
--system_ext/framework/com.android.hotwordenrollment.common.util.jar.fsv_meta
 
 # Keymaster
 vendor/etc/permissions/android.hardware.keystore.app_attest_key.prebuilt.xml
