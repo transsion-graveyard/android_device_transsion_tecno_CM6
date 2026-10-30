@@ -407,6 +407,9 @@ PRODUCT_PACKAGES += \
 
 # Sensors
 PRODUCT_PACKAGES += \
+    android.hardware.sensors-service.multihal
+
+PRODUCT_PACKAGES += \
     android.frameworks.sensorservice-V1-ndk \
     android.frameworks.sensorservice@1.0 \
     android.hardware.sensors-V2-ndk \

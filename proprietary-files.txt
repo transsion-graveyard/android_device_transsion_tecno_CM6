@@ -2560,9 +2560,7 @@ odm/etc/vconfig/tran_fp/tran_fp_CM6_JV0307_tm_nt37703a.json
 vendor/lib64/hw/power.default.so
 
 # Sensors
-vendor/bin/hw/android.hardware.sensors-service.multihal
 vendor/etc/elliptic_sensor.xml
-vendor/etc/init/android.hardware.sensors-service-multihal.rc
 vendor/lib64/hw/sensors.dynamic_sensor_hal.so
 vendor/lib64/hw/sensors.elliptic.so
 vendor/lib64/libnotifyaudiohal.so
