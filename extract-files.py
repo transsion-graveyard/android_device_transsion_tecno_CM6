@@ -97,6 +97,9 @@ blob_fixups: blob_fixups_user_type = {
         .replace_needed('av-audio-types-aidl-ndk.so', 'av-audio-types-aidl-ndk_prebuilt.so'),
     'vendor/lib64/mt6789/libmtkcam_hal_aidl_common.so': blob_fixup()
         .replace_needed('android.hardware.camera.common-V2-ndk.so', 'android.hardware.camera.common-V1-ndk.so'),
+    'vendor/bin/mnld': blob_fixup()
+        .replace_needed('libmnl.so', 'libmnl_mtk.so')
+        .replace_needed('android.hardware.sensors-V2-ndk.so', 'android.hardware.sensors-V3-ndk.so'),
     ('vendor/lib64/android.hardware.audio.core-impl-mediatek.so',
      'vendor/lib64/hw/android.hardware.audio.effect.aidl-impl-mediatek.so',
      'vendor/lib64/hw/android.hardware.soundtrigger3-impl.so'): blob_fixup()
