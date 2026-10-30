@@ -7,7 +7,11 @@ LOCAL_PATH := device/transsion/tecno/CM6
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
 # A/B
-$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_vendor_ramdisk.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/vabc_features.mk)
+
+# Enforce generic ramdisk allow list
+$(call inherit-product, $(SRC_TARGET_DIR)/product/generic_ramdisk.mk)
 
 # A/B
 PRODUCT_PACKAGES += \
@@ -33,7 +37,7 @@ AB_OTA_POSTINSTALL_CONFIG += \
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_vendor=true \
     POSTINSTALL_PATH_vendor=bin/checkpoint_gc \
-    FILESYSTEM_TYPE_vendor=$(BOARD_SYSTEMIMAGE_FILE_SYSTEM_TYPE) \
+    FILESYSTEM_TYPE_vendor=$(BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE) \
     POSTINSTALL_OPTIONAL_vendor=true
 
 PRODUCT_PACKAGES += \
@@ -378,6 +382,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     fstab.mt6789 \
+    fstab.mt6789.vendor_ramdisk \
     factory_init.connectivity.common.rc \
     factory_init.connectivity.rc \
     factory_init.project.rc \

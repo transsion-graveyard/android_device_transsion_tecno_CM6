@@ -206,4 +206,5 @@ prebuilt_etc {
     name: "fstab.mt6789",
     src: "etc/fstab.mt6789",
     vendor: true,
+    vendor_ramdisk_available: true,
 }
