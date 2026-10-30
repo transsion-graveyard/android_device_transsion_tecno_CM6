@@ -495,6 +495,19 @@ PRODUCT_PACKAGES += \
     libwifi-system-iface \
     wlan_assistant
 
+# Permissions provided by AOSP Soong modules
+PRODUCT_PACKAGES += \
+    android.hardware.hardware_keystore_V3.xml \
+    android.hardware.se.omapi.uicc.prebuilt.xml \
+    android.hardware.sensor.accelerometer.prebuilt.xml \
+    android.hardware.sensor.compass.prebuilt.xml \
+    android.hardware.sensor.gyroscope.prebuilt.xml \
+    android.hardware.sensor.light.prebuilt.xml \
+    android.hardware.sensor.proximity.prebuilt.xml \
+    android.hardware.sensor.stepcounter.prebuilt.xml \
+    android.hardware.sensor.stepdetector.prebuilt.xml \
+    features_com.android.virt.xml
+
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
