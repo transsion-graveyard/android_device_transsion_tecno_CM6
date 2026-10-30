@@ -4516,7 +4516,6 @@ vendor/lib64/libcapctrl.so
 vendor/lib64/libcarrierconfig.so
 vendor/lib64/libccci_util.so
 vendor/lib64/libcharon-ss.so
-vendor/lib64/libclang_rt.ubsan_standalone-aarch64-android.so
 vendor/lib64/libcmdl.so
 vendor/lib64/libcmdl_ndk.mtk.vndk.so
 vendor/lib64/libcodec2_fsr.so
