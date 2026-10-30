@@ -4530,7 +4530,6 @@ vendor/lib64/libpixelflinger.so
 vendor/lib64/libpkm.so
 vendor/lib64/libpower_timer.so
 vendor/lib64/libpowerhal.so
-vendor/lib64/libpowerhalwrap_vendor.so
 vendor/lib64/libpqcustutils.so
 vendor/lib64/libpqframework.so
 vendor/lib64/libpqhdrmetaparser.so
