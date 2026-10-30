@@ -3425,12 +3425,10 @@ odm/etc/asset/camera/watermark/watermark_640x480.nv21
 odm/etc/asset/camera/watermark/watermark_config
 odm/etc/asset/face/license.lic
 odm/etc/displayconfig/display_id_4627039422300187648.xml
-odm/etc/group
 odm/etc/init/dms-service.rc
 odm/etc/init/vendor.anc.rc
 odm/etc/init/vendor.dolby.media.c2-default-service-dax.rc
 odm/etc/media_profiles_V1_0.xml
-odm/etc/passwd
 odm/etc/permissions/android.hardware.consumerir.xml
 odm/etc/permissions/android.hardware.fingerprint.xml
 odm/etc/permissions/android.hardware.nfc.hce.xml
