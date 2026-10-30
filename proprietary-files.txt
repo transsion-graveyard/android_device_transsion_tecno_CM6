@@ -25,8 +25,7 @@ system_ext/lib64/vendor.mediatek.hardware.audio@7.1.so
 system_ext/lib64/vendor.mediatek.hardware.audio@8.1.so
 vendor/bin/hw/android.hardware.audio.service-aidl.mediatek
 vendor/etc/init/android.hardware.audio.service-aidl.mediatek.rc
--vendor/etc/vintf/manifest/android.hardware.audio.effect.service-aidl.xml
--vendor/etc/vintf/manifest/android.hardware.audio.service-aidl.xml
+vendor/etc/vintf/manifest/android.hardware.audio.effect.service-aidl.xml
 vendor/lib64/android.hardware.audio.core-impl-mediatek.so
 vendor/lib64/hw/android.hardware.audio.effect.aidl-impl-mediatek.so
 vendor/lib64/hw/audio.primary.default.so
@@ -173,7 +172,6 @@ vendor/etc/audio_param/VoWVoiceCommand_ParamUnitDesc.xml
 vendor/etc/audio_policy_configuration_bluetooth_legacy_hal.xml
 vendor/etc/bluetooth_audio_policy_configuration.xml
 vendor/etc/bluetooth_offload_audio_policy_configuration.xml
--vendor/etc/vintf/manifest/android.hardware.bluetooth-service-mediatek.xml
 -vendor/etc/vintf/manifest/bluetooth_audio.xml
 vendor/lib64/android.hardware.bluetooth.audio-impl-mediatek.so
 vendor/lib64/hw/android.hardware.bluetooth.audio@2.0-impl.so
@@ -2412,7 +2410,7 @@ vendor/etc/permissions/com.mediatek.hardware.vow_dsp.xml
 vendor/etc/seccomp_policy/android.hardware.media.c2@1.2-mediatek-seccomp-policy
 -vendor/etc/vintf/manifest/android.hardware.usb-aidl-service.mediatek.xml
 -vendor/etc/vintf/manifest/android.hardware.usb.gadget-aidl-service.mediatek.xml
--vendor/etc/vintf/manifest/mapper.mediatek.xml
+vendor/etc/vintf/manifest/mapper.mediatek.xml
 -vendor/etc/vintf/manifest/memtrack-mediatek.xml
 -vendor/etc/vintf/manifest/power-mediatek.xml
 -vendor/etc/vintf/manifest/thermal-mediatek.xml
