@@ -307,19 +307,28 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
 # Power
 PRODUCT_PACKAGES += \
-    android.hardware.power-V1-ndk \
-    android.hardware.power-V4-ndk \
-    android.hardware.power-V6-ndk \
-    android.hardware.power@1.0 \
-    android.hardware.power@1.1 \
-    android.hardware.power@1.2 \
-    android.hardware.power@1.3 \
-    libpower \
-    vendor.mediatek.hardware.mtkpower-V1-ndk \
-    vendor.mediatek.hardware.mtkpower-V2-ndk \
     vendor.mediatek.hardware.mtkpower@1.0 \
     vendor.mediatek.hardware.mtkpower@1.1 \
     vendor.mediatek.hardware.mtkpower@1.2
+
+PRODUCT_PACKAGES += \
+    vendor.mediatek.hardware.mtkpower-V1-ndk \
+    vendor.mediatek.hardware.mtkpower-V2-ndk
+
+PRODUCT_PACKAGES += \
+    android.hardware.power-service.pixel-libperfmgr
+
+# Power configurations
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/power/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
+
+# Thermal
+PRODUCT_PACKAGES += \
+    android.hardware.thermal-service.pixel \
+    thermal_symlinks
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/thermal/thermal_info_config.json:$(TARGET_COPY_OUT_VENDOR)/etc/thermal_info_config.json
 
 # Product characteristics
 PRODUCT_CHARACTERISTICS := default
@@ -511,6 +520,11 @@ PRODUCT_PACKAGES += \
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
+    hardware/google/interfaces \
+    hardware/google/pixel \
+    hardware/google/pixel/pixelstats \
+    hardware/google/pixel/power-libperfmgr \
+    hardware/google/pixel/thermal \
     hardware/mediatek
 
 # Inherit the proprietary files

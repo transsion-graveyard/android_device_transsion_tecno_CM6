@@ -1,0 +1,509 @@
+{
+  "Description": [
+    "powerhint.json for TECNO CM6 (MediaTek mt6789) with AOSP android.hardware.power-service.pixel-libperfmgr.",
+    "This file is authored from THIS device's own data, not copied from any other device tree.",
+    "Sources of truth:",
+    "  * Live sysfs OPP tables read from the running device (policy0/policy6/dvfsrc/ged).",
+    "  * Stock vendor power config vendor/etc/powercontable.xml (decrypted) - resource paths, bounds, defaults.",
+    "  * Stock vendor power config vendor/etc/powerscntbl.xml (decrypted) - stock hint->resource policy.",
+    "  * Stock boot logcat - confirms cluster topology, dvfsrc OPP list, GED level count.",
+    "Parsed by hardware/google/pixel/power-libperfmgr/libperfmgr/HintManager.cc.",
+    "Rules the parser enforces (violation => GetInstance()==nullptr => LOG(FATAL) 'Invalid config'):",
+    "  * Node Name and Path must be unique across all Nodes.",
+    "  * Values must be non-empty, unique within a Node; a File node value may not be empty.",
+    "  * DefaultIndex must be < Values.size(). If omitted the parser falls back to the LAST index.",
+    "  * Every Node-type Action needs PowerHint, Node, Value (member of that Node's Values) and Duration (UInt64).",
+    "  * A given Node may appear at most once inside a single PowerHint.",
+    "  * Hints that are not listed here are safely ignored by DoHint()/EndHint().",
+    "CRITICAL - Values ORDER is significant. FileNode::Update() walks req_sorted_ from index 0 and",
+    "  applies the FIRST index with an active request; req_sorted_ preserves the JSON Values order",
+    "  verbatim (HintManager.cc does NOT sort). Therefore:",
+    "  * MIN / floor nodes (CPULittleMinFreq, CPUBigMinFreq, MemFreq, TopAppUclampMin,",
+    "    latency_sensitive, GED timer margin, GPU boost/min, sugov rate limits) MUST list the HIGHEST /",
+    "    most-aggressive value FIRST (descending) and the release value LAST (usually DefaultIndex).",
+    "  * MAX / cap nodes (CPULittleMaxFreq, CPUBigMaxFreq, GpuMaxFreq) MUST list the MOST-restrictive",
+    "    value FIRST (ascending freq). The Pixel thermal HAL (powerhal_helper.cpp setMode->DoHint) is",
+    "    CUMULATIVE (it enables every severity <= current), so ascending is what makes the worst active",
+    "    severity win; reversing max nodes would break thermal throttling."
+  ],
+  "Nodes": [
+    {
+      "Name": "CPULittleMinFreq",
+      "Paths": ["/sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq"],
+      "Values": ["2000000", "1700000", "1500000", "1300000", "1000000", "0"],
+      "DefaultIndex": 5,
+      "ResetOnInit": true,
+      "Comments": [
+        "policy0 = CPUs 0-5, 6x Cortex-A55. Measured OPPs (kHz):",
+        "500000,650000,700000,750000,800000,850000,900000,950000,1000000,1050000,1100000,",
+        "1150000,1200000,1250000,1300000,1350000,1400000,1450000,1500000,1600000,1700000,",
+        "1800000,1900000,2000000.",
+        "Ordered HIGHEST-first (descending) on purpose: FileNode::Update() picks the FIRST req_sorted_",
+        "index with an active request, so the highest active floor wins. The LAST index '0' == release",
+        "the floor (kernel clamps to cpuinfo_min 500000); DefaultIndex 5 == that. This is the same",
+        "release convention the device uses in rootdir/etc/init.cgroup.rc (scaling_min_freq 0).",
+        "Boost points 1000000/1300000/1500000/1700000/2000000 are all real OPPs and mirror the",
+        "stock powerscntbl.xml values (IN_LAUNCHER 1300000, UX_SCROLLING 1500000, WHITELIST_LAUNCH 2000000)."
+      ]
+    },
+    {
+      "Name": "CPUBigMinFreq",
+      "Paths": ["/sys/devices/system/cpu/cpufreq/policy6/scaling_min_freq"],
+      "Values": ["2200000", "1900000", "1800000", "1700000", "1500000", "1200000", "1000000", "0"],
+      "DefaultIndex": 7,
+      "ResetOnInit": true,
+      "Comments": [
+        "policy6 = CPUs 6-7, 2x Cortex-A76. Measured OPPs (kHz):",
+        "725000,800000,900000,1000000,1100000,1200000,1300000,1400000,1500000,1600000,",
+        "1700000,1800000,1900000,2000000,2100000,2200000.",
+        "Ordered HIGHEST-first (descending); LAST index '0' == release, DefaultIndex 7 == that.",
+        "Kernel clamps to cpuinfo_min 725000.",
+        "Boost points mirror stock powerscntbl.xml (IN_LAUNCHER 1800000, WHITELIST_LAUNCH 2200000)."
+      ]
+    },
+    {
+      "Name": "CPULittleMaxFreq",
+      "Paths": ["/sys/devices/system/cpu/cpufreq/policy0/scaling_max_freq"],
+      "Values": ["650000", "800000", "1000000", "1250000", "1500000", "1700000", "2000000"],
+      "DefaultIndex": 6,
+      "ResetOnInit": true,
+      "Comments": [
+        "Cap node for policy0. Ordered MOST-restrictive-first (ascending freq) on purpose:",
+        "libperfmgr FileNode::Update() picks the FIRST req_sorted_ index with an active",
+        "request, so with ascending order the lowest (= most restrictive) active cap wins.",
+        "This is required for the cumulative THERMAL_ap_ntc_* hints (the thermal HAL enables",
+        "every severity <= current). DefaultIndex 6 = 2000000 == cpuinfo_max, i.e. no cap.",
+        "All values are real policy0 OPPs (650000 is the lowest writable cap >= the decoded",
+        "stock mtk-skin-control cluster0_min_throttle_freq floor), matching power_profile cluster0."
+      ]
+    },
+    {
+      "Name": "CPUBigMaxFreq",
+      "Paths": ["/sys/devices/system/cpu/cpufreq/policy6/scaling_max_freq"],
+      "Values": ["800000", "1000000", "1200000", "1400000", "1700000", "1900000", "2200000"],
+      "DefaultIndex": 6,
+      "ResetOnInit": true,
+      "Comments": [
+        "Cap node for policy6. Ordered MOST-restrictive-first (ascending freq): see CPULittleMaxFreq.",
+        "DefaultIndex 6 = 2200000 == cpuinfo_max, i.e. no cap.",
+        "Value 800000 is the decoded stock mtk-skin-control cluster1_min_throttle_freq floor."
+      ]
+    },
+    {
+      "Name": "TopAppUclampMin",
+      "Paths": ["/dev/cpuctl/top-app/cpu.uclamp.min"],
+      "Values": ["100", "40", "25", "0"],
+      "DefaultIndex": 3,
+      "ResetOnInit": true,
+      "Comments": [
+        "Stock powercontable.xml PERF_RES_SCHED_UCLAMP_MIN_TA: range 0..100, default 0.",
+        "Ordered HIGHEST-first (descending) so the strongest active floor wins.",
+        "Stock uses 25 (UX_MOVE_SCROLLING), 40 (UX_SCROLLING), 100 (APP_ROTATE/PMS_INSTALL)."
+      ]
+    },
+    {
+      "Name": "TopAppLatencySensitive",
+      "Paths": ["/dev/cpuctl/top-app/cpu.uclamp.latency_sensitive"],
+      "Values": ["1", "0"],
+      "DefaultIndex": 1,
+      "ResetOnInit": true,
+      "Comments": [
+        "Stock powercontable.xml PERF_RES_SCHED_PREFER_IDLE_TA: range 0..1, default 0.",
+        "Stock sets this to 1 for LAUNCH / scroll / game scenarios."
+      ]
+    },
+    {
+      "Name": "ForegroundLatencySensitive",
+      "Paths": ["/dev/cpuctl/foreground/cpu.uclamp.latency_sensitive"],
+      "Values": ["1", "0"],
+      "DefaultIndex": 1,
+      "ResetOnInit": true,
+      "Comments": [
+        "Stock powercontable.xml PERF_RES_SCHED_PREFER_IDLE_FG: range 0..1, default 0."
+      ]
+    },
+    {
+      "Name": "GedTimerMargin",
+      "Paths": ["/sys/kernel/ged/hal/timer_base_dvfs_margin"],
+      "Values": ["50", "30"],
+      "DefaultIndex": 1,
+      "ResetOnInit": true,
+      "Comments": [
+        "Stock powercontable.xml PERF_RES_GPU_GED_TIMER_BASE_DVFS_MARGIN: path timer_base_dvfs_margin.",
+        "Live kernel idle value on this device is 30; stock powerscntbl.xml IN_LAUNCHER sets 50.",
+        "Ordered HIGHEST-first (descending); higher margin = more aggressive GPU DVFS ramp."
+      ]
+    },
+    {
+      "Name": "GedMarginValue",
+      "Paths": ["/sys/kernel/ged/hal/dvfs_margin_value"],
+      "Values": ["30"],
+      "DefaultIndex": 0,
+      "ResetOnInit": true,
+      "Comments": [
+        "GED dvfs_margin_value is a mode/value field, not a plain percentage.",
+        "30 selects CONFIGURE_MARGIN_MODE with a 30% margin. Values 101..199 select dynamic CONFIG_FPS margin mode; 201..299 fixed-FPS; 301..399 no-FPS; 401..499 extend; 501..599 perf.",
+        "30 is the generic kernel/constant-margin default. No stock app- or game-specific dynamic mode is imported."
+      ]
+    },
+    {
+      "Name": "GedLoadingStep",
+      "Paths": ["/sys/kernel/ged/hal/loading_base_dvfs_step"],
+      "Values": ["4"],
+      "DefaultIndex": 0,
+      "ResetOnInit": true,
+      "Comments": [
+        "Stock powercontable.xml PERF_RES_GPU_GED_LOADING_BASE_DVFS_STEP: path loading_base_dvfs_step, default 4.",
+        "Neutral AOSP initialization only; stock game-profile loading-step values are not imported.",
+        "The node displays its value in hexadecimal (16 decimal reads back as 10)."
+      ]
+    },
+    {
+      "Name": "GedLoadingMode",
+      "Paths": ["/sys/kernel/ged/hal/dvfs_loading_mode"],
+      "Values": ["0"],
+      "DefaultIndex": 0,
+      "ResetOnInit": true,
+      "Comments": [
+        "Stock powercontable.xml PERF_RES_GPU_GED_DVFS_LOADING_MODE: path dvfs_loading_mode, default 0.",
+        "Neutral AOSP initialization only; no game-specific loading policy is imported."
+      ]
+    },
+    {
+      "Name": "GedWorkloadMode",
+      "Paths": ["/sys/kernel/ged/hal/dvfs_workload_mode"],
+      "Values": ["0"],
+      "DefaultIndex": 0,
+      "ResetOnInit": true,
+      "Comments": [
+        "Stock GED DVFS workload mode: path dvfs_workload_mode, kernel default 0.",
+        "Neutral AOSP initialization only; no app- or game-specific workload policy is imported."
+      ]
+    },
+    {
+      "Name": "GpuBoostLevel",
+      "Paths": ["/sys/kernel/ged/hal/gpu_boost_level"],
+      "Values": ["100", "-1"],
+      "DefaultIndex": 1,
+      "ResetOnInit": true,
+      "Comments": [
+        "Stock powercontable.xml PERF_RES_GPU_BLOCK_API_BOOST: path gpu_boost_level, range -1..100, default -1.",
+        "Ordered HIGHEST-first (descending). -1 == default (GED owns DVFS). 100 == maximum API boost.",
+        "Only the strongest GPU hints request 100."
+      ]
+    },
+    {
+      "Name": "GpuMinFreq",
+      "Paths": ["/sys/kernel/ged/hal/custom_boost_gpu_freq"],
+      "Values": ["20", "44"],
+      "DefaultIndex": 1,
+      "ResetOnInit": true,
+      "Comments": [
+        "Stock powercontable.xml PERF_RES_GPU_FREQ_MIN: path custom_boost_gpu_freq (GED custom min-floor).",
+        "Verified from stock ged.ko: custom_boost_gpu_freq_store() => scnprintf + kstrtoint => mtk_custom_boost_gpu_freq(int level).",
+        "So the node takes a SINGLE integer level index (write path is plain %d in vendor libpowerhal.so",
+        "set_gpu_freq_level(), which writes /sys/kernel/ged/hal/custom_boost_gpu_freq with snprintf('%d', level)).",
+        "Range is 0..total_gpu_freq_level_count-1 (live count=45 => 0..44) and LOWER index == HIGHER frequency",
+        "(live current_freqency: level 8 = 990000, level 9 = 976000).",
+        "Boost is level 20 (higher freq); release is level 44 == lowest freq (kernel idle value).",
+        "Ordered most-aggressive-first so the higher floor wins; DefaultIndex 1 == '44' == release.",
+        "Stock powerscntbl.xml IN_LAUNCHER sets PERF_RES_GPU_FREQ_MIN=20 => floor the GPU at level 20."
+      ]
+    },
+    {
+      "Name": "GpuMaxFreq",
+      "Paths": ["/sys/kernel/ged/hal/custom_upbound_gpu_freq"],
+      "Values": ["44", "29", "20", "9", "0"],
+      "DefaultIndex": 4,
+      "ResetOnInit": true,
+      "Comments": [
+        "GED DVFS ceiling (custom_upbound_gpu_freq) - the max-freq counterpart of GpuMinFreq.",
+        "Same level-index ABI as custom_boost_gpu_freq: LOWER index == HIGHER frequency, so",
+        "index 0 == highest OPP == no ceiling. Verified live on this device: while",
+        "custom_upbound_gpu_freq=0 the GPU still runs at level 9 (976 MHz), i.e. 0 does NOT",
+        "force a low clock. Write test: '20' => stored value '20', restored to '0'.",
+        "Values are ordered MOST-RESTRICTIVE-FIRST (lowest freq / highest index first) on",
+        "purpose: FileNode::Update() picks the FIRST req_sorted_ index with an active request,",
+        "so the most restrictive active cap wins (same rule as CPULittleMaxFreq).",
+        "DefaultIndex 4 == '0' == no cap. Stock app-cfg PERF_RES_GPU_FREQ_MAX values: 8,9,26,29."
+      ]
+    },
+    {
+      "Name": "GpuThermalLimit",
+      "Paths": ["/proc/gpufreqv2/limit_table"],
+      "Values": [
+        "set 2 390000 -2",
+        "set 2 733000 -2",
+        "set 2 835000 -2",
+        "set 2 0 -2"
+      ],
+      "DefaultIndex": 3,
+      "ResetOnInit": true,
+      "Comments": [
+        "gpufreqv2 THERMAL_AP limiter (id 2, priority 7); higher priority than POWERHAL (id 10, priority 4).",
+        "The THERMAL_AP set path takes FREQUENCY in kHz, not an OPP index. The kernel maps it to the closest OPP.",
+        "390000=44/390MHz, 733000=29/733MHz, 835000=20/835MHz; 0 cancels the thermal ceiling.",
+        "Floor is -2 (GPUPPM_KEEP_IDX), so this cap does not erase the power-HAL game floor.",
+        "The THERMAL_AP row is enabled at boot. Do not use 'switch 2 0 0' here because a later set would leave it disabled.",
+        "Values are ordered most-restrictive-first for cumulative thermal hints; DefaultIndex 3 == no cap."
+      ]
+    },
+    {
+      "Name": "SugovLittleUpRateLimit",
+      "Paths": ["/sys/devices/system/cpu/cpufreq/policy0/sugov_ext/up_rate_limit_us"],
+      "Values": ["0", "1"],
+      "DefaultIndex": 1,
+      "ResetOnInit": true,
+      "Comments": [
+        "Stock powercontable.xml PERF_RES_SCHED_UTIL_UP_RATE_LIMIT_US_CLUSTER_0.",
+        "policy0 runs the MTK sugov_ext governor. Stock powerscntbl.xml UX_SCROLLING_COMMON_MODE",
+        "writes 0 (uncapped up-ramp => governor may raise freq immediately). Live boot value is 1."
+      ]
+    },
+    {
+      "Name": "SugovLittleDownRateLimit",
+      "Paths": ["/sys/devices/system/cpu/cpufreq/policy0/sugov_ext/down_rate_limit_us"],
+      "Values": ["0", "1"],
+      "DefaultIndex": 1,
+      "ResetOnInit": true,
+      "Comments": [
+        "Stock powercontable.xml PERF_RES_SCHED_UTIL_DOWN_RATE_LIMIT_US_CLUSTER_0.",
+        "0 == uncapped down-ramp (stock UX_SCROLLING_COMMON_MODE). Live boot value is 1."
+      ]
+    },
+    {
+      "Name": "SugovBigUpRateLimit",
+      "Paths": ["/sys/devices/system/cpu/cpufreq/policy6/sugov_ext/up_rate_limit_us"],
+      "Values": ["0", "1"],
+      "DefaultIndex": 1,
+      "ResetOnInit": true,
+      "Comments": [
+        "Stock powercontable.xml PERF_RES_SCHED_UTIL_UP_RATE_LIMIT_US_CLUSTER_1.",
+        "policy6 runs the MTK sugov_ext governor. Live boot value is 1."
+      ]
+    },
+    {
+      "Name": "SugovBigDownRateLimit",
+      "Paths": ["/sys/devices/system/cpu/cpufreq/policy6/sugov_ext/down_rate_limit_us"],
+      "Values": ["0", "1"],
+      "DefaultIndex": 1,
+      "ResetOnInit": true,
+      "Comments": [
+        "Stock powercontable.xml PERF_RES_SCHED_UTIL_DOWN_RATE_LIMIT_US_CLUSTER_1.",
+        "policy6 runs the MTK sugov_ext governor. Live boot value is 1."
+      ]
+    },
+    {
+      "Name": "MemFreq",
+      "Paths": ["/sys/devices/platform/soc/10012000.dvfsrc/mtk-dvfsrc-devfreq/devfreq/mtk-dvfsrc-devfreq/userspace/set_freq"],
+      "Values": ["3200000000", "2400000000", "1600000000", "0"],
+      "DefaultIndex": 3,
+      "ResetOnInit": true,
+      "Comments": [
+        "DVFSRC (EMI/DDR) devfreq is on the userspace governor on this device.",
+        "Measured available_frequencies (Hz): 800000000,1200000000,1600000000,1866000000,",
+        "2400000000,3200000000,4266000000 -- matches the stock boot log libPowerHal",
+        "'get_dvfsrc_devfreq_table count:7'.",
+        "Ordered HIGHEST-first (descending) so the highest active floor wins. The LAST index '0'",
+        "== release the floor (kernel clamps to min_freq 800000000); DefaultIndex 3 == that.",
+        "Stock keeps PERF_RES_DRAM_OPP_MIN=0 (min) for most hints incl. LAUNCH, so no UI hint raises",
+        "DDR here (matches stock); only INTERACTION/LAUNCH/EXPENSIVE_RENDERING lift it."
+      ]
+    },
+    {
+      "Name": "TouchGesture",
+      "Paths": ["/proc/gesture_function"],
+      "Values": ["cc0", "cc1"],
+      "DefaultIndex": 0,
+      "ResetOnInit": true,
+      "Comments": [
+        "Transsion FTS gesture enable via the tran_touch proc node (stock path).",
+        "Format: '<2-letter gesture code><1-digit 0/1>'. 'cc1' arms double-tap-to-wake",
+        "so the driver enters TRAN_GESTURE_SUSPEND_MODE at screen-off and reports",
+        "KEY_F26 (linux 198) on a double tap. 'cc0' disarms.",
+        "Armed automatically while the PM DOUBLE_TAP_TO_WAKE mode is active",
+        "(Settings.Secure.double_tap_to_wake on) and disarmed on EndHint/init."
+      ]
+    }
+  ],
+  "Actions": [
+    { "PowerHint": "INTERACTION", "Node": "CPULittleMinFreq", "Value": "1500000", "Duration": 0 },
+    { "PowerHint": "INTERACTION", "Node": "CPUBigMinFreq", "Value": "1500000", "Duration": 0 },
+    { "PowerHint": "INTERACTION", "Node": "TopAppUclampMin", "Value": "40", "Duration": 0 },
+    { "PowerHint": "INTERACTION", "Node": "TopAppLatencySensitive", "Value": "1", "Duration": 0 },
+    { "PowerHint": "INTERACTION", "Node": "GedTimerMargin", "Value": "50", "Duration": 0 },
+    { "PowerHint": "INTERACTION", "Node": "GpuMinFreq", "Value": "20", "Duration": 0 },
+    { "PowerHint": "INTERACTION", "Node": "MemFreq", "Value": "1600000000", "Duration": 0 },
+    { "PowerHint": "INTERACTION", "Node": "SugovLittleUpRateLimit", "Value": "0", "Duration": 0 },
+    { "PowerHint": "INTERACTION", "Node": "SugovLittleDownRateLimit", "Value": "0", "Duration": 0 },
+    { "PowerHint": "INTERACTION", "Node": "SugovBigUpRateLimit", "Value": "0", "Duration": 0 },
+    { "PowerHint": "INTERACTION", "Node": "SugovBigDownRateLimit", "Value": "0", "Duration": 0 },
+
+    { "PowerHint": "LAUNCH", "Node": "CPULittleMinFreq", "Value": "2000000", "Duration": 0 },
+    { "PowerHint": "LAUNCH", "Node": "CPUBigMinFreq", "Value": "2200000", "Duration": 0 },
+    { "PowerHint": "LAUNCH", "Node": "TopAppUclampMin", "Value": "40", "Duration": 0 },
+    { "PowerHint": "LAUNCH", "Node": "TopAppLatencySensitive", "Value": "1", "Duration": 0 },
+    { "PowerHint": "LAUNCH", "Node": "GedTimerMargin", "Value": "50", "Duration": 0 },
+    { "PowerHint": "LAUNCH", "Node": "GpuMinFreq", "Value": "20", "Duration": 0 },
+    { "PowerHint": "LAUNCH", "Node": "MemFreq", "Value": "2400000000", "Duration": 0 },
+    { "PowerHint": "LAUNCH", "Node": "SugovLittleUpRateLimit", "Value": "0", "Duration": 0 },
+    { "PowerHint": "LAUNCH", "Node": "SugovLittleDownRateLimit", "Value": "0", "Duration": 0 },
+    { "PowerHint": "LAUNCH", "Node": "SugovBigUpRateLimit", "Value": "0", "Duration": 0 },
+    { "PowerHint": "LAUNCH", "Node": "SugovBigDownRateLimit", "Value": "0", "Duration": 0 },
+
+    { "PowerHint": "DOUBLE_TAP_TO_WAKE", "Node": "CPULittleMinFreq", "Value": "1300000", "Duration": 2000 },
+    { "PowerHint": "DOUBLE_TAP_TO_WAKE", "Node": "TouchGesture", "Value": "cc1", "Duration": 0 },
+    { "PowerHint": "DOUBLE_TAP_TO_WAKE", "Node": "CPUBigMinFreq", "Value": "1500000", "Duration": 2000 },
+    { "PowerHint": "DOUBLE_TAP_TO_WAKE", "Node": "TopAppLatencySensitive", "Value": "1", "Duration": 2000 },
+
+    { "PowerHint": "EXPENSIVE_RENDERING", "Node": "CPULittleMinFreq", "Value": "1500000", "Duration": 0 },
+    { "PowerHint": "EXPENSIVE_RENDERING", "Node": "CPUBigMinFreq", "Value": "1800000", "Duration": 0 },
+    { "PowerHint": "EXPENSIVE_RENDERING", "Node": "GedTimerMargin", "Value": "50", "Duration": 0 },
+    { "PowerHint": "EXPENSIVE_RENDERING", "Node": "GpuBoostLevel", "Value": "100", "Duration": 0 },
+    { "PowerHint": "EXPENSIVE_RENDERING", "Node": "GpuMinFreq", "Value": "20", "Duration": 0 },
+    { "PowerHint": "EXPENSIVE_RENDERING", "Node": "MemFreq", "Value": "3200000000", "Duration": 0 },
+
+    { "PowerHint": "SUSTAINED_PERFORMANCE", "Node": "CPULittleMaxFreq", "Value": "1700000", "Duration": 0 },
+    { "PowerHint": "SUSTAINED_PERFORMANCE", "Node": "CPUBigMaxFreq", "Value": "1900000", "Duration": 0 },
+
+    { "PowerHint": "FIXED_PERFORMANCE", "Node": "CPULittleMinFreq", "Value": "1300000", "Duration": 0 },
+    { "PowerHint": "FIXED_PERFORMANCE", "Node": "CPUBigMinFreq", "Value": "1500000", "Duration": 0 },
+
+    { "PowerHint": "LOW_POWER", "Node": "CPULittleMaxFreq", "Value": "1250000", "Duration": 0 },
+    { "PowerHint": "LOW_POWER", "Node": "CPUBigMaxFreq", "Value": "1400000", "Duration": 0 },
+
+    { "PowerHint": "THERMAL_ap_ntc_LIGHT", "Node": "CPULittleMaxFreq", "Value": "1700000", "Duration": 0 },
+    { "PowerHint": "THERMAL_ap_ntc_LIGHT", "Node": "CPUBigMaxFreq", "Value": "1900000", "Duration": 0 },
+    { "PowerHint": "THERMAL_ap_ntc_MODERATE", "Node": "CPULittleMaxFreq", "Value": "1500000", "Duration": 0 },
+    { "PowerHint": "THERMAL_ap_ntc_MODERATE", "Node": "CPUBigMaxFreq", "Value": "1700000", "Duration": 0 },
+    { "PowerHint": "THERMAL_ap_ntc_MODERATE", "Node": "GpuThermalLimit", "Value": "set 2 835000 -2", "Duration": 0 },
+    { "PowerHint": "THERMAL_ap_ntc_SEVERE", "Node": "CPULittleMaxFreq", "Value": "1250000", "Duration": 0 },
+    { "PowerHint": "THERMAL_ap_ntc_SEVERE", "Node": "CPUBigMaxFreq", "Value": "1400000", "Duration": 0 },
+    { "PowerHint": "THERMAL_ap_ntc_SEVERE", "Node": "GpuThermalLimit", "Value": "set 2 733000 -2", "Duration": 0 },
+    { "PowerHint": "THERMAL_ap_ntc_CRITICAL", "Node": "CPULittleMaxFreq", "Value": "1000000", "Duration": 0 },
+    { "PowerHint": "THERMAL_ap_ntc_CRITICAL", "Node": "CPUBigMaxFreq", "Value": "1000000", "Duration": 0 },
+    { "PowerHint": "THERMAL_ap_ntc_CRITICAL", "Node": "GpuThermalLimit", "Value": "set 2 390000 -2", "Duration": 0 },
+    { "PowerHint": "THERMAL_ap_ntc_EMERGENCY", "Node": "CPULittleMaxFreq", "Value": "800000", "Duration": 0 },
+    { "PowerHint": "THERMAL_ap_ntc_EMERGENCY", "Node": "CPUBigMaxFreq", "Value": "800000", "Duration": 0 },
+    { "PowerHint": "THERMAL_ap_ntc_EMERGENCY", "Node": "GpuThermalLimit", "Value": "set 2 390000 -2", "Duration": 0 },
+    { "PowerHint": "THERMAL_ap_ntc_SHUTDOWN", "Node": "CPULittleMaxFreq", "Value": "650000", "Duration": 0 },
+    { "PowerHint": "THERMAL_ap_ntc_SHUTDOWN", "Node": "CPUBigMaxFreq", "Value": "800000", "Duration": 0 },
+    { "PowerHint": "THERMAL_ap_ntc_SHUTDOWN", "Node": "GpuThermalLimit", "Value": "set 2 390000 -2", "Duration": 0 },
+
+    { "PowerHint": "THERMAL_gpu1_LIGHT", "Node": "GpuThermalLimit", "Value": "set 2 835000 -2", "Duration": 0 },
+    { "PowerHint": "THERMAL_gpu1_MODERATE", "Node": "GpuThermalLimit", "Value": "set 2 733000 -2", "Duration": 0 },
+    { "PowerHint": "THERMAL_gpu1_SEVERE", "Node": "GpuThermalLimit", "Value": "set 2 390000 -2", "Duration": 0 },
+    { "PowerHint": "THERMAL_gpu1_CRITICAL", "Node": "GpuThermalLimit", "Value": "set 2 390000 -2", "Duration": 0 },
+    { "PowerHint": "THERMAL_gpu1_EMERGENCY", "Node": "GpuThermalLimit", "Value": "set 2 390000 -2", "Duration": 0 },
+    { "PowerHint": "THERMAL_gpu1_SHUTDOWN", "Node": "GpuThermalLimit", "Value": "set 2 390000 -2", "Duration": 0 },
+
+    { "PowerHint": "THERMAL_gpu2_LIGHT", "Node": "GpuThermalLimit", "Value": "set 2 835000 -2", "Duration": 0 },
+    { "PowerHint": "THERMAL_gpu2_MODERATE", "Node": "GpuThermalLimit", "Value": "set 2 733000 -2", "Duration": 0 },
+    { "PowerHint": "THERMAL_gpu2_SEVERE", "Node": "GpuThermalLimit", "Value": "set 2 390000 -2", "Duration": 0 },
+    { "PowerHint": "THERMAL_gpu2_CRITICAL", "Node": "GpuThermalLimit", "Value": "set 2 390000 -2", "Duration": 0 },
+    { "PowerHint": "THERMAL_gpu2_EMERGENCY", "Node": "GpuThermalLimit", "Value": "set 2 390000 -2", "Duration": 0 },
+    { "PowerHint": "THERMAL_gpu2_SHUTDOWN", "Node": "GpuThermalLimit", "Value": "set 2 390000 -2", "Duration": 0 },
+
+    { "PowerHint": "VR", "Node": "CPULittleMinFreq", "Value": "1500000", "Duration": 0 },
+    { "PowerHint": "VR", "Node": "CPUBigMinFreq", "Value": "1800000", "Duration": 0 },
+    { "PowerHint": "VR", "Node": "TopAppLatencySensitive", "Value": "1", "Duration": 0 },
+    { "PowerHint": "VR", "Node": "GedTimerMargin", "Value": "50", "Duration": 0 },
+    { "PowerHint": "VR", "Node": "GpuBoostLevel", "Value": "100", "Duration": 0 },
+    { "PowerHint": "VR", "Node": "GpuMinFreq", "Value": "20", "Duration": 0 },
+
+    { "PowerHint": "VR_SUSTAINED_PERFORMANCE", "Node": "CPULittleMinFreq", "Value": "1300000", "Duration": 0 },
+    { "PowerHint": "VR_SUSTAINED_PERFORMANCE", "Node": "CPUBigMinFreq", "Value": "1500000", "Duration": 0 },
+    { "PowerHint": "VR_SUSTAINED_PERFORMANCE", "Node": "CPULittleMaxFreq", "Value": "1700000", "Duration": 0 },
+    { "PowerHint": "VR_SUSTAINED_PERFORMANCE", "Node": "CPUBigMaxFreq", "Value": "1900000", "Duration": 0 },
+    { "PowerHint": "VR_SUSTAINED_PERFORMANCE", "Node": "TopAppLatencySensitive", "Value": "1", "Duration": 0 },
+
+    { "PowerHint": "AUDIO_STREAMING_LOW_LATENCY", "Node": "CPULittleMinFreq", "Value": "1500000", "Duration": 0 },
+    { "PowerHint": "AUDIO_STREAMING_LOW_LATENCY", "Node": "CPUBigMinFreq", "Value": "1000000", "Duration": 0 },
+    { "PowerHint": "AUDIO_STREAMING_LOW_LATENCY", "Node": "ForegroundLatencySensitive", "Value": "1", "Duration": 0 },
+
+    { "PowerHint": "CAMERA_LAUNCH", "Node": "CPULittleMinFreq", "Value": "1500000", "Duration": 0 },
+    { "PowerHint": "CAMERA_LAUNCH", "Node": "CPUBigMinFreq", "Value": "1800000", "Duration": 0 },
+    { "PowerHint": "CAMERA_LAUNCH", "Node": "TopAppLatencySensitive", "Value": "1", "Duration": 0 },
+
+    { "PowerHint": "CAMERA_SHOT", "Node": "CPULittleMinFreq", "Value": "1500000", "Duration": 2000 },
+    { "PowerHint": "CAMERA_SHOT", "Node": "CPUBigMinFreq", "Value": "1800000", "Duration": 2000 },
+
+    { "PowerHint": "CAMERA_STREAMING_LOW", "Node": "CPULittleMinFreq", "Value": "1000000", "Duration": 0 },
+    { "PowerHint": "CAMERA_STREAMING_LOW", "Node": "CPUBigMinFreq", "Value": "1500000", "Duration": 0 },
+
+    { "PowerHint": "CAMERA_STREAMING_MID", "Node": "CPULittleMinFreq", "Value": "1300000", "Duration": 0 },
+    { "PowerHint": "CAMERA_STREAMING_MID", "Node": "CPUBigMinFreq", "Value": "1700000", "Duration": 0 },
+
+    { "PowerHint": "CAMERA_STREAMING_HIGH", "Node": "CPULittleMinFreq", "Value": "1500000", "Duration": 0 },
+    { "PowerHint": "CAMERA_STREAMING_HIGH", "Node": "CPUBigMinFreq", "Value": "1900000", "Duration": 0 },
+
+    { "PowerHint": "CAMERA_STREAMING_SECURE", "Node": "CPULittleMinFreq", "Value": "1500000", "Duration": 0 },
+    { "PowerHint": "CAMERA_STREAMING_SECURE", "Node": "CPUBigMinFreq", "Value": "1900000", "Duration": 0 },
+
+    { "PowerHint": "GAME", "Node": "CPULittleMinFreq", "Value": "1700000", "Duration": 0 },
+    { "PowerHint": "GAME", "Node": "CPUBigMinFreq", "Value": "1900000", "Duration": 0 },
+    { "PowerHint": "GAME", "Node": "TopAppLatencySensitive", "Value": "1", "Duration": 0 },
+    { "PowerHint": "GAME", "Node": "GpuBoostLevel", "Value": "100", "Duration": 0 },
+    { "PowerHint": "GAME", "Node": "GpuMinFreq", "Value": "20", "Duration": 0 },
+
+    { "PowerHint": "GAME_LOADING", "Node": "CPULittleMinFreq", "Value": "2000000", "Duration": 0 },
+    { "PowerHint": "GAME_LOADING", "Node": "CPUBigMinFreq", "Value": "2200000", "Duration": 0 },
+    { "PowerHint": "GAME_LOADING", "Node": "GpuBoostLevel", "Value": "100", "Duration": 0 },
+
+    { "PowerHint": "DISPLAY_UPDATE_IMMINENT", "Node": "CPULittleMinFreq", "Value": "1500000", "Duration": 1000 },
+    { "PowerHint": "DISPLAY_UPDATE_IMMINENT", "Node": "CPUBigMinFreq", "Value": "1500000", "Duration": 1000 },
+    { "PowerHint": "DISPLAY_UPDATE_IMMINENT", "Node": "TopAppUclampMin", "Value": "40", "Duration": 1000 },
+    { "PowerHint": "DISPLAY_UPDATE_IMMINENT", "Node": "TopAppLatencySensitive", "Value": "1", "Duration": 1000 },
+    { "PowerHint": "DISPLAY_UPDATE_IMMINENT", "Node": "GedTimerMargin", "Value": "50", "Duration": 1000 },
+    { "PowerHint": "DISPLAY_UPDATE_IMMINENT", "Node": "GpuMinFreq", "Value": "20", "Duration": 1000 },
+    { "PowerHint": "DISPLAY_UPDATE_IMMINENT", "Node": "SugovLittleUpRateLimit", "Value": "0", "Duration": 1000 },
+    { "PowerHint": "DISPLAY_UPDATE_IMMINENT", "Node": "SugovLittleDownRateLimit", "Value": "0", "Duration": 1000 },
+    { "PowerHint": "DISPLAY_UPDATE_IMMINENT", "Node": "SugovBigUpRateLimit", "Value": "0", "Duration": 1000 },
+    { "PowerHint": "DISPLAY_UPDATE_IMMINENT", "Node": "SugovBigDownRateLimit", "Value": "0", "Duration": 1000 },
+
+    { "PowerHint": "ML_ACC", "Node": "CPULittleMinFreq", "Value": "1300000", "Duration": 1000 },
+    { "PowerHint": "ML_ACC", "Node": "CPUBigMinFreq", "Value": "1500000", "Duration": 1000 },
+
+    { "PowerHint": "AUDIO_LAUNCH", "Node": "CPULittleMinFreq", "Value": "1000000", "Duration": 2000 },
+    { "PowerHint": "AUDIO_LAUNCH", "Node": "CPUBigMinFreq", "Value": "1000000", "Duration": 2000 },
+
+    { "PowerHint": "INTERACTIVE", "Node": "CPULittleMinFreq", "Value": "1300000", "Duration": 0 },
+    { "PowerHint": "INTERACTIVE", "Node": "CPUBigMinFreq", "Value": "1500000", "Duration": 0 },
+    { "PowerHint": "INTERACTIVE", "Node": "TopAppLatencySensitive", "Value": "1", "Duration": 0 },
+
+    { "PowerHint": "DEVICE_IDLE", "Node": "CPULittleMaxFreq", "Value": "1250000", "Duration": 0 },
+    { "PowerHint": "DEVICE_IDLE", "Node": "CPUBigMaxFreq", "Value": "1400000", "Duration": 0 },
+
+    { "PowerHint": "DISPLAY_INACTIVE", "Node": "CPULittleMaxFreq", "Value": "1250000", "Duration": 0 },
+    { "PowerHint": "DISPLAY_INACTIVE", "Node": "CPUBigMaxFreq", "Value": "1400000", "Duration": 0 },
+
+    { "PowerHint": "DISPLAY_CHANGE", "Node": "CPULittleMinFreq", "Value": "1000000", "Duration": 2000 },
+    { "PowerHint": "DISPLAY_CHANGE", "Node": "CPUBigMinFreq", "Value": "1200000", "Duration": 2000 }
+  ],
+  "AdpfConfig": [
+    {
+      "Name": "ADPF_DEFAULT",
+      "PID_On": true,
+      "PID_Po": 5.0,
+      "PID_Pu": 3.0,
+      "PID_I": 0.001,
+      "PID_I_Init": 200,
+      "PID_I_High": 512,
+      "PID_I_Low": -120,
+      "PID_Do": 500.0,
+      "PID_Du": 300.0,
+      "UclampMin_On": true,
+      "UclampMin_Init": 200,
+      "UclampMin_LoadUp": 157,
+      "UclampMin_LoadReset": 157,
+      "UclampMin_High": 512,
+      "UclampMin_Low": 100,
+      "SamplingWindow_P": 0,
+      "SamplingWindow_I": 0,
+      "SamplingWindow_D": 0,
+      "ReportingRateLimitNs": 8333333,
+      "TargetTimeFactor": 1.0,
+      "StaleTimeFactor": 10.0
+    }
+  ]
+}

@@ -2360,19 +2360,14 @@ vendor/lib64/hw/sound_trigger.primary.default.so
 vendor/apex/com.mediatek.oemcrypto.apex
 vendor/bin/hw/android.hardware.media.c2-mediatek-64b
 vendor/bin/hw/android.hardware.secure_element@1.2-service-mediatek
-vendor/bin/hw/android.hardware.thermal-service.mediatek
 vendor/bin/hw/android.hardware.usb-aidl-service.mediatek
 vendor/bin/hw/android.hardware.usb.gadget-aidl-service.mediatek
 vendor/bin/hw/android.hardware.vibrator-service.mediatek
-vendor/bin/hw/vendor.mediatek.hardware.aee@1.1-service
-vendor/bin/hw/vendor.mediatek.hardware.aee@V1-service
 vendor/bin/hw/vendor.mediatek.hardware.gpuserv-service
 vendor/bin/hw/vendor.mediatek.hardware.mbrain-service.mediatek
 vendor/bin/hw/vendor.mediatek.hardware.mmagent-service
 vendor/bin/hw/vendor.mediatek.hardware.mmlpq@V1-service
 vendor/bin/hw/vendor.mediatek.hardware.mms-service
-vendor/bin/hw/vendor.mediatek.hardware.mtkpower-service.mediatek
-vendor/bin/hw/vendor.mediatek.hardware.mtkpower_applist-service.mediatek
 vendor/bin/hw/vendor.mediatek.hardware.neuropilot.neuronservice.neuronservice.mediatek
 vendor/bin/hw/vendor.mediatek.hardware.nvram-service
 vendor/bin/hw/vendor.mediatek.hardware.nwk_opt@1.0-service
@@ -2382,13 +2377,8 @@ vendor/etc/init/android.hardware.media.c2-mediatek-64b.rc
 vendor/etc/init/android.hardware.secure_element@1.2-service-mediatek.rc
 vendor/etc/init/android.hardware.usb-aidl-service.mediatek.rc
 vendor/etc/init/android.hardware.usb.gadget-aidl-service.mediatek.rc
-vendor/etc/init/thermal-mediatek.rc
-vendor/etc/init/vendor.mediatek.hardware.aee@1.1-service.rc
-vendor/etc/init/vendor.mediatek.hardware.aee@V1-service.rc
 vendor/etc/init/vendor.mediatek.hardware.mmagent-service.rc
 vendor/etc/init/vendor.mediatek.hardware.mms-service.rc
-vendor/etc/init/vendor.mediatek.hardware.mtkpower@1.0-init.rc
-vendor/etc/init/vendor.mediatek.hardware.mtkpower@1.0-service.rc
 vendor/etc/init/vendor.mediatek.hardware.nvram-sevice.rc
 vendor/etc/init/vendor.mediatek.hardware.nwk_opt@1.0-service.rc
 vendor/etc/init/vendor.mediatek.hardware.pq_aidl-service.rc
@@ -2398,12 +2388,10 @@ vendor/etc/seccomp_policy/android.hardware.media.c2@1.2-mediatek-seccomp-policy
 vendor/etc/vintf/manifest/android.hardware.usb-aidl-service.mediatek.xml
 vendor/etc/vintf/manifest/android.hardware.usb.gadget-aidl-service.mediatek.xml
 vendor/etc/vintf/manifest/mapper.mediatek.xml
-vendor/lib64/android.hardware.power-service-mediatek.so
 vendor/lib64/hw/android.hardware.sensors@2.X-subhal-mediatek.so
 vendor/lib64/hw/mt6789/mapper.mediatek.so;SYMLINK=vendor/lib64/hw/mapper.mediatek.so
 vendor/lib64/hw/mt6789/vendor.mediatek.hardware.pq_aidl-impl.so;SYMLINK=vendor/lib64/hw/vendor.mediatek.hardware.pq_aidl-impl.so
 vendor/lib64/hw/sensors.mediatek.V2.0.so;SYMLINK=vendor/lib64/hw/sensors.mt6789.so
-vendor/lib64/hw/vendor.mediatek.hardware.mtkpower-aidl-impl.so
 vendor/lib64/hw/vendor.mediatek.hardware.nvram-impl.so
 vendor/lib64/hw/vendor.mediatek.hardware.videotelephony-impl.so
 vendor/lib64/libmtk-fusion-ril-prop-vsim.so
@@ -2440,9 +2428,6 @@ vendor/lib64/mt6789/libmtk_mali_user.so;SYMLINK=vendor/lib64/libmtk_mali_user.so
 vendor/lib64/vendor.mediatek.framework.mtksf_ext-V3-ndk.so
 vendor/lib64/vendor.mediatek.framework.mtksf_ext-V7-ndk.so
 vendor/lib64/vendor.mediatek.framework.mtksf_ext-V9-ndk.so
-vendor/lib64/vendor.mediatek.hardware.aee-V1-ndk.so
-vendor/lib64/vendor.mediatek.hardware.aee@1.0.so
-vendor/lib64/vendor.mediatek.hardware.aee@1.1.so
 vendor/lib64/vendor.mediatek.hardware.apmonitor-V1-ndk.so
 vendor/lib64/vendor.mediatek.hardware.apmonitor@2.0.so
 vendor/lib64/vendor.mediatek.hardware.apuware.aiste-V1-ndk.so
@@ -2470,8 +2455,6 @@ vendor/lib64/vendor.mediatek.hardware.mmlpq-V3-ndk.so
 vendor/lib64/vendor.mediatek.hardware.mmlpq-V5-ndk.so
 vendor/lib64/vendor.mediatek.hardware.mms-V1-ndk.so
 vendor/lib64/vendor.mediatek.hardware.mtklight-V1-ndk.so
-vendor/lib64/vendor.mediatek.hardware.mtkpower-V3-ndk.so
-vendor/lib64/vendor.mediatek.hardware.mtkpower_applist-V3-ndk.so
 vendor/lib64/vendor.mediatek.hardware.mtkradioex.assist-V2-ndk.so
 vendor/lib64/vendor.mediatek.hardware.mtkradioex.assist-V4-ndk.so
 vendor/lib64/vendor.mediatek.hardware.mtkradioex.atci-V1-ndk.so
@@ -2560,41 +2543,13 @@ vendor/lib64/libSensorIdJSONConvertor.so
 vendor/lib64/libsensorndkbridge.so
 
 # Thermal
-vendor/bin/thermal_core
-vendor/bin/thermal_intf
-vendor/etc/init/init.thermal_core.rc
-vendor/etc/thermal/disable_skin_control.conf
-vendor/etc/thermal/disable_thermal.conf
-vendor/etc/thermal/disable_thermal_temp.conf
-vendor/etc/thermal/disable_throttling.conf
-vendor/etc/thermal/thermal.conf
-vendor/etc/thermal/thermal_mtbf.conf
-vendor/etc/thermal/thermal_policy_00.conf
-vendor/etc/thermal/thermal_policy_01.conf
-vendor/etc/thermal/thermal_policy_02.conf
-vendor/etc/thermal/thermal_policy_03.conf
-vendor/etc/thermal/thermal_policy_04.conf
-vendor/etc/thermal/thermal_policy_05.conf
-vendor/etc/thermal/thermal_policy_06.conf
-vendor/etc/thermal/thermal_policy_07.conf
-vendor/etc/thermal/thermal_policy_08.conf
-vendor/etc/thermal/thermal_policy_09.conf
-vendor/etc/thermal/thermal_policy_10.conf
-vendor/etc/thermal/thermal_policy_11.conf
-vendor/etc/thermal/thermal_policy_12.conf
-vendor/etc/thermal/thermal_policy_13.conf
-vendor/etc/thermal/thermal_policy_14.conf
-vendor/etc/thermal/thermal_policy_15.conf
-vendor/etc/thermal/thermal_policy_16.conf
 vendor/etc/vconfig/aisupporter/default_predshellThermal_lr.json
-vendor/etc/vconfig/thermalEngine/GameThermalEnginePowerConfig.xml
 vendor/etc/vconfig/thermalEngine/GameThermalEngineTypeList.xml
 vendor/etc/vconfig/thermalEngine/GameThermalEngineWhiteList.xml
 vendor/etc/vconfig/thermalEngine/mtkGameScene.json
 vendor/etc/vconfig/thermalEngine/qt.cfg
 
 # Thermal-Hardware
-vendor/lib64/hw/thermal_hal.so
 
 # Vibrator
 vendor/etc/init/vibrator-mtk-default.rc
@@ -3699,9 +3654,6 @@ vendor/app/mcRegistry/abcd270ea5c44c58bcd3384a2fa2539e.tabin
 vendor/app/mcRegistry/ce4550edbcb1662566b006ebcb303050.tabin
 vendor/app/mcRegistry/df1edda8627911e980ae507b9d9a7e7d.tabin
 vendor/bin/AgentTest
-vendor/bin/aee_aedv64_v2
-vendor/bin/aee_dumpstatev_v2
-vendor/bin/aeev_v2
 vendor/bin/atcid
 vendor/bin/ated
 vendor/bin/audiocmdservice_atci
@@ -3821,8 +3773,6 @@ vendor/etc/META_dynamic.ds
 vendor/etc/MNL_Config.xml
 vendor/etc/VideoLog_dynamic.ds
 vendor/etc/a2dp_in_audio_policy_configuration.xml
-vendor/etc/aee-commit
-vendor/etc/aee-config
 vendor/etc/aidl/hfp/hfp_codec_capabilities.xml_mtk
 vendor/etc/aidl/le_audio/aidl_audio_set_configurations.bfbs_mtk
 vendor/etc/aidl/le_audio/aidl_audio_set_scenarios.bfbs_mtk
@@ -3877,7 +3827,6 @@ vendor/etc/imgsensor/mt6881/s5kjn1lite_mipi_raw.bin
 vendor/etc/init.insmod.mt6789.cfg
 vendor/etc/init.insmod.touch.cfg
 vendor/etc/init/FastSwitch.rc
-vendor/etc/init/aee_aedv64_v2.rc
 vendor/etc/init/aegis.rc
 vendor/etc/init/android.hardware.security.keymint@3.0-service.trustonic_rkpv1.rc
 vendor/etc/init/atcid.rc
@@ -3938,7 +3887,6 @@ vendor/etc/init/mtk_lbs_service.rc
 vendor/etc/init/mtk_pkm_service.rc
 vendor/etc/init/mtk_storageproxyd.rc
 vendor/etc/init/mtklog.rc
-vendor/etc/init/mtkpower_applist-mtk-default.rc
 vendor/etc/init/mtkrild.rc
 vendor/etc/init/muxreport.rc
 vendor/etc/init/netdagent.rc
