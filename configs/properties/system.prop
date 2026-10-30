@@ -2,52 +2,22 @@
 # from generate-common-build-props
 # These properties identify this partition image.
 ####################################
-ro.product.system.brand=Transsion
-ro.product.system.device=mssi_64_64only_cn_armv82
-ro.product.system.manufacturer=Transsion
-ro.product.system.model=Tssi
-ro.product.system.name=tssi
 ro.system.product.cpu.abilist=arm64-v8a
 ro.system.product.cpu.abilist32=
 ro.system.product.cpu.abilist64=arm64-v8a
-ro.system.build.date=Fri Oct  2 17:43:50 CST 2026
-ro.system.build.date.utc=1790934230
-ro.system.build.fingerprint=Transsion/tssi/mssi_64_64only_cn_armv82:16/BP2A.250605.031.A3/301550078:user/release-keys
-ro.system.build.id=BP2A.250605.031.A3
-ro.system.build.tags=release-keys
-ro.system.build.type=user
-ro.system.build.version.incremental=301550078
-ro.system.build.version.release=16
-ro.system.build.version.release_or_codename=16
-ro.system.build.version.sdk=36
-ro.system.build.version.sdk_full=36.0
 ro.tran.system.version=16.3.0.155SP15_STB261002172110
 ####################################
 # from gen_build_prop.py:generate_build_info
 ####################################
 # begin build properties
-ro.build.id=BP2A.250605.031.A3
 ro.build.display.id=BP2A.250605.031.A3 release-keys
-ro.build.version.incremental=301550078
-ro.build.version.sdk=36
-ro.build.version.sdk_full=36.0
 ro.build.version.preview_sdk=0
 ro.build.version.preview_sdk_fingerprint=REL
 ro.build.version.codename=REL
 ro.build.version.all_codenames=REL
-ro.build.version.known_codenames=Base,Base11,Cupcake,Donut,Eclair,Eclair01,EclairMr1,Froyo,Gingerbread,GingerbreadMr1,Honeycomb,HoneycombMr1,HoneycombMr2,IceCreamSandwich,IceCreamSandwichMr1,JellyBean,JellyBeanMr1,JellyBeanMr2,Kitkat,KitkatWatch,Lollipop,LollipopMr1,M,N,NMr1,O,OMr1,P,Q,R,S,Sv2,Tiramisu,UpsideDownCake,VanillaIceCream,Baklava
-ro.build.version.release=16
-ro.build.version.release_or_codename=16
-ro.build.version.release_or_preview_display=16
 ro.build.version.security_patch=2026-09-05
 ro.build.version.base_os=
 ro.build.version.min_supported_target_sdk=28
-ro.build.date=Fri Oct  2 17:43:50 CST 2026
-ro.build.date.utc=1790934230
-ro.build.type=user
-ro.build.user=buildsrv-ci
-ro.build.host=build-99-88
-ro.build.tags=release-keys
 ro.build.flavor=sys_mssi_64_64only_cn_armv82-user
 # ro.product.cpu.abi and ro.product.cpu.abi2 are obsolete,
 # use ro.product.cpu.abilist instead.
@@ -118,13 +88,11 @@ vendor.camera.tran.nums=1
 # from variable ADDITIONAL_SYSTEM_PROPERTIES
 ####################################
 ro.treble.enabled=true
-ro.llndk.api_level=202504
 ro.actionable_compatible_property.enabled=true
 ro.postinstall.fstab.prefix=/system
 ro.secure=1
 security.perf_harden=1
 ro.adb.secure=1
-ro.allow.mock.location=0
 ro.debuggable=0
 net.bt.name=Android
 ro.force.debuggable=0
