@@ -92,6 +92,10 @@ blob_fixups: blob_fixups_user_type = {
         .binary_regex_replace(b'\xFF\x00\x00\x94', b'\xFE\x00\x00\x94')
         .sig_replace('C0 03 5F D6 ?? ?? ?? ?? C0 03 5F D6', '1F 20 03 D5')
         .call(blob_fixup_return_1, 'license_check'),
+
+    ('vendor/lib64/libcodec2_mtk_vdec.so', 'vendor/lib64/libcodec2_mtk_venc.so'): blob_fixup()
+        .replace_needed('libformatter.so', 'libformatter_mtk.so'),
+
 }  # fmt: skip
 
 module = ExtractUtilsModule(
