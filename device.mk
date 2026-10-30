@@ -492,7 +492,8 @@ PRODUCT_PACKAGES += \
     android.hardware.wifi.hostapd-V3-ndk \
     android.hardware.wifi.supplicant-V4-ndk \
     android.system.wifi.keystore@1.0 \
-    libwifi-system-iface
+    libwifi-system-iface \
+    wlan_assistant
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
