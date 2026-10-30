@@ -4111,7 +4111,6 @@ vendor/etc/nn/ot/neuron_tracking.mdla3_0
 vendor/etc/partition_permission.sh
 vendor/etc/permissions/com.transsion.tranfacsdk.permission.xml
 vendor/etc/permissions/dummy_camera_extensions.xml
-vendor/etc/power_app_cfg.xml
 vendor/etc/pq_flag.xml
 vendor/etc/security/cacerts/01419da9.0
 vendor/etc/security/cacerts/04f60c28.0
