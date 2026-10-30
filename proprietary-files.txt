@@ -25,7 +25,6 @@ vendor/lib64/soundfx/libaudiopreprocessing.so
 # Audio-Hardware
 system_ext/bin/hw/android.hardware.audio.parameter_parser.service
 system_ext/etc/init/android.hardware.audio.parameter_parser.service.rc
-system_ext/lib64/vendor.mediatek.hardware.audio-V1-ndk.so
 system_ext/lib64/vendor.mediatek.hardware.audio@7.1.so
 system_ext/lib64/vendor.mediatek.hardware.audio@8.1.so
 vendor/bin/hw/android.hardware.audio.service-aidl.mediatek
@@ -1517,9 +1516,6 @@ odm/lib64/mt6789/libCamera_s5kjnsmipiraw_Flash_Capture.so;SYMLINK=odm/lib64/libC
 odm/lib64/mt6789/libCamera_s5kjnsmipiraw_Scene_Capture.so;SYMLINK=odm/lib64/libCamera_s5kjnsmipiraw_Scene_Capture.so
 odm/lib64/mt6789/libCamera_s5kjnsmipiraw_Scene_Capture_4cell.so;SYMLINK=odm/lib64/libCamera_s5kjnsmipiraw_Scene_Capture_4cell.so
 odm/lib64/mt6789/libCamera_s5kjnsmipiraw_Scene_Preview.so;SYMLINK=odm/lib64/libCamera_s5kjnsmipiraw_Scene_Preview.so
-odm/lib64/mt6789/libcameracustom.camera.3a.so;SYMLINK=odm/lib64/libcameracustom.camera.3a.so
-odm/lib64/mt6789/libcameracustom.camera.isp.so;SYMLINK=odm/lib64/libcameracustom.camera.isp.so
-odm/lib64/mt6789/libcameracustom.flashlight.so;SYMLINK=odm/lib64/libcameracustom.flashlight.so
 odm/lib64/mt6789/libcameracustom.plugin.so;SYMLINK=odm/lib64/libcameracustom.plugin.so
 odm/lib64/mt6789/libcameracustom.so;SYMLINK=odm/lib64/libcameracustom.so
 odm/lib64/mt6789/pblcgc08a8wide_mipi_raw_IdxMgr.so;SYMLINK=odm/lib64/pblcgc08a8wide_mipi_raw_IdxMgr.so
@@ -1548,7 +1544,6 @@ odm/lib64/mt6789/s5kjn1sub_mipi_raw_IdxMgr.so;SYMLINK=odm/lib64/s5kjn1sub_mipi_r
 odm/lib64/mt6789/s5kjn1sub_mipi_raw_tuning.so;SYMLINK=odm/lib64/s5kjn1sub_mipi_raw_tuning.so
 odm/lib64/mt6789/s5kjns_mipi_raw_IdxMgr.so;SYMLINK=odm/lib64/s5kjns_mipi_raw_IdxMgr.so
 odm/lib64/mt6789/s5kjns_mipi_raw_tuning.so;SYMLINK=odm/lib64/s5kjns_mipi_raw_tuning.so
-system_ext/lib64/vendor.mediatek.hardware.camera.isphal-V1-ndk.so
 vendor/lib64/android.hardware.camera.common-V1-ndk.so
 vendor/lib64/android.hardware.camera.common-V2-ndk.so
 vendor/lib64/android.hardware.camera.common@1.0.so
@@ -2253,7 +2248,6 @@ vendor/lib64/libdtsdsec.so
 vendor/lib64/soundfx/libdtsaudioaidl.so
 
 # Display-Hardware
-system_ext/lib64/vendor.mediatek.hardware.graphics-V1-ndk.so
 vendor/bin/hw/android.hardware.graphics.composer@3.2-service
 vendor/bin/hw/android.hardware.graphics.composer@3.3-service
 vendor/bin/hw/android.hardware.graphics.composer@3.4-service
@@ -3835,7 +3829,6 @@ odm/lib64/libTranssionTone.so
 odm/lib64/libVideoSpotEngine_gl.so
 odm/lib64/lib_aimoon.so
 odm/lib64/lib_moondetection.so
-odm/lib64/libaal_cust.so
 odm/lib64/libasd.so
 odm/lib64/libdlrmsc.so
 odm/lib64/libeffect_hal.so
