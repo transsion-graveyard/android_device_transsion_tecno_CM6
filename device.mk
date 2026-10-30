@@ -60,6 +60,9 @@ PRODUCT_PACKAGES += \
     libaudioutils \
     vendor.mediatek.hardware.audio-V1-ndk
 
+# Some MTK prebuilts are only 4K-page aligned
+PRODUCT_CHECK_PREBUILT_MAX_PAGE_SIZE := false
+
 # Audio Alsa
 PRODUCT_PACKAGES += \
     libalsautilsv2 \
