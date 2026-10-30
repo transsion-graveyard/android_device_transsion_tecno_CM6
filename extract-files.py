@@ -130,8 +130,14 @@ blob_fixups: blob_fixups_user_type = {
         .replace_needed('android.hardware.graphics.common-V6-ndk.so', 'android.hardware.graphics.common-V7-ndk.so'),
     'vendor/lib64/mt6789/libmtkcam_grallocutils.so': blob_fixup()
         .replace_needed('android.hardware.graphics.common-V5-ndk.so', 'android.hardware.graphics.common-V7-ndk.so'),
-    ('vendor/bin/hw/android.hardware.audio.service-aidl.mediatek',
-     'vendor/lib64/android.hardware.audio.core-impl-mediatek.so'): blob_fixup()
+    'vendor/bin/hw/android.hardware.audio.service-aidl.mediatek': blob_fixup()
+        .replace_needed('android.hardware.audio.core-V3-ndk.so', 'android.hardware.audio.core-V4-ndk.so')
+        .replace_needed('android.hardware.audio.core.sounddose-V3-ndk.so', 'android.hardware.audio.core.sounddose-V4-ndk.so')
+        .replace_needed('android.hardware.bluetooth.audio-V5-ndk.so', 'android.hardware.bluetooth.audio-V6-ndk.so')
+        .replace_needed('android.hardware.soundtrigger3-V3-ndk.so', 'android.hardware.soundtrigger3-V4-ndk.so')
+        .replace_needed('android.media.audio.common.types-V4-ndk.so', 'android.media.audio.common.types-V5-ndk.so'),
+    'vendor/lib64/android.hardware.audio.core-impl-mediatek.so': blob_fixup()
+        .add_needed('libaudioutils_shim.so')
         .replace_needed('android.hardware.audio.core-V3-ndk.so', 'android.hardware.audio.core-V4-ndk.so')
         .replace_needed('android.hardware.audio.core.sounddose-V3-ndk.so', 'android.hardware.audio.core.sounddose-V4-ndk.so')
         .replace_needed('android.hardware.bluetooth.audio-V5-ndk.so', 'android.hardware.bluetooth.audio-V6-ndk.so')
@@ -174,6 +180,8 @@ blob_fixups: blob_fixups_user_type = {
      'vendor/lib64/libtflite_mtk.so'): CLEAR_AHARDWAREBUFFER_SYMBOLS,
     'odm/lib64/libTranssionTone.so': blob_fixup()
         .add_needed('libTranColorEffectEngine.so'),
+    'vendor/lib64/mt6789/libmtkcam_hwnode.so': blob_fixup()
+        .add_needed('libultrahdr_CM6.so'),
     ('vendor/lib64/libcodec2_mtk_vdec.so', 'vendor/lib64/libcodec2_mtk_venc.so'): blob_fixup()
         .replace_needed('libformatter.so', 'libformatter_mtk.so'),
     'vendor/etc/init/nfc2-service-nxp_w.rc': blob_fixup()
