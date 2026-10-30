@@ -3847,11 +3847,6 @@ vendor/etc/META_dynamic.ds
 vendor/etc/MNL_Config.xml
 vendor/etc/VideoLog_dynamic.ds
 vendor/etc/a2dp_in_audio_policy_configuration.xml
-vendor/etc/aconfig/flag.info
-vendor/etc/aconfig/flag.map
-vendor/etc/aconfig/flag.val
-vendor/etc/aconfig/package.map
-vendor/etc/aconfig_flags.pb
 vendor/etc/aee-commit
 vendor/etc/aee-config
 vendor/etc/aidl/hfp/hfp_codec_capabilities.xml
