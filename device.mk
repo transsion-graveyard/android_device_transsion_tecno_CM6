@@ -15,6 +15,11 @@ PRODUCT_PACKAGES += \
     android.hardware.boot-service.default_recovery
 
 PRODUCT_PACKAGES += \
+    android.hardware.boot-V1-ndk \
+    android.hardware.boot@1.0 \
+    android.hardware.boot@1.1
+
+PRODUCT_PACKAGES += \
     update_engine \
     update_engine_sideload \
     update_verifier
@@ -35,22 +40,266 @@ PRODUCT_PACKAGES += \
     checkpoint_gc \
     otapreopt_script
 
+# Aconfig
+PRODUCT_PACKAGES += \
+    libaconfig_storage_read_api_cc
+
+# Audio
+PRODUCT_PACKAGES += \
+    android.hardware.audio.common-util \
+    android.hardware.audio.common-V3-ndk \
+    android.hardware.audio.common-V4-ndk \
+    android.hardware.audio.common@5.0 \
+    android.hardware.audio.common@6.0 \
+    android.hardware.audio.common@6.0-util \
+    android.hardware.audio.common@7.0 \
+    android.hardware.audio.core-V3-ndk \
+    android.hardware.audio.core.sounddose-V3-ndk \
+    android.hardware.audio.effect-V2-ndk \
+    android.hardware.audio.effect-V3-ndk \
+    android.hardware.audio.effect@6.0 \
+    android.hardware.audio.effect@7.0 \
+    android.hardware.audio@6.0 \
+    android.hardware.audio@7.0 \
+    libaudioaidlcommon \
+    libaudioutils \
+    vendor.mediatek.hardware.audio-V1-ndk
+
+# Audio Alsa
+PRODUCT_PACKAGES += \
+    libalsautilsv2 \
+    libtinyalsa
+
 # API levels
 BOARD_SHIPPING_API_LEVEL := 31
 PRODUCT_SHIPPING_API_LEVEL := 36
 
-# fastbootd
+# Bluetooth
+PRODUCT_PACKAGES += \
+    android.hardware.bluetooth-V1-ndk \
+    android.hardware.bluetooth.audio-V4-ndk \
+    android.hardware.bluetooth.audio-V5-ndk \
+    android.hardware.bluetooth.audio@2.0 \
+    android.hardware.bluetooth.audio@2.1 \
+    android.hardware.bluetooth.finder-V1-ndk \
+    android.hardware.bluetooth.ranging-V1-ndk \
+    libbluetooth_audio_session_aidl \
+    vendor.mediatek.hardware.bluetooth.audio-V1-ndk \
+    vendor.mediatek.hardware.bluetooth.audio@2.1 \
+    vendor.mediatek.hardware.bluetooth.audio@2.2
+
+# Camera
+PRODUCT_PACKAGES += \
+    android.frameworks.cameraservice.common-V1-ndk \
+    android.frameworks.cameraservice.device-V3-ndk \
+    android.frameworks.cameraservice.service-V3-ndk \
+    android.hardware.camera.common-V1-ndk \
+    android.hardware.camera.common-V2-ndk \
+    android.hardware.camera.common@1.0 \
+    android.hardware.camera.device-V3-ndk \
+    android.hardware.camera.device@1.0 \
+    android.hardware.camera.device@3.2 \
+    android.hardware.camera.device@3.3 \
+    android.hardware.camera.device@3.4 \
+    android.hardware.camera.device@3.5 \
+    android.hardware.camera.device@3.6 \
+    android.hardware.camera.metadata-V3-ndk \
+    android.hardware.camera.provider-V3-ndk \
+    android.hardware.camera.provider@2.4 \
+    android.hardware.camera.provider@2.5 \
+    android.hardware.camera.provider@2.6 \
+    libcamera_metadata
+
+# Common
+PRODUCT_PACKAGES += \
+    android.hardware.common-V2-ndk \
+    android.hardware.common.fmq-V1-ndk
+
+# Contexthub
+PRODUCT_PACKAGES += \
+    android.hardware.contexthub-V4-ndk
+
+# CPU
+PRODUCT_PACKAGES += \
+    libRSCpuRef
+
+# DRM
+PRODUCT_PACKAGES += \
+    android.hardware.drm-V1-ndk \
+    android.hardware.drm.common-V1-ndk \
+    libdrm
+
+# External
+PRODUCT_PACKAGES += \
+    libblas \
+    libcap \
+    libcompiler_rt \
+    libcrypto \
+    libcurl \
+    libexif \
+    libexpat \
+    libflatbuffers-cpp \
+    libimage_io \
+    libjpeg \
+    libjpegdecoder \
+    libjpegencoder \
+    libjsoncpp \
+    liblzma \
+    libminijail \
+    libmnl \
+    libnl \
+    libpcap \
+    libpng \
+    libruy \
+    libspeexresampler \
+    libsqlite \
+    libssl \
+    libtextclassifier_hash \
+    libtinyalsav2 \
+    libtinyxml2 \
+    libultrahdr \
+    libxml2 \
+    libz
+
+# Fastbootd
 PRODUCT_PACKAGES += \
     android.hardware.fastboot-service.example_recovery \
     fastbootd
 
+# Fingerprint - Biometrics
+PRODUCT_PACKAGES += \
+    android.hardware.biometrics.common-V3-ndk \
+    android.hardware.biometrics.common.thread \
+    android.hardware.biometrics.fingerprint-V3-ndk
+
+# GNS
+PRODUCT_PACKAGES += \
+    android.hardware.gnss-V5-ndk
+
+# Graphics
+PRODUCT_PACKAGES += \
+    android.hardware.graphics.allocator-V2-ndk \
+    android.hardware.graphics.allocator@2.0 \
+    android.hardware.graphics.allocator@3.0 \
+    android.hardware.graphics.allocator@4.0 \
+    android.hardware.graphics.bufferqueue@1.0 \
+    android.hardware.graphics.bufferqueue@2.0 \
+    android.hardware.graphics.common-V5-ndk \
+    android.hardware.graphics.common-V6-ndk \
+    android.hardware.graphics.common@1.0 \
+    android.hardware.graphics.common@1.1 \
+    android.hardware.graphics.common@1.2 \
+    android.hardware.graphics.composer3-V2-ndk \
+    android.hardware.graphics.composer3-V3-ndk \
+    android.hardware.graphics.composer3-V4-ndk \
+    android.hardware.graphics.mapper@2.0 \
+    android.hardware.graphics.mapper@2.1 \
+    android.hardware.graphics.mapper@3.0 \
+    android.hardware.graphics.mapper@4.0 \
+    libgralloctypes \
+    libgrallocusage
+
+# Hardware
+PRODUCT_PACKAGES += \
+    android.system.suspend-V1-ndk \
+    libbinderdebug \
+    libhardware \
+    libhardware_legacy \
+    libhwbinder
+
 # Health
 PRODUCT_PACKAGES += \
     android.hardware.health-service.example \
-    android.hardware.health-service.example_recovery
+    android.hardware.health-service.example_recovery \
+    android.hardware.health-V1-ndk \
+    android.hardware.health-V4-ndk
+
+# Infrared
+PRODUCT_PACKAGES += \
+    android.hardware.ir-service.example \
+    android.hardware.ir-V1-ndk
 
 # Kernel
 PRODUCT_ENABLE_UFFD_GC := true
+
+# Lights
+PRODUCT_PACKAGES += \
+    android.hardware.light-V1-ndk \
+    android.hardware.light-V2-ndk
+
+#  Media
+PRODUCT_PACKAGES += \
+    android.hardware.media.bufferpool@2.0 \
+    android.hardware.media.bufferpool2-V2-ndk \
+    android.hardware.media.c2-V1-ndk \
+    android.media.audio.common.types-V2-ndk \
+    android.media.audio.common.types-V3-ndk \
+    android.media.audio.common.types-V4-ndk \
+    android.media.audio.eraser.types-V1-ndk \
+    android.media.soundtrigger.types-V1-ndk \
+    android.media.soundtrigger.types-V3-ndk \
+    libaudio_aidl_conversion_common_ndk \
+    libavservices_minijail \
+    libcodec2 \
+    libcodec2_aidl \
+    libcodec2_hal_common \
+    libcodec2_hidl@1.0 \
+    libcodec2_hidl@1.1 \
+    libcodec2_hidl@1.2 \
+    libcodec2_soft_common \
+    libcodec2_vndk \
+    libmedia_helper \
+    libmediautils_vendor \
+    libsfplugin_ccodec_utils \
+    libstagefright_aidl_bufferpool2 \
+    libstagefright_bufferpool@2.0.1 \
+    libstagefright_bufferqueue_helper \
+    libstagefright_foundation
+
+# Media - hidltransport
+PRODUCT_PACKAGES += \
+    android.hardware.media@1.0 \
+    android.hidl.memory.token@1.0 \
+    android.hidl.memory@1.0 \
+    android.hidl.safe_union@1.0 \
+    android.hidl.token@1.0 \
+    android.hidl.token@1.0-utils \
+    libhidlbase \
+    libhidlmemory \
+    libhidltransport
+
+# Media - C2
+PRODUCT_PACKAGES += \
+    android.hardware.media.c2@1.0 \
+    android.hardware.media.c2@1.1 \
+    android.hardware.media.c2@1.2
+
+# Media - OMX
+PRODUCT_PACKAGES += \
+    android.hardware.media.omx@1.0
+
+# Memtrack
+PRODUCT_PACKAGES += \
+    android.hardware.memtrack-V1-ndk
+
+# Memory
+PRODUCT_PACKAGES += \
+    dmabuf_dump \
+    libdmabufheap \
+    libion \
+    libmeminfo \
+    libmemunreachable
+
+# Native
+PRODUCT_PACKAGES += \
+    libdumpstateutil
+
+# NFC
+PRODUCT_PACKAGES += \
+    android.hardware.nfc-V1-ndk \
+    android.hardware.nfc-V2-ndk \
+    android.hardware.nfc@1.0 \
+    vendor.nxp.nxpnfc_aidl-V1-ndk
 
 # Overlays
 PRODUCT_ENFORCE_RRO_TARGETS := *
@@ -58,8 +307,54 @@ PRODUCT_ENFORCE_RRO_TARGETS := *
 # Partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
+# Power
+PRODUCT_PACKAGES += \
+    android.hardware.power-V1-ndk \
+    android.hardware.power-V4-ndk \
+    android.hardware.power-V6-ndk \
+    android.hardware.power@1.0 \
+    android.hardware.power@1.1 \
+    android.hardware.power@1.2 \
+    android.hardware.power@1.3 \
+    libpower \
+    vendor.mediatek.hardware.mtkpower-V1-ndk \
+    vendor.mediatek.hardware.mtkpower-V2-ndk \
+    vendor.mediatek.hardware.mtkpower@1.0 \
+    vendor.mediatek.hardware.mtkpower@1.1 \
+    vendor.mediatek.hardware.mtkpower@1.2
+
 # Product characteristics
 PRODUCT_CHARACTERISTICS := default
+
+# Radio
+PRODUCT_PACKAGES += \
+    android.hardware.radio-V4-ndk \
+    android.hardware.radio.data-V4-ndk \
+    android.hardware.radio.messaging-V4-ndk \
+    android.hardware.radio.modem-V4-ndk \
+    android.hardware.radio.network-V4-ndk \
+    android.hardware.radio.sap-V1-ndk \
+    android.hardware.radio.sim-V4-ndk \
+    android.hardware.radio.voice-V4-ndk \
+    android.hardware.radio@1.0 \
+    android.hardware.radio@1.1 \
+    android.hardware.radio@1.5 \
+    android.hardware.radio@1.6
+
+# Radio - IMS
+PRODUCT_PACKAGES += \
+    android.hardware.radio.ims-V3-ndk
+
+# Radio - Configs
+PRODUCT_PACKAGES += \
+    android.hardware.radio.config-V4-ndk \
+    android.hardware.radio.config@1.1 \
+    android.hardware.radio.config@1.2 \
+    android.hardware.radio.config@1.3
+
+# Renderscript
+PRODUCT_PACKAGES += \
+    android.hardware.renderscript@1.0
 
 # Rootdir
 PRODUCT_PACKAGES += \
@@ -99,6 +394,100 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/etc/fstab.mt6789:$(TARGET_VENDOR_RAMDISK_OUT)/first_stage_ramdisk/fstab.mt6789
+
+# RS
+PRODUCT_PACKAGES += \
+    libRSDriver \
+    libRS_internal
+
+# Secure Element
+PRODUCT_PACKAGES += \
+    android.hardware.secure_element-V1-ndk \
+    vendor.nxp.nxpese@1.0
+
+# Sensors
+PRODUCT_PACKAGES += \
+    android.frameworks.sensorservice-V1-ndk \
+    android.frameworks.sensorservice@1.0 \
+    android.hardware.sensors-V2-ndk \
+    android.hardware.sensors-V3-ndk \
+    android.hardware.sensors@1.0 \
+    android.hardware.sensors@2.0 \
+    android.hardware.sensors@2.0-ScopedWakelock \
+    android.hardware.sensors@2.1
+
+# Security
+PRODUCT_PACKAGES += \
+    android.hardware.security.keymint-V1-ndk \
+    android.hardware.security.keymint-V3-ndk \
+    android.hardware.security.keymint-V4-ndk \
+    android.hardware.security.rkp-V1-ndk \
+    android.hardware.security.secureclock-V1-ndk \
+    android.hardware.security.sharedsecret-V1-ndk
+
+# Security - GateKeeper
+PRODUCT_PACKAGES += \
+    android.hardware.gatekeeper-V1-ndk
+
+# Security - Keymaster
+PRODUCT_PACKAGES += \
+    android.hardware.keymaster-V4-ndk
+
+# Security - Keystore
+PRODUCT_PACKAGES += \
+    android.system.keystore2-V1-ndk
+
+# Soundtrigger
+PRODUCT_PACKAGES += \
+    android.hardware.soundtrigger3-V1-ndk \
+    android.hardware.soundtrigger3-V3-ndk
+
+# Stats
+PRODUCT_PACKAGES += \
+    android.frameworks.stats-V1-ndk \
+    android.frameworks.stats-V2-ndk
+
+# System
+PRODUCT_PACKAGES += \
+    libbase \
+    libbcinfo \
+    libfmq \
+    libnetutils \
+    libprocessgroup \
+    libprocinfo \
+    libsysutils \
+    libtrusty \
+    libunwindstack \
+    libutils \
+    libutilscallstack \
+    server_configurable_flags
+
+# Tetheroffload
+PRODUCT_PACKAGES += \
+    android.hardware.tetheroffload-V1-ndk
+
+# UI
+PRODUCT_PACKAGES += \
+    libui
+
+# USB
+PRODUCT_PACKAGES += \
+    android.hardware.usb-V3-ndk \
+    android.hardware.usb.gadget-V1-ndk
+
+# Vibrator
+PRODUCT_PACKAGES += \
+    android.hardware.vibrator-V2-ndk \
+    libvibratorutils
+
+# Wifi
+PRODUCT_PACKAGES += \
+    android.hardware.wifi-V3-ndk \
+    android.hardware.wifi.common-V2-ndk \
+    android.hardware.wifi.hostapd-V3-ndk \
+    android.hardware.wifi.supplicant-V4-ndk \
+    android.system.wifi.keystore@1.0 \
+    libwifi-system-iface
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
