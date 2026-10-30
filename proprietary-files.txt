@@ -4664,7 +4664,6 @@ vendor/lib64/libpqsharememory.so
 vendor/lib64/libpqtuning.so
 vendor/lib64/libpqxmlflagparser.so
 vendor/lib64/libpqxmlparser.so
-vendor/lib64/libprotobuf-cpp-full-21.12.so
 vendor/lib64/libratconfig.so
 vendor/lib64/librcs_volte_core.so
 vendor/lib64/librilfusion.so
