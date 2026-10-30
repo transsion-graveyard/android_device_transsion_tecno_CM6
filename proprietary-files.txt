@@ -172,7 +172,6 @@ vendor/etc/audio_param/VoWVoiceCommand_ParamUnitDesc.xml
 vendor/etc/audio_policy_configuration_bluetooth_legacy_hal.xml
 vendor/etc/bluetooth_audio_policy_configuration.xml
 vendor/etc/bluetooth_offload_audio_policy_configuration.xml
--vendor/etc/vintf/manifest/bluetooth_audio.xml
 vendor/lib64/android.hardware.bluetooth.audio-impl-mediatek.so
 vendor/lib64/hw/android.hardware.bluetooth.audio@2.0-impl.so
 vendor/lib64/hw/android.hardware.bluetooth.audio@2.1-impl.so
@@ -2203,8 +2202,6 @@ vendor/lib64/vendor.dolby.hardware.dms@2.0.so
 
 # Fingerprint
 odm/etc/init/fingerprint-default.rc
--odm/etc/vintf/manifest/fingerprint-default.xml
--odm/etc/vintf/manifest/vendor.anc.fingerprint.extension.aidl_service.xml
 odm/lib64/hw/jiiov.fingerprint.default.so
 odm/lib64/vendor.anc.fingerprint.extension-V1-ndk.so
 vendor/bin/hw/android.hardware.biometrics.face-service
@@ -2326,7 +2323,7 @@ vendor/lib64/vendor.mediatek.hardware.gnss.batching-V1-ndk.so
 # Gatekeeper
 vendor/bin/hw/android.hardware.gatekeeper-service.trustonic
 vendor/etc/init/android.hardware.gatekeeper-service.trustonic.rc
--vendor/etc/vintf/manifest/android.hardware.gatekeeper-service.trustonic.xml
+vendor/etc/vintf/manifest/android.hardware.gatekeeper-service.trustonic.xml
 
 # Google
 vendor/apex/com.google.android.widevine.nonupdatable.apex
@@ -2361,7 +2358,6 @@ vendor/lib64/libkeystore-wifi-hidl.so
 # Lights
 vendor/bin/hw/android.hardware.lights-service.mediatek
 vendor/etc/init/lights-mtk-default.rc
--vendor/etc/vintf/manifest/lights-mtk-default.xml
 vendor/lib64/android.hardware.light@2.0.so
 
 # Listen
@@ -2408,12 +2404,9 @@ vendor/etc/init/vendor.mediatek.hardware.pq_aidl-service.rc
 vendor/etc/permissions/com.mediatek.hardware.vow.xml
 vendor/etc/permissions/com.mediatek.hardware.vow_dsp.xml
 vendor/etc/seccomp_policy/android.hardware.media.c2@1.2-mediatek-seccomp-policy
--vendor/etc/vintf/manifest/android.hardware.usb-aidl-service.mediatek.xml
--vendor/etc/vintf/manifest/android.hardware.usb.gadget-aidl-service.mediatek.xml
+vendor/etc/vintf/manifest/android.hardware.usb-aidl-service.mediatek.xml
+vendor/etc/vintf/manifest/android.hardware.usb.gadget-aidl-service.mediatek.xml
 vendor/etc/vintf/manifest/mapper.mediatek.xml
--vendor/etc/vintf/manifest/memtrack-mediatek.xml
--vendor/etc/vintf/manifest/power-mediatek.xml
--vendor/etc/vintf/manifest/thermal-mediatek.xml
 vendor/lib64/android.hardware.power-service-mediatek.so
 vendor/lib64/hw/android.hardware.sensors@2.X-subhal-mediatek.so
 vendor/lib64/hw/mt6789/mapper.mediatek.so;SYMLINK=vendor/lib64/hw/mapper.mediatek.so
@@ -2532,7 +2525,7 @@ odm/etc/permissions/com.nxp.mifare.xml
 odm/etc/vconfig/NFC/libnfc-nci.conf
 odm/etc/vconfig/NFC/libnfc-nxp.conf
 odm/etc/vconfig/NFC/libnfc-nxp_RF.conf
--odm/etc/vintf/manifest/nfc2-service-nxp.xml
+odm/etc/vintf/manifest/nfc2-service-nxp.xml
 vendor/bin/hw/android.hardware.nfc-service-st
 vendor/bin/hw/android.hardware.nfc-service-tms
 vendor/bin/hw/android.hardware.nfc2-service.nxp_w
@@ -2571,7 +2564,6 @@ vendor/lib64/hw/power.default.so
 vendor/bin/hw/android.hardware.sensors-service.multihal
 vendor/etc/elliptic_sensor.xml
 vendor/etc/init/android.hardware.sensors-service-multihal.rc
--vendor/etc/vintf/manifest/android.hardware.sensors-multihal.xml
 vendor/lib64/hw/sensors.dynamic_sensor_hal.so
 vendor/lib64/hw/sensors.elliptic.so
 vendor/lib64/libnotifyaudiohal.so
@@ -2617,14 +2609,11 @@ vendor/lib64/hw/thermal_hal.so
 
 # Vibrator
 vendor/etc/init/vibrator-mtk-default.rc
--vendor/etc/vintf/manifest/vibrator-mtk-default.xml
 vendor/lib64/hw/vibrator.default.so
 vendor/lib64/vendor.aac.hardware.richtap.vibrator-V1-ndk.so
 
 # WiFi
 vendor/etc/init/android.hardware.wifi.supplicant-service.rc
--vendor/etc/vintf/manifest/android.hardware.wifi.hostapd.xml
--vendor/etc/vintf/manifest/android.hardware.wifi.supplicant.xml
 vendor/lib64/vendor.transsion.hardware.wifi.hostapd-V1-ndk.so
 vendor/lib64/vendor.transsion.hardware.wifi.tranSupplicant-V1-ndk.so
 
@@ -3655,8 +3644,6 @@ odm/etc/vconfig/tranfac/feature/Sensor.json
 odm/etc/vconfig/tranfac/res/aging_video.mp4
 odm/etc/vconfig/tranfac/res/lab_audio.mp3
 odm/etc/vconfig/tranfac/sign/Signature.json
--odm/etc/vintf/manifest/dms-service.xml
--odm/etc/vintf/manifest/vendor.dolby.media.c2-default-service-dax.xml
 odm/etc/vintf/manifest_dsds.xml
 odm/etc/vintf/manifest_qsqs.xml
 odm/etc/vintf/manifest_ss.xml
