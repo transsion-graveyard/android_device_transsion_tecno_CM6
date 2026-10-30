@@ -180,6 +180,8 @@ blob_fixups: blob_fixups_user_type = {
      'vendor/lib64/libtflite_mtk.so'): CLEAR_AHARDWAREBUFFER_SYMBOLS,
     'odm/lib64/libTranssionTone.so': blob_fixup()
         .add_needed('libTranColorEffectEngine.so'),
+    'odm/lib64/libsegmention.so': blob_fixup()
+        .add_needed('libtflite_native_gainference.so'),
     'vendor/lib64/mt6789/libmtkcam_hwnode.so': blob_fixup()
         .add_needed('libultrahdr_CM6.so'),
     ('vendor/lib64/libcodec2_mtk_vdec.so', 'vendor/lib64/libcodec2_mtk_venc.so'): blob_fixup()
