@@ -4005,7 +4005,6 @@ vendor/etc/ipsec/ipsec.d/cacerts/thawte.der
 vendor/etc/ipsec/ssl/openssl.cnf
 vendor/etc/ipsec/strongswan.conf
 vendor/etc/le_audio_codec_capabilities.xml
-vendor/etc/linker.config.pb
 vendor/etc/mali_platform.config
 vendor/etc/mbrain/mbrain_passthrough_config.json
 vendor/etc/mbrain/mbrain_runtime_appiot_config.json
