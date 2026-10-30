@@ -72,6 +72,19 @@ def blob_fixup_return_1(
             break
 
 
+CLEAR_AHARDWAREBUFFER_SYMBOLS = (
+    blob_fixup()
+    .clear_symbol_version('AHardwareBuffer_allocate')
+    .clear_symbol_version('AHardwareBuffer_createFromHandle')
+    .clear_symbol_version('AHardwareBuffer_describe')
+    .clear_symbol_version('AHardwareBuffer_getNativeHandle')
+    .clear_symbol_version('AHardwareBuffer_lock')
+    .clear_symbol_version('AHardwareBuffer_lockPlanes')
+    .clear_symbol_version('AHardwareBuffer_release')
+    .clear_symbol_version('AHardwareBuffer_unlock')
+)
+
+
 blob_fixups: blob_fixups_user_type = {
     'vendor/app/Test.apk': blob_fixup()
         .apktool_patch('blob-patches/TestApk.patch', '-s'),
@@ -151,6 +164,12 @@ blob_fixups: blob_fixups_user_type = {
      'vendor/lib64/libnir_neon_driver_ndk.mtk.vndk.so',
      'odm/lib64/mt6789/libFy-3A-Param.so'): blob_fixup()
         .fix_soname(),
+    ('odm/lib64/libeffect_hal.so',
+     'odm/lib64/libanc_single_rt_bokeh.so',
+     'vendor/lib64/libmcve.so',
+     'vendor/lib64/mt6789/libneuron_adapter_mgvi.so',
+     'vendor/lib64/libneuralnetworks_sl_driver_mtk_prebuilt.so',
+     'vendor/lib64/libtflite_mtk.so'): CLEAR_AHARDWAREBUFFER_SYMBOLS,
     ('vendor/lib64/libcodec2_mtk_vdec.so', 'vendor/lib64/libcodec2_mtk_venc.so'): blob_fixup()
         .replace_needed('libformatter.so', 'libformatter_mtk.so'),
     'vendor/etc/init/nfc2-service-nxp_w.rc': blob_fixup()
