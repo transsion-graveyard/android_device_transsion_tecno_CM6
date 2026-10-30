@@ -99,16 +99,28 @@ blob_fixups: blob_fixups_user_type = {
         .replace_needed('android.hardware.camera.common-V2-ndk.so', 'android.hardware.camera.common-V1-ndk.so'),
     'vendor/lib64/hw/android.hardware.soundtrigger3-impl.so': blob_fixup()
         .replace_needed('libaudio_aidl_conversion_common_ndk.so', 'libaudio_aidl_conversion_common_ndk_prebuilt.so'),
+    'vendor/lib64/hw/android.hardware.audio.effect.aidl-impl-mediatek.so': blob_fixup()
+        .replace_needed('libaudio_aidl_conversion_common_ndk.so', 'libaudio_aidl_conversion_common_ndk_prebuilt.so'),
+    'vendor/lib64/hw/audio.primary.mediatek.so': blob_fixup()
+        .replace_needed('android.hardware.audio.effect-V2-ndk.so', 'android.hardware.audio.effect-V2-ndk_prebuilt.so')
+        .replace_needed('android.hardware.bluetooth.audio-V4-ndk.so', 'android.hardware.bluetooth.audio-V4-ndk_prebuilt.so')
+        .replace_needed('vendor.mediatek.hardware.bluetooth.audio-V1-ndk.so', 'vendor.mediatek.hardware.bluetooth.audio-V1-ndk_prebuilt.so'),
     'vendor/bin/hw/android.hardware.drm-service.clearkey': blob_fixup()
         .replace_needed('android.hardware.drm-V1-ndk.so', 'android.hardware.drm-V2-ndk.so'),
-    ('vendor/lib64/hw/audio.primary.mediatek.so',
-     'vendor/lib64/hw/vendor.mediatek.hardware.bluetooth.audio@2.1-impl.so',
+    ('vendor/lib64/hw/vendor.mediatek.hardware.bluetooth.audio@2.1-impl.so',
      'vendor/lib64/hw/vendor.mediatek.hardware.bluetooth.audio@2.2-impl.so',
      'vendor/lib64/libbluetooth_audio_session_aidl_displayone.so',
      'vendor/lib64/libbluetooth_audio_session_aidl_displaytwo.so',
      'vendor/lib64/libbluetooth_audio_session_aidl_mtk.so',
      'vendor/lib64/android.hardware.bluetooth.audio-impl-mediatek.so'): blob_fixup()
         .replace_needed('vendor.mediatek.hardware.bluetooth.audio-V1-ndk.so', 'vendor.mediatek.hardware.bluetooth.audio-V1-ndk_prebuilt.so'),
+    'vendor/lib64/android.hardware.audio.effect-V2-ndk_prebuilt.so': blob_fixup()
+        .replace_needed('android.hardware.audio.common-V3-ndk.so', 'android.hardware.audio.common-V3-ndk_prebuilt.so')
+        .replace_needed('android.media.audio.common.types-V3-ndk.so', 'android.media.audio.common.types-V3-ndk_prebuilt.so'),
+    'vendor/lib64/android.hardware.bluetooth.audio-V4-ndk_prebuilt.so': blob_fixup()
+        .replace_needed('android.hardware.audio.common-V3-ndk.so', 'android.hardware.audio.common-V3-ndk_prebuilt.so'),
+    'vendor/lib64/android.hardware.audio.common-V3-ndk_prebuilt.so': blob_fixup()
+        .replace_needed('android.media.audio.common.types-V3-ndk.so', 'android.media.audio.common.types-V3-ndk_prebuilt.so'),
     ('vendor/lib64/libcodec2_mtk_vdec.so', 'vendor/lib64/libcodec2_mtk_venc.so'): blob_fixup()
         .replace_needed('libformatter.so', 'libformatter_mtk.so'),
 
