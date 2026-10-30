@@ -8,7 +8,6 @@ ro.tran.product.version=16.3.0.155SP15_STB261002172110
 ####################################
 ro.product.page_size=4096
 ro.build.characteristics=default
-ro.product.ab_ota_partitions=init_boot,product,system,system_ext,vendor
 ro.product.cpu.pagesize.max=16384
 # Value overridden by post_process_props.py. Original value: default
 ro.dalvik.vm.enable_uffd_gc=true
@@ -155,7 +154,6 @@ ro.tran.fling.support=1
 ro.tran.screenrotation.support=1
 ro.tr_graphics.smoothcorner.feature.config=1
 ro.tran.ss.support=1
-setupwizard.theme=glif_v3_light
 ro.opa.eligible_device=true
 ro.setupwizard.rotation_locked=true
 ro.com.google.clientidbase=android-transsion
@@ -276,7 +274,6 @@ ro.os_ai_writing.support=1
 ro.transsion_spacesaver.support=1
 ro.tr_oobe.support=1
 setupwizard.feature.enable_quick_start_flow=true
-setupwizard.feature.enable_minors_setup_flow=false
 ro.smart_scanner.ar_measure.support=1
 ro.os_smartscan_document_scan=1
 ro.os_smartscan_recharge_support=1

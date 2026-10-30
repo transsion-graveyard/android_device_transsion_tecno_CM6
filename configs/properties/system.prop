@@ -15,10 +15,8 @@ ro.build.version.preview_sdk=0
 ro.build.version.preview_sdk_fingerprint=REL
 ro.build.version.codename=REL
 ro.build.version.all_codenames=REL
-ro.build.version.security_patch=2026-09-05
 ro.build.version.base_os=
 ro.build.version.min_supported_target_sdk=28
-ro.build.flavor=sys_mssi_64_64only_cn_armv82-user
 # ro.product.cpu.abi and ro.product.cpu.abi2 are obsolete,
 # use ro.product.cpu.abilist instead.
 ro.product.cpu.abi=arm64-v8a
@@ -90,10 +88,8 @@ vendor.camera.tran.nums=1
 ro.treble.enabled=true
 ro.actionable_compatible_property.enabled=true
 ro.postinstall.fstab.prefix=/system
-ro.secure=1
 security.perf_harden=1
 ro.adb.secure=1
-ro.debuggable=0
 net.bt.name=Android
 ro.force.debuggable=0
 ####################################
@@ -107,7 +103,6 @@ debug.atrace.tags.enableflags=0
 persist.traced.enable=1
 ro.surface_flinger.game_default_frame_rate_override=60
 dalvik.vm.image-dex2oat-Xms=64m
-dalvik.vm.image-dex2oat-Xmx=64m
 dalvik.vm.dex2oat-Xms=64m
 dalvik.vm.dex2oat-Xmx=512m
 dalvik.vm.usejit=true
