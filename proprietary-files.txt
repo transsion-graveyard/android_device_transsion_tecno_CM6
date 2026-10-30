@@ -20,6 +20,7 @@ vendor/lib64/libtinycompress.so
 vendor/lib64/soundfx/libaudiopreprocessing.so
 
 # Audio-Hardware
+system/lib64/av-audio-types-aidl-ndk.so:system/lib64/av-audio-types-aidl-ndk_prebuilt.so;DISABLE_DEPS;FIX_SONAME
 system_ext/bin/hw/android.hardware.audio.parameter_parser.service
 system_ext/etc/init/android.hardware.audio.parameter_parser.service.rc
 system_ext/lib64/vendor.mediatek.hardware.audio@7.1.so
