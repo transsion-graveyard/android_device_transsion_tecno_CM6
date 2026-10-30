@@ -166,6 +166,8 @@ blob_fixups: blob_fixups_user_type = {
         .fix_soname(),
     ('odm/lib64/libeffect_hal.so',
      'odm/lib64/libanc_single_rt_bokeh.so',
+     'odm/lib64/libVideoSpotEngine_gl.so',
+     'odm/lib64/libtranssion_bodybeauty.so',
      'vendor/lib64/libmcve.so',
      'vendor/lib64/mt6789/libneuron_adapter_mgvi.so',
      'vendor/lib64/libneuralnetworks_sl_driver_mtk_prebuilt.so',
