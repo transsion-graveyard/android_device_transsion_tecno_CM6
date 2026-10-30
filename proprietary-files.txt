@@ -17,7 +17,6 @@ vendor/lib64/libaudioprimarydevicehalifclient.so
 vendor/lib64/libaudiosmartpamtk.so
 vendor/lib64/libaudiotoolkit_vendor.so
 vendor/lib64/libtinycompress.so
-vendor/lib64/soundfx/libaudiopreprocessing.so
 
 # Audio-Hardware
 system/lib64/av-audio-types-aidl-ndk.so:system/lib64/av-audio-types-aidl-ndk_prebuilt.so;DISABLE_DEPS;FIX_SONAME
@@ -2205,7 +2204,6 @@ vendor/lib64/mediadrm/libmockdrmcryptoplugin.so
 # DTS
 vendor/lib64/libdts-eagle-shared.so
 vendor/lib64/libdtsdsec.so
-vendor/lib64/soundfx/libdtsaudioaidl.so
 
 # Display-Hardware
 vendor/bin/hw/android.hardware.graphics.composer@3.2-service
@@ -4919,36 +4917,6 @@ vendor/lib64/mt6789/libvcodecdrv_v3a.so;SYMLINK=vendor/lib64/libvcodecdrv_v3a.so
 vendor/lib64/mt6789/libvpudv3a_vcodec.so;SYMLINK=vendor/lib64/libvpudv3a_vcodec.so
 vendor/lib64/mtk_lbs_service-impl.so
 vendor/lib64/nwk_opt_imp.so
-vendor/lib64/soundfx/libaecsw.so
-vendor/lib64/soundfx/libaecsw_mtk.so
-vendor/lib64/soundfx/libagc1sw.so
-vendor/lib64/soundfx/libagc1sw_mtk.so
-vendor/lib64/soundfx/libagc2sw.so
-vendor/lib64/soundfx/libagc2sw_mtk.so
-vendor/lib64/soundfx/libbassboostsw.so
-vendor/lib64/soundfx/libbundleaidl.so
-vendor/lib64/soundfx/libdlbvolaidl.so
-vendor/lib64/soundfx/libdownmixaidl.so
-vendor/lib64/soundfx/libdynamicsprocessingaidl.so
-vendor/lib64/soundfx/libenvreverbsw.so
-vendor/lib64/soundfx/libequalizersw.so
-vendor/lib64/soundfx/libextensioneffect.so
-vendor/lib64/soundfx/libhapticgenerator.so
-vendor/lib64/soundfx/libhapticgeneratoraidl.so
-vendor/lib64/soundfx/libloudnessenhanceraidl.so
-vendor/lib64/soundfx/libnssw.so
-vendor/lib64/soundfx/libnssw_mtk.so
-vendor/lib64/soundfx/libpreprocessingaidl.so
-vendor/lib64/soundfx/libpreprocessingaidl_mtk.so
-vendor/lib64/soundfx/libpresetreverbsw.so
-vendor/lib64/soundfx/libreverbaidl.so
-vendor/lib64/soundfx/libspatializer.so
-vendor/lib64/soundfx/libspatializeraidl.so
-vendor/lib64/soundfx/libswdapaidl.so
-vendor/lib64/soundfx/libswgamedapaidl.so
-vendor/lib64/soundfx/libvirtualizersw.so
-vendor/lib64/soundfx/libvisualizeraidl.so
-vendor/lib64/soundfx/libvolumesw.so
 vendor/lib64/tms-cos-dl-common.so
 vendor/lib64/tms-cos-dl-ree.so
 vendor/lib64/tms-utils.so
