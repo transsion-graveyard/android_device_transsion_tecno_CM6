@@ -18,23 +18,34 @@ vendor/lib64/libaudiosmartpamtk.so
 vendor/lib64/libaudiotoolkit_vendor.so
 vendor/lib64/libtinycompress.so
 
+# Audio prebuilt AIDL compatibility
+vendor/lib64/android.hardware.audio.effect-V2-ndk.so:vendor/lib64/android.hardware.audio.effect-V2-ndk_prebuilt.so;DISABLE_DEPS;FIX_SONAME
+vendor/lib64/android.hardware.bluetooth.audio-V4-ndk.so:vendor/lib64/android.hardware.bluetooth.audio-V4-ndk_prebuilt.so;DISABLE_DEPS;FIX_SONAME
+vendor/lib64/android.hardware.audio.common-V3-ndk.so:vendor/lib64/android.hardware.audio.common-V3-ndk_prebuilt.so;DISABLE_DEPS;FIX_SONAME
+vendor/lib64/android.media.audio.common.types-V3-ndk.so:vendor/lib64/android.media.audio.common.types-V3-ndk_prebuilt.so;DISABLE_DEPS;FIX_SONAME
+system/lib64/av-audio-types-aidl-ndk.so:system/lib64/av-audio-types-aidl-ndk_prebuilt.so;DISABLE_DEPS;FIX_SONAME
+vendor/lib64/libaudio_aidl_conversion_common_ndk.so:vendor/lib64/libaudio_aidl_conversion_common_ndk_prebuilt.so;DISABLE_DEPS;FIX_SONAME
+vendor/lib64/vendor.mediatek.hardware.bluetooth.audio-V1-ndk.so:vendor/lib64/vendor.mediatek.hardware.bluetooth.audio-V1-ndk_prebuilt.so;DISABLE_DEPS;FIX_SONAME
+vendor/lib64/libbluetooth_audio_session_aidl.so:vendor/lib64/libbluetooth_audio_session_aidl_prebuilt.so;DISABLE_DEPS;FIX_SONAME
+vendor/lib64/libbluetooth_audio_session.so:vendor/lib64/libbluetooth_audio_session_prebuilt.so;FIX_SONAME
+
 # Audio-Hardware
+vendor/bin/hw/android.hardware.audio.service-aidl.mediatek
+vendor/etc/init/android.hardware.audio.service-aidl.mediatek.rc
+vendor/etc/vintf/manifest/android.hardware.audio.effect.service-aidl.xml
 system_ext/bin/hw/android.hardware.audio.parameter_parser.service
 system_ext/etc/init/android.hardware.audio.parameter_parser.service.rc
 system_ext/lib64/vendor.mediatek.hardware.audio@7.1.so
 system_ext/lib64/vendor.mediatek.hardware.audio@8.1.so
-vendor/bin/hw/android.hardware.audio.service-aidl.mediatek
-vendor/etc/init/android.hardware.audio.service-aidl.mediatek.rc
-vendor/etc/vintf/manifest/android.hardware.audio.effect.service-aidl.xml
 vendor/lib64/android.hardware.audio.core-impl-mediatek.so
-vendor/lib64/hw/android.hardware.audio.effect.aidl-impl-mediatek.so
-vendor/lib64/hw/audio.primary.default.so
+vendor/lib64/hw/android.hardware.audio.effect.aidl-impl-mediatek.so;SYMLINK=vendor/lib64/android.hardware.audio.effect.aidl-impl-mediatek.so
+vendor/lib64/hw/audio.primary.default.so;SYMLINK=vendor/lib64/audio.primary.default.so
 vendor/lib64/hw/audio.primary.mediatek.so;SYMLINK=vendor/lib64/hw/audio.primary.mt6789.so
-vendor/lib64/hw/audio.r_submix.default.so
+vendor/lib64/hw/audio.r_submix.default.so;SYMLINK=vendor/lib64/audio.r_submix.default.so
 vendor/lib64/hw/audio.r_submix.mediatek.so;SYMLINK=vendor/lib64/hw/audio.r_submix.mt6789.so
-vendor/lib64/hw/audio.usb.default.so
-vendor/lib64/hw/audio_policy.stub.so
-vendor/lib64/hw/vendor.mediatek.hardware.audio-impl.so
+vendor/lib64/hw/audio.usb.default.so;SYMLINK=vendor/lib64/audio.usb.default.so
+vendor/lib64/hw/audio_policy.stub.so;SYMLINK=vendor/lib64/audio_policy.stub.so
+vendor/lib64/hw/vendor.mediatek.hardware.audio-impl.so;SYMLINK=vendor/lib64/vendor.mediatek.hardware.audio-impl.so
 vendor/lib64/vendor.mediatek.hardware.audio@6.1.so
 
 # Audio-configs
@@ -168,16 +179,43 @@ vendor/etc/audio_param/VoWMicSetting_ParamUnitDesc.xml
 vendor/etc/audio_param/VoWVoiceCommand_AudioParam.xml
 vendor/etc/audio_param/VoWVoiceCommand_ParamUnitDesc.xml
 
+# Audio policy configs
+vendor/etc/a2dp_audio_policy_configuration.xml
+vendor/etc/audio_effects_config.xml
+vendor/etc/audio_device.xml
+vendor/etc/audio_em.xml
+vendor/etc/audio_framework_configuration.xml
+vendor/etc/audio_policy.conf
+vendor/etc/audio_policy_configuration.xml
+vendor/etc/audio_policy_volumes.xml
+vendor/etc/default_volume_tables.xml
+vendor/etc/r_submix_audio_policy_configuration.xml
+vendor/etc/usb_audio_policy_configuration.xml
+system_ext/etc/a2dp_audio_policy_configuration.xml
+system_ext/etc/a2dp_in_audio_policy_configuration.xml
+system_ext/etc/audio_policy_configuration.xml
+system_ext/etc/audio_policy_configuration_bluetooth_legacy_hal.xml
+system_ext/etc/audio_policy_configuration_stub.xml
+system_ext/etc/audio_policy_engine_configuration.xml
+system_ext/etc/audio_policy_engine_default_stream_volumes.xml
+system_ext/etc/audio_policy_engine_product_strategies.xml
+system_ext/etc/audio_policy_engine_stream_volumes.xml
+system_ext/etc/audio_policy_volumes.xml
+system_ext/etc/bluetooth_audio_policy_configuration.xml
+system_ext/etc/default_volume_tables.xml
+system_ext/etc/hearing_aid_audio_policy_configuration.xml
+system_ext/etc/r_submix_audio_policy_configuration.xml
+system_ext/etc/usb_audio_policy_configuration.xml
+
 # Bluetooth
 vendor/etc/audio_policy_configuration_bluetooth_legacy_hal.xml
 vendor/etc/bluetooth_audio_policy_configuration.xml
 vendor/etc/bluetooth_offload_audio_policy_configuration.xml
 vendor/lib64/android.hardware.bluetooth.audio-impl-mediatek.so
-vendor/lib64/hw/android.hardware.bluetooth.audio@2.0-impl.so
-vendor/lib64/hw/android.hardware.bluetooth.audio@2.1-impl.so
-vendor/lib64/hw/vendor.mediatek.hardware.bluetooth.audio@2.1-impl.so
-vendor/lib64/hw/vendor.mediatek.hardware.bluetooth.audio@2.2-impl.so
-vendor/lib64/libbluetooth_audio_session.so
+vendor/lib64/hw/android.hardware.bluetooth.audio@2.0-impl.so;SYMLINK=vendor/lib64/android.hardware.bluetooth.audio@2.0-impl.so
+vendor/lib64/hw/android.hardware.bluetooth.audio@2.1-impl.so;SYMLINK=vendor/lib64/android.hardware.bluetooth.audio@2.1-impl.so
+vendor/lib64/hw/vendor.mediatek.hardware.bluetooth.audio@2.1-impl.so;SYMLINK=vendor/lib64/vendor.mediatek.hardware.bluetooth.audio@2.1-impl.so
+vendor/lib64/hw/vendor.mediatek.hardware.bluetooth.audio@2.2-impl.so;SYMLINK=vendor/lib64/vendor.mediatek.hardware.bluetooth.audio@2.2-impl.so
 vendor/lib64/libbluetooth_audio_session_aidl_mtk.so
 vendor/lib64/libbluetooth_audio_session_mediatek.so
 vendor/lib64/libbluetooth_hw_test.so
@@ -2368,7 +2406,7 @@ vendor/etc/init/lights-mtk-default.rc
 vendor/lib64/android.hardware.light@2.0.so
 
 # Listen
-vendor/lib64/hw/android.hardware.soundtrigger3-impl.so
+vendor/lib64/hw/android.hardware.soundtrigger3-impl.so;SYMLINK=vendor/lib64/android.hardware.soundtrigger3-impl.so
 vendor/lib64/hw/sound_trigger.primary.default.so
 
 # Mediatek
@@ -3393,7 +3431,6 @@ odm/etc/vconfig/audio/Denoise_Param_Call_VP.json
 odm/etc/vconfig/audio/Denoise_Param_Record_AI.json
 odm/etc/vconfig/audio/TranAudioConfiguration.conf
 odm/etc/vconfig/audio/audio_device.xml
-odm/etc/vconfig/audio/audio_effects_config.xml
 odm/etc/vconfig/audio/audio_param/AudioParamOptions_vext.xml
 odm/etc/vconfig/audio/audio_param/BtInfo_AudioParam.xml
 odm/etc/vconfig/audio/audio_param/BtInfo_ParamUnitDesc.xml

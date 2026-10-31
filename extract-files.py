@@ -107,7 +107,7 @@ blob_fixups: blob_fixups_user_type = {
         .call(blob_fixup_return_1, 'license_check'),
 
     'system_ext/bin/hw/android.hardware.audio.parameter_parser.service': blob_fixup()
-        .replace_needed('android.hardware.audio.core-V3-ndk.so', 'android.hardware.audio.core-V4-ndk.so'),
+        .replace_needed('av-audio-types-aidl-ndk.so', 'av-audio-types-aidl-ndk_prebuilt.so'),
     'vendor/lib64/mt6789/libmtkcam_hal_aidl_common.so': blob_fixup()
         .replace_needed('android.hardware.camera.common-V2-ndk.so', 'android.hardware.camera.common-V1-ndk.so'),
     'vendor/bin/mnld': blob_fixup()
@@ -131,39 +131,46 @@ blob_fixups: blob_fixups_user_type = {
     'vendor/lib64/mt6789/libmtkcam_grallocutils.so': blob_fixup()
         .replace_needed('android.hardware.graphics.common-V5-ndk.so', 'android.hardware.graphics.common-V7-ndk.so'),
     'vendor/bin/hw/android.hardware.audio.service-aidl.mediatek': blob_fixup()
-        .replace_needed('android.hardware.audio.core-V3-ndk.so', 'android.hardware.audio.core-V4-ndk.so')
-        .replace_needed('android.hardware.audio.core.sounddose-V3-ndk.so', 'android.hardware.audio.core.sounddose-V4-ndk.so')
-        .replace_needed('android.hardware.bluetooth.audio-V5-ndk.so', 'android.hardware.bluetooth.audio-V6-ndk.so')
-        .replace_needed('android.hardware.soundtrigger3-V3-ndk.so', 'android.hardware.soundtrigger3-V4-ndk.so')
-        .replace_needed('android.media.audio.common.types-V4-ndk.so', 'android.media.audio.common.types-V5-ndk.so'),
+        .replace_needed('libaudio_aidl_conversion_common_ndk.so', 'libaudio_aidl_conversion_common_ndk_prebuilt.so'),
     'vendor/lib64/android.hardware.audio.core-impl-mediatek.so': blob_fixup()
         .add_needed('libaudioutils_shim.so')
-        .replace_needed('android.hardware.audio.core-V3-ndk.so', 'android.hardware.audio.core-V4-ndk.so')
-        .replace_needed('android.hardware.audio.core.sounddose-V3-ndk.so', 'android.hardware.audio.core.sounddose-V4-ndk.so')
-        .replace_needed('android.hardware.bluetooth.audio-V5-ndk.so', 'android.hardware.bluetooth.audio-V6-ndk.so')
-        .replace_needed('android.hardware.soundtrigger3-V3-ndk.so', 'android.hardware.soundtrigger3-V4-ndk.so')
-        .replace_needed('android.media.audio.common.types-V4-ndk.so', 'android.media.audio.common.types-V5-ndk.so'),
-    'vendor/lib64/hw/android.hardware.audio.effect.aidl-impl-mediatek.so': blob_fixup()
-        .replace_needed('android.hardware.audio.effect-V3-ndk.so', 'android.hardware.audio.effect-V4-ndk.so')
-        .replace_needed('android.media.audio.common.types-V4-ndk.so', 'android.media.audio.common.types-V5-ndk.so'),
+        .replace_needed('libaudio_aidl_conversion_common_ndk.so', 'libaudio_aidl_conversion_common_ndk_prebuilt.so'),
+    ('vendor/lib64/hw/android.hardware.audio.effect.aidl-impl-mediatek.so',
+     'vendor/lib64/libsilkybrightnesscore.so',
+     'vendor/lib64/libmtkgpuserv.so',
+     'vendor/lib64/librt_extamp_intf.so',
+     'vendor/lib64/libpqxmlparser.so',
+     'vendor/lib64/libpqxmlflagparser.so'): blob_fixup()
+        .replace_needed('libtinyxml2.so', 'libtinyxml2-v34.so')
+        .replace_needed('libaudio_aidl_conversion_common_ndk.so', 'libaudio_aidl_conversion_common_ndk_prebuilt.so'),
     'vendor/lib64/hw/android.hardware.soundtrigger3-impl.so': blob_fixup()
-        .replace_needed('android.hardware.soundtrigger3-V3-ndk.so', 'android.hardware.soundtrigger3-V4-ndk.so'),
+        .replace_needed('libaudio_aidl_conversion_common_ndk.so', 'libaudio_aidl_conversion_common_ndk_prebuilt.so'),
+    'vendor/lib64/android.hardware.audio.effect-V2-ndk_prebuilt.so': blob_fixup()
+        .replace_needed('android.hardware.audio.common-V3-ndk.so', 'android.hardware.audio.common-V3-ndk_prebuilt.so')
+        .replace_needed('android.media.audio.common.types-V3-ndk.so', 'android.media.audio.common.types-V3-ndk_prebuilt.so'),
+    'vendor/lib64/android.hardware.bluetooth.audio-V4-ndk_prebuilt.so': blob_fixup()
+        .replace_needed('android.hardware.audio.common-V3-ndk.so', 'android.hardware.audio.common-V3-ndk_prebuilt.so'),
+    'vendor/lib64/android.hardware.audio.common-V3-ndk_prebuilt.so': blob_fixup()
+        .replace_needed('android.media.audio.common.types-V3-ndk.so', 'android.media.audio.common.types-V3-ndk_prebuilt.so'),
     'vendor/lib64/hw/audio.primary.mediatek.so': blob_fixup()
-        .replace_needed('android.hardware.audio.effect-V2-ndk.so', 'android.hardware.audio.effect-V4-ndk.so')
-        .replace_needed('android.hardware.bluetooth.audio-V4-ndk.so', 'android.hardware.bluetooth.audio-V6-ndk.so')
-        .replace_needed('vendor.mediatek.hardware.bluetooth.audio-V1-ndk.so', 'vendor.mediatek.hardware.bluetooth.audio-V5-ndk.so'),
+        .replace_needed('libtinyxml2.so', 'libtinyxml2-v34.so')
+        .replace_needed('android.hardware.audio.effect-V2-ndk.so', 'android.hardware.audio.effect-V2-ndk_prebuilt.so')
+        .replace_needed('android.hardware.bluetooth.audio-V4-ndk.so', 'android.hardware.bluetooth.audio-V4-ndk_prebuilt.so')
+        .replace_needed('vendor.mediatek.hardware.bluetooth.audio-V1-ndk.so', 'vendor.mediatek.hardware.bluetooth.audio-V1-ndk_prebuilt.so'),
     ('vendor/lib64/hw/vendor.mediatek.hardware.bluetooth.audio@2.1-impl.so',
      'vendor/lib64/hw/vendor.mediatek.hardware.bluetooth.audio@2.2-impl.so',
      'vendor/lib64/libbluetooth_audio_session_aidl_mtk.so',
      'vendor/lib64/android.hardware.bluetooth.audio-impl-mediatek.so'): blob_fixup()
-        .replace_needed('android.hardware.bluetooth.audio-V5-ndk.so', 'android.hardware.bluetooth.audio-V6-ndk.so')
-        .replace_needed('vendor.mediatek.hardware.bluetooth.audio-V1-ndk.so', 'vendor.mediatek.hardware.bluetooth.audio-V5-ndk.so'),
+        .replace_needed('vendor.mediatek.hardware.bluetooth.audio-V1-ndk.so', 'vendor.mediatek.hardware.bluetooth.audio-V1-ndk_prebuilt.so'),
+    'vendor/lib64/libbluetooth_audio_session_prebuilt.so': blob_fixup()
+        .replace_needed('libbluetooth_audio_session_aidl.so', 'libbluetooth_audio_session_aidl_prebuilt.so'),
+    'vendor/lib64/hw/android.hardware.bluetooth.audio@2.0-impl.so': blob_fixup()
+        .replace_needed('libbluetooth_audio_session.so', 'libbluetooth_audio_session_prebuilt.so'),
+    'vendor/lib64/hw/android.hardware.bluetooth.audio@2.1-impl.so': blob_fixup()
+        .replace_needed('libbluetooth_audio_session.so', 'libbluetooth_audio_session_prebuilt.so'),
     'vendor/lib64/libpowerhal.so': blob_fixup()
         .replace_needed('android.hardware.bluetooth.audio-V4-ndk.so', 'android.hardware.bluetooth.audio-V6-ndk.so'),
-    'vendor/lib64/libaudioprimarydevicehalifclient.so': blob_fixup()
-        .replace_needed('android.hardware.audio.core-V3-ndk.so', 'android.hardware.audio.core-V4-ndk.so'),
     'vendor/lib64/libnotifyaudiohal.so': blob_fixup()
-        .replace_needed('android.hardware.audio.core-V3-ndk.so', 'android.hardware.audio.core-V4-ndk.so')
         .fix_soname(),
     ('vendor/lib64/hw/sensors.elliptic.so',
      'vendor/lib64/libspeech_enh_lib.so',

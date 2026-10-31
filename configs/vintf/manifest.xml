@@ -100,6 +100,19 @@
         <fqname>ISoundTriggerHw/default</fqname>
     </hal>
     <hal format="aidl">
+        <name>android.hardware.audio.core</name>
+        <version>3</version>
+        <fqname>IModule/default</fqname>
+        <fqname>IModule/r_submix</fqname>
+        <fqname>IModule/bluetooth</fqname>
+        <fqname>IConfig/default</fqname>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.bluetooth.audio</name>
+        <version>5</version>
+        <fqname>IBluetoothAudioProviderFactory/default</fqname>
+    </hal>
+    <hal format="aidl">
         <name>vendor.mediatek.hardware.aee</name>
         <fqname>IAee/AEE</fqname>
     </hal>

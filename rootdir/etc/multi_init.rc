@@ -43,7 +43,6 @@ import /vendor/etc/init/android.hardware.identity@1.0-service.trustonic.rc
 #import /vendor/etc/init/vendor.mediatek.hardware.keyinstall@1.0-service.rc
 #import /vendor/etc/init/vendor.mediatek.hardware.keymanage@1.0-service.rc
 import /vendor/etc/init/android.hardware.audio.service.mediatek.rc
-import /vendor/etc/init/android.hardware.audio.service-aidl.mediatek.rc
 import /vendor/etc/init/android.hardware.audio.effect.service-aidl.mediatek.rc
 import /vendor/etc/init/android.hardware.nfc@1.2-service-st.rc
 import /vendor/etc/init/tee.rc

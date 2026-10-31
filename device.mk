@@ -67,6 +67,10 @@ PRODUCT_PACKAGES += \
 # Some MTK prebuilts are only 4K-page aligned
 PRODUCT_CHECK_PREBUILT_MAX_PAGE_SIZE := false
 
+# Audio effects config (ODM)
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/audio/audio_effects_config.xml:$(TARGET_COPY_OUT_ODM)/etc/vconfig/audio/audio_effects_config.xml
+
 # Audio Alsa
 PRODUCT_PACKAGES += \
     libalsautilsv2 \
@@ -160,6 +164,7 @@ PRODUCT_PACKAGES += \
     libtextclassifier_hash \
     libtinyalsav2 \
     libtinyxml2 \
+    libtinyxml2-v34 \
     libultrahdr \
     libxml2 \
     libz
