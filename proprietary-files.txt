@@ -2321,6 +2321,22 @@ vendor/etc/vintf/manifest/android.hardware.security.keymint-service.trustonic_rk
 vendor/etc/vintf/manifest/android.hardware.security.secureclock-service.trustonic.xml
 vendor/etc/vintf/manifest/android.hardware.security.sharedsecret-service.trustonic.xml
 
+# Prebuilt HAL VINTF
+odm/etc/vintf/manifest/fingerprint-default.xml
+odm/etc/vintf/manifest/vendor.anc.fingerprint.extension.aidl_service.xml
+vendor/etc/vintf/manifest/CommandService.xml
+vendor/etc/vintf/manifest/FastSwitch.xml
+vendor/etc/vintf/manifest/gnss-mtk.xml
+vendor/etc/vintf/manifest/lights-mtk-default.xml
+vendor/etc/vintf/manifest/manifest_allocator.xml
+vendor/etc/vintf/manifest/manifest_cameraprovider.xml
+vendor/etc/vintf/manifest/manifest_hwcomposer.xml
+vendor/etc/vintf/manifest/manifest_isphal.xml
+vendor/etc/vintf/manifest/manifest_media_c2_default.xml
+vendor/etc/vintf/manifest/mtk_lbs_service.xml
+vendor/etc/vintf/manifest/vendor.transsion.hardware.trancam.trancamserver.xml
+vendor/etc/vintf/manifest/vibrator-mtk-default.xml
+
 # Google
 vendor/apex/com.google.android.widevine.nonupdatable.apex
 -vendor/app/NetworkStackGoogleGoResOverlay/NetworkStackGoogleGoResOverlay.apk
