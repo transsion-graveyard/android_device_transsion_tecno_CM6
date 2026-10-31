@@ -2316,6 +2316,11 @@ vendor/bin/hw/android.hardware.gatekeeper-service.trustonic
 vendor/etc/init/android.hardware.gatekeeper-service.trustonic.rc
 vendor/etc/vintf/manifest/android.hardware.gatekeeper-service.trustonic.xml
 
+# Security
+vendor/etc/vintf/manifest/android.hardware.security.keymint-service.trustonic_rkpv1.xml
+vendor/etc/vintf/manifest/android.hardware.security.secureclock-service.trustonic.xml
+vendor/etc/vintf/manifest/android.hardware.security.sharedsecret-service.trustonic.xml
+
 # Google
 vendor/apex/com.google.android.widevine.nonupdatable.apex
 -vendor/app/NetworkStackGoogleGoResOverlay/NetworkStackGoogleGoResOverlay.apk
