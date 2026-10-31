@@ -2437,6 +2437,7 @@ vendor/etc/init/vendor.mediatek.hardware.nwk_opt@1.0-service.rc
 vendor/etc/init/vendor.mediatek.hardware.pq_aidl-service.rc
 vendor/etc/permissions/com.mediatek.hardware.vow.xml
 vendor/etc/permissions/com.mediatek.hardware.vow_dsp.xml
+vendor/etc/seccomp_policy/android.hardware.media.c2@1.2-extended-seccomp-policy
 vendor/etc/seccomp_policy/android.hardware.media.c2@1.2-mediatek-seccomp-policy
 vendor/etc/vintf/manifest/android.hardware.usb-aidl-service.mediatek.xml
 vendor/etc/vintf/manifest/android.hardware.usb.gadget-aidl-service.mediatek.xml
