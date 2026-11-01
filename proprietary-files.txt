@@ -3720,8 +3720,6 @@ vendor/bin/eara_io_service
 vendor/bin/epdg_wod
 vendor/bin/factory
 vendor/bin/fpsgo
-vendor/bin/frs
-vendor/bin/frs_intf
 vendor/bin/fuelgauged
 vendor/bin/fuelgauged_nvram
 vendor/bin/gps_dump
@@ -3882,7 +3880,6 @@ vendor/etc/init/init.charger.rc
 vendor/etc/init/init.connfem.rc
 vendor/etc/init/init.consoledebug.rc
 vendor/etc/init/init.fpsgo.rc
-vendor/etc/init/init.frs.rc
 vendor/etc/init/init.gps_drv.rc
 vendor/etc/init/init.led.rc
 vendor/etc/init/init.md_apps.rc
