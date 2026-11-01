@@ -238,20 +238,6 @@
         </interface>
     </hal>
     <hal format="aidl">
-        <name>vendor.hardware.trancharge</name>
-        <interface>
-            <name>ITranCharge</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="aidl">
-        <name>vendor.hardware.tranled</name>
-        <interface>
-            <name>ITranLed</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="aidl">
         <name>vendor.hardware.transuccservice</name>
         <interface>
             <name>ITranHalSuccService</name>
@@ -1311,13 +1297,6 @@
         </interface>
     </hal>
     <hal format="aidl">
-        <name>vendor.transsion.hardware.aegis</name>
-        <interface>
-            <name>IAegisService</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="aidl">
         <name>vendor.transsion.hardware.biometrics.fingerprint</name>
         <interface>
             <name>ITranssionFingerprintDaemon</name>
@@ -1352,63 +1331,6 @@
             <instance>default</instance>
         </interface>
     </hal>
-    <hal format="aidl">
-        <name>vendor.transsion.hardware.screeninfo</name>
-        <interface>
-            <name>IScreenInfo</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="aidl">
-        <name>vendor.transsion.hardware.security.deviceauthen</name>
-        <interface>
-            <name>IDeviceAuthen</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="aidl">
-        <name>vendor.transsion.hardware.security.keyfilesvfy</name>
-        <interface>
-            <name>IKeyFilesVfy</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="aidl">
-        <name>vendor.transsion.hardware.security.paytrigger</name>
-        <interface>
-            <name>IPayTrigger</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="aidl">
-        <name>vendor.transsion.hardware.security.rpmbservice</name>
-        <interface>
-            <name>ITranCriticalParaVfy</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="aidl">
-        <name>vendor.transsion.hardware.security.trancriticalparavfy</name>
-        <interface>
-            <name>ITranCriticalParaVfy</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl">
-        <name>vendor.transsion.hardware.tne.tneengine</name>
-        <version>1.0</version>
-        <interface>
-            <name>ITne</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="aidl">
-        <name>vendor.transsion.hardware.tne.tneengine</name>
-        <interface>
-            <name>ITne</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
     <hal format="hidl">
         <name>vendor.transsion.hardware.trancam.trancamserver</name>
         <version>1.0</version>
@@ -1421,81 +1343,6 @@
         <name>vendor.transsion.hardware.trancam.trancamserver</name>
         <interface>
             <name>ITrancamserver</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="aidl">
-        <name>vendor.transsion.hardware.trandatacenter</name>
-        <interface>
-            <name>ITranAidlDataCenter</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl">
-        <name>vendor.transsion.hardware.trandatacenter</name>
-        <version>1.0</version>
-        <interface>
-            <name>ITranDataCenter</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="aidl">
-        <name>vendor.transsion.hardware.tranlog</name>
-        <interface>
-            <name>ITranLogAidl</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl">
-        <name>vendor.transsion.hardware.tranlog</name>
-        <version>1.0</version>
-        <interface>
-            <name>ITranLog</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="aidl">
-        <name>vendor.transsion.hardware.tranlogconfig</name>
-        <interface>
-            <name>ITranLogAidlConfig</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl">
-        <name>vendor.transsion.hardware.tranlogconfig</name>
-        <version>1.0</version>
-        <interface>
-            <name>ITranLogConfig</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="aidl">
-        <name>vendor.transsion.hardware.trannet</name>
-        <version>1-5</version>
-        <interface>
-            <name>ITranNet</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="aidl">
-        <name>vendor.transsion.hardware.tranradio</name>
-        <version>1-11</version>
-        <interface>
-            <name>ITranRadio</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="aidl">
-        <name>vendor.transsion.hardware.transtorage.storage</name>
-        <interface>
-            <name>IAidlStorage</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="aidl">
-        <name>vendor.transsion.hardware.tranthp</name>
-        <interface>
-            <name>ITranthp</name>
             <instance>default</instance>
         </interface>
     </hal>

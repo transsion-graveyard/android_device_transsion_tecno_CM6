@@ -1,9 +1,5 @@
 <!--
     Input:
-        vendor/transsion/vendor_modules/common/trancare/hardware/interfaces/manifest_tranlog.xml
-        vendor/transsion/vendor_modules/common/trancare/hardware/interfaces/manifest_tranlogconfig.xml
-        vendor/transsion/vendor_modules/common/trancare/hardware/interfaces/manifest_trandatacenter.xml
-        vendor/transsion/vendor_modules/vnd_security/tran_key_files_vfy/default/vendor.transsion.hardware.security.keyfilesvfy@1.0-service.xml
         device/mediatek/vendor/common/project_manifest/manifest_audio.xml
         device/mediatek/vendor/common/project_manifest/manifest_dsds.xml
         device/mediatek/vendor/common/project_manifest/manifest_radioconfig.xml
@@ -236,22 +232,6 @@
     <hal format="aidl">
         <name>vendor.mediatek.hardware.videotelephony</name>
         <fqname>IVideoTelephony/default</fqname>
-    </hal>
-    <hal format="aidl">
-        <name>vendor.transsion.hardware.security.keyfilesvfy</name>
-        <fqname>IKeyFilesVfy/default</fqname>
-    </hal>
-    <hal format="aidl">
-        <name>vendor.transsion.hardware.trandatacenter</name>
-        <fqname>ITranAidlDataCenter/default</fqname>
-    </hal>
-    <hal format="aidl">
-        <name>vendor.transsion.hardware.tranlog</name>
-        <fqname>ITranLogAidl/default</fqname>
-    </hal>
-    <hal format="aidl">
-        <name>vendor.transsion.hardware.tranlogconfig</name>
-        <fqname>ITranLogAidlConfig/default</fqname>
     </hal>
     <hal format="aidl">
         <name>vendor.trustonic.tee</name>
