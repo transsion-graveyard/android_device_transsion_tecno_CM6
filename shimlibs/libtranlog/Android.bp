@@ -1,0 +1,14 @@
+//
+// SPDX-FileCopyrightText: The LineageOS Project
+// SPDX-License-Identifier: Apache-2.0
+//
+
+// Source-built shim replacing the prebuilt libtranlog.so pulled from the
+// vendor firmware. Only the entry points actually imported by the vendor
+// blobs are required; everything is a no-op.
+cc_library_shared {
+    name: "libtranlog",
+    vendor: true,
+    srcs: ["fyt.c"],
+    shared_libs: ["liblog"],
+}

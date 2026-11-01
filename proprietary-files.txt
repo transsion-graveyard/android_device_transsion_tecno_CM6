@@ -4589,7 +4589,6 @@ vendor/lib64/libtrancamJsonConvertor.so
 vendor/lib64/libtrancam_filelockmgr.so
 vendor/lib64/libtrancam_jsonpraser.so
 vendor/lib64/libtrancrypto.so
-vendor/lib64/libtranlog.so
 vendor/lib64/libtranradionet_mtk.so
 vendor/lib64/libtranslator_mapi_v3.0.so
 vendor/lib64/libtranslator_mdmi_v2.8.2.so
@@ -4696,7 +4695,6 @@ vendor/lib64/mt6789/libTranSuperResolution.so;SYMLINK=vendor/lib64/libTranSuperR
 vendor/lib64/mt6789/libTranUndistort.so;SYMLINK=vendor/lib64/libTranUndistort.so
 vendor/lib64/mt6789/libTranVideoHdr.so;SYMLINK=vendor/lib64/libTranVideoHdr.so
 vendor/lib64/mt6789/libTranVideoSupeNightYuv.so;SYMLINK=vendor/lib64/libTranVideoSupeNightYuv.so
-vendor/lib64/mt6789/libTran_Log.so;SYMLINK=vendor/lib64/libTran_Log.so
 vendor/lib64/mt6789/libTran_mtkPowerAPI.so;SYMLINK=vendor/lib64/libTran_mtkPowerAPI.so
 vendor/lib64/mt6789/libWaterMarkProc.so;SYMLINK=vendor/lib64/libWaterMarkProc.so
 vendor/lib64/mt6789/libaaa_ltm.so;SYMLINK=vendor/lib64/libaaa_ltm.so

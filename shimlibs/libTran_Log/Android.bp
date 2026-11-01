@@ -1,0 +1,14 @@
+//
+// SPDX-FileCopyrightText: The LineageOS Project
+// SPDX-License-Identifier: Apache-2.0
+//
+
+// Source-built shim replacing the prebuilt libTran_Log.so pulled from the
+// vendor firmware. No extracted vendor blob imports a symbol from it, but the
+// runtime DT_NEEDED must still resolve, so an (almost empty) library is built
+// and installed as /vendor/lib64/libTran_Log.so.
+cc_library_shared {
+    name: "libTran_Log",
+    vendor: true,
+    srcs: ["tran_log.cpp"],
+}

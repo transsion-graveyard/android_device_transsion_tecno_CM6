@@ -495,6 +495,11 @@ PRODUCT_PACKAGES += \
     android.hardware.secure_element-V1-ndk \
     vendor.nxp.nxpese@1.0
 
+# Shims
+PRODUCT_PACKAGES += \
+    libtranlog \
+    libTran_Log
+
 # Sensors
 PRODUCT_PACKAGES += \
     android.hardware.sensors-service.multihal
