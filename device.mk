@@ -452,7 +452,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     fstab.mt6789 \
     fstab.mt6789.vendor_ramdisk \
-    init.aee.rc \
     init.cgroup.rc \
     init.connectivity.common.rc \
     init.connectivity.rc \
@@ -484,6 +483,7 @@ PRODUCT_PACKAGES += \
 
 # Shims
 PRODUCT_PACKAGES += \
+    libaedv \
     libtranlog \
     libTran_Log
 

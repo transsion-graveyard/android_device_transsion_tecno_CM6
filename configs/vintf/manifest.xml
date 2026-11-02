@@ -8,7 +8,6 @@
         device/mediatek/vendor/common/project_manifest/manifest_trustonic.xml
         device/mediatek/vendor/common/project_manifest/manifest_log.xml
         device/mediatek/vendor/common/project_manifest/manifest_mdmonitor.xml
-        device/mediatek/vendor/common/project_manifest/manifest_aee.xml
         device/mediatek/vendor/common/project_manifest/manifest_boot.xml
         device/mediatek/vendor/common/project_manifest/manifest_pq.xml
         device/mediatek/vendor/common/project_manifest/manifest_mmservice.xml
@@ -107,10 +106,6 @@
         <name>android.hardware.bluetooth.audio</name>
         <version>5</version>
         <fqname>IBluetoothAudioProviderFactory/default</fqname>
-    </hal>
-    <hal format="aidl">
-        <name>vendor.mediatek.hardware.aee</name>
-        <fqname>IAee/AEE</fqname>
     </hal>
     <hal format="aidl">
         <name>vendor.mediatek.hardware.apmonitor</name>

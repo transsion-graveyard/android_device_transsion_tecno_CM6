@@ -4329,7 +4329,6 @@ vendor/lib64/libaaa_flickerutil.so
 vendor/lib64/libaal_cust.so
 vendor/lib64/libaal_key.so
 vendor/lib64/libaal_sec.so
-vendor/lib64/libaedv.so
 vendor/lib64/libaegis_clientv.so
 vendor/lib64/libaimemc.so
 vendor/lib64/libaiste.so

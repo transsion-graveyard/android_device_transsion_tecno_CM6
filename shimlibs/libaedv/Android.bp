@@ -1,0 +1,14 @@
+//
+// SPDX-FileCopyrightText: The LineageOS Project
+// SPDX-License-Identifier: Apache-2.0
+//
+
+// Source-built shim replacing the prebuilt vendor libaedv.so. The vendor
+// namespace imports device/transsion/tecno/CM6, so this module satisfies the
+// generated vendor prebuilts' shared_libs: ["libaedv"] dependency.
+cc_library_shared {
+    name: "libaedv",
+    vendor: true,
+    compile_multilib: "64",
+    srcs: ["aedv.c"],
+}
