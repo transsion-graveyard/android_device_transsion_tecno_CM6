@@ -969,11 +969,6 @@ on boot
     chown system radio /dev/ttyGS3
     chmod 0660 /dev/ttyGS3
 
-#Define device for ATCID
-    chmod 660 /dev/ttyGS0
-    chown system radio /dev/ttyGS0
-    chmod 660 /dev/ttyGS1
-    chown system radio /dev/ttyGS1
 #Power Manager
     write /sys/power/pm_freeze_timeout 2000
 
@@ -1077,10 +1072,6 @@ on property:persist.vendor.mediatek.fg.force25c=0
 on property:persist.vendor.mediatek.fg.log.enable=1
     write /dev/gauge/FG_daemon_log_level 7
 
-# reset mdmode when modem crash happens in ATM
-on property:vendor.mtk.md1.status=reset
-    setprop persist.vendor.atm.mdmode normal
-
 # MTK fast charging support
 on property:persist.vendor.mediatek.fast_charging.support=*
     write /sys/devices/platform/charger/fast_chg_indicator ${persist.vendor.mediatek.fast_charging.support}
@@ -1094,11 +1085,6 @@ on property:persist.vendor.mediatek.fast_charging.support=*
 #    oneshot
     #seclabel u:r:osi:s0
 #TDD:delete for SUNMAO40-409 by siying.tang 20250711 end
-
-# USD:add custom factory reset by youyang.lin 20250529 start
-on property:persist.vendor.tran.wipedata=1 && property:ro.boot.atm=enable
-    tran_factory_reset
-# USD:add custom factory reset by youyang.lin 20250529 end
 
 
 

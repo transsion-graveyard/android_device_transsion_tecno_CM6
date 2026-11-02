@@ -824,80 +824,12 @@ on property:sys.usb.config=acm_gs1gs3
     setprop sys.usb.config ${sys.usb.state}
     setprop vendor.usb.acm_idx "2,4"
 
-# For ATM (Android Test Mode)
-on property:vendor.usb.clear=1 && property:sys.usb.configfs=1
-    write /config/usb_gadget/g1/UDC "none"
-    write /config/usb_gadget/g1/bDeviceClass 0
-    write /config/usb_gadget/g1/bDeviceSubClass 0
-    write /config/usb_gadget/g1/bDeviceProtocol 0
-    rm /config/usb_gadget/g1/configs/b.1/f1
-    rm /config/usb_gadget/g1/configs/b.1/f2
-    rm /config/usb_gadget/g1/configs/b.1/f3
-    rm /config/usb_gadget/g1/configs/b.1/f4
-    rm /config/usb_gadget/g1/configs/b.1/f5
-    rmdir /config/usb_gadget/g1/functions/mtk_rndis.gs4
-    write /sys/devices/platform/soc/mt_usb/saving 0
-    setprop vendor.usb.clear 2
-
 # has permission issue when read from ${sys.usb.ffs.ready}
 on property:sys.usb.ffs.ready=0
    setprop vendor.usb.ffs.ready 0
 on property:sys.usb.ffs.ready=1
    setprop vendor.usb.ffs.ready 1
 
-on property:sys.usb.config=atm_gs0 && property:sys.usb.configfs=1
-    stop adbd
-    setprop vendor.usb.ffs.ready 0
-    setprop vendor.usb.clear 1
-
-on property:vendor.usb.ffs.ready=0 && property:sys.usb.config=atm_gs0 && \
-property:vendor.usb.clear=2 && property:sys.usb.configfs=1
-    start adbd
-
-on property:vendor.usb.ffs.ready=1 && property:sys.usb.config=atm_gs0 && \
-property:vendor.usb.clear=2 && property:sys.usb.configfs=1
-    setprop vendor.usb.acm_port0 0
-    setprop vendor.usb.acm_port1 ""
-    setprop vendor.usb.acm_cnt 1
-    setprop vendor.usb.acm_enable 1
-    write /sys/devices/platform/soc/mt_usb/saving 1
-    write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "atm_gs0"
-    write /config/usb_gadget/g1/idProduct 0x200A
-    symlink /config/usb_gadget/g1/functions/ffs.mtp /config/usb_gadget/g1/configs/b.1/f1
-    symlink /config/usb_gadget/g1/functions/ffs.adb /config/usb_gadget/g1/configs/b.1/f2
-    symlink /config/usb_gadget/g1/functions/acm.gs0 /config/usb_gadget/g1/configs/b.1/f3
-    write /config/usb_gadget/g1/UDC ${vendor.usb.controller}
-    #setprop sys.usb.state ${sys.usb.config}
-    setprop vendor.usb.pid 0x200A
-    #setprop vendor.usb.clear 0
-    setprop vendor.usb.acm_idx "1"
-
-on property:sys.usb.config=atm_gs0gs3 && property:sys.usb.configfs=1
-    stop adbd
-    setprop vendor.usb.ffs.ready 0
-    setprop vendor.usb.clear 1
-
-on property:vendor.usb.ffs.ready=0 && property:sys.usb.config=atm_gs0gs3 && \
-property:vendor.usb.clear=2 && property:sys.usb.configfs=1
-    start adbd
-
-on property:vendor.usb.ffs.ready=1 && property:sys.usb.config=atm_gs0gs3 && \
-property:vendor.usb.clear=2 && property:sys.usb.configfs=1
-    setprop vendor.usb.acm_port0 0
-    setprop vendor.usb.acm_port1 3
-    setprop vendor.usb.acm_cnt 2
-    setprop vendor.usb.acm_enable 1
-    write /sys/devices/platform/soc/mt_usb/saving 1
-    write /config/usb_gadget/g1/idProduct 0x2026
-    symlink /config/usb_gadget/g1/functions/ffs.mtp /config/usb_gadget/g1/configs/b.1/f1
-    symlink /config/usb_gadget/g1/functions/ffs.adb /config/usb_gadget/g1/configs/b.1/f2
-    symlink /config/usb_gadget/g1/functions/acm.gs0 /config/usb_gadget/g1/configs/b.1/f3
-    symlink /config/usb_gadget/g1/functions/acm.gs3 /config/usb_gadget/g1/configs/b.1/f4
-    write /config/usb_gadget/g1/UDC ${vendor.usb.controller}
-    #setprop sys.usb.state ${sys.usb.config}
-    setprop vendor.usb.pid 0x2026
-    #setprop vendor.usb.clear 0
-    setprop vendor.usb.acm_idx "1,4"
 
 ### CHARGING ###
 on property:sys.usb.config=cdp && property:sys.usb.configfs=1

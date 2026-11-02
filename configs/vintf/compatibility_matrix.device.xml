@@ -487,21 +487,6 @@
         </interface>
     </hal>
     <hal format="hidl">
-        <name>vendor.mediatek.hardware.dmc</name>
-        <version>1.2</version>
-        <interface>
-            <name>IDmcService</name>
-            <instance>dmc_hidl_service</instance>
-        </interface>
-    </hal>
-    <hal format="aidl">
-        <name>vendor.mediatek.hardware.dmc</name>
-        <interface>
-            <name>IDmcService</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl">
         <name>vendor.mediatek.hardware.dplanner</name>
         <version>2.0</version>
         <interface>
@@ -704,21 +689,6 @@
             <instance>mtk_mnld2mtklogger</instance>
             <instance>mtk_mnld2nlputils</instance>
             <instance>mtk_mtklogger2mnld</instance>
-        </interface>
-    </hal>
-    <hal format="hidl">
-        <name>vendor.mediatek.hardware.mdmonitor</name>
-        <version>1.0</version>
-        <interface>
-            <name>IMDMonitorService</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="aidl">
-        <name>vendor.mediatek.hardware.mdmonitor</name>
-        <interface>
-            <name>IMDMonitorService</name>
-            <instance>default</instance>
         </interface>
     </hal>
     <hal format="hidl">
@@ -1002,13 +972,6 @@
         <name>vendor.mediatek.hardware.neuropilot.agent</name>
         <interface>
             <name>IAgent</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="aidl">
-        <name>vendor.mediatek.hardware.nps.nos.fastswitch</name>
-        <interface>
-            <name>INativeFastSwitch</name>
             <instance>default</instance>
         </interface>
     </hal>
