@@ -87,7 +87,7 @@ CLEAR_AHARDWAREBUFFER_SYMBOLS = (
 
 blob_fixups: blob_fixups_user_type = {
     'vendor/app/Test.apk': blob_fixup()
-        .apktool_patch('blob-patches/TestApk.patch', '-s'),
+        .apktool_patch('blob-patches/TestApk.patch'),
     'vendor/etc/test.conf': blob_fixup()
         .patch_file('blob-patches/TestConf.patch')
         .regex_replace('(LOG_.*_ENABLED)=1', '\\1=0')
