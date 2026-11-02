@@ -2478,7 +2478,6 @@ vendor/lib64/vendor.mediatek.hardware.apuware.aiste-V1-ndk.so
 vendor/lib64/vendor.mediatek.hardware.apuware.apusys-V5-ndk.so
 vendor/lib64/vendor.mediatek.hardware.apuware.utils-V1-ndk.so
 vendor/lib64/vendor.mediatek.hardware.apuware.utils@2.0.so
-vendor/lib64/vendor.mediatek.hardware.atci-V1-ndk.so
 vendor/lib64/vendor.mediatek.hardware.clientapi-V1-ndk.so
 vendor/lib64/vendor.mediatek.hardware.composer_ext-V1-ndk.so
 vendor/lib64/vendor.mediatek.hardware.composer_ext@1.0.so
@@ -2486,7 +2485,6 @@ vendor/lib64/vendor.mediatek.hardware.dmc-V1-ndk.so
 vendor/lib64/vendor.mediatek.hardware.gpuserv-V2-ndk.so
 vendor/lib64/vendor.mediatek.hardware.lbs-V1-ndk.so
 vendor/lib64/vendor.mediatek.hardware.lbs@1.0.so
-vendor/lib64/vendor.mediatek.hardware.log-V1-ndk.so
 vendor/lib64/vendor.mediatek.hardware.mbrain-V6-ndk.so
 vendor/lib64/vendor.mediatek.hardware.mbrain-V7-ndk.so
 vendor/lib64/vendor.mediatek.hardware.mbrainj-V1-ndk.so
@@ -3585,7 +3583,6 @@ odm/etc/vconfig/display/ccorr_golden.conf
 odm/etc/vconfig/display/ccorr_golden2.conf
 odm/etc/vconfig/display/ccorr_golden3.conf
 odm/etc/vconfig/display/ccorr_stand.conf
-odm/etc/vconfig/factory.ini
 odm/etc/vconfig/media/media_codecs_c2.xml
 odm/etc/vconfig/sensor/sensor_config.json
 odm/etc/vconfig/tran_avb.pubkey
@@ -3684,7 +3681,6 @@ vendor/app/mcRegistry/abcd270ea5c44c58bcd3384a2fa2539e.tabin
 vendor/app/mcRegistry/ce4550edbcb1662566b006ebcb303050.tabin
 vendor/app/mcRegistry/df1edda8627911e980ae507b9d9a7e7d.tabin
 vendor/bin/AgentTest
-vendor/bin/audiocmdservice_atci
 vendor/bin/autobt
 vendor/bin/bip
 vendor/bin/bip_ap
@@ -3703,7 +3699,6 @@ vendor/bin/dreport
 vendor/bin/dtc_vendor
 vendor/bin/eara_io_service
 vendor/bin/epdg_wod
-vendor/bin/factory
 vendor/bin/fpsgo
 vendor/bin/fuelgauged
 vendor/bin/fuelgauged_nvram
@@ -3720,7 +3715,6 @@ vendor/bin/hw/vtservice_aidl
 vendor/bin/ipsec_mon
 vendor/bin/jxnosfastswitch
 vendor/bin/kmsetkey_ca.trustonic
-vendor/bin/loghidlvendorservice
 vendor/bin/mcDriverDaemon
 vendor/bin/md_monitor
 vendor/bin/md_monitor_ctrl
@@ -3749,7 +3743,6 @@ vendor/bin/tdt
 vendor/bin/touch_boost
 vendor/bin/tran_healthinfo_upload
 vendor/bin/trusty-ut-ctrl
-vendor/bin/uart_launcher
 vendor/bin/uastool
 vendor/bin/userdata_setup
 vendor/bin/verify_para
@@ -3827,8 +3820,6 @@ vendor/etc/init.insmod.mt6789.cfg
 vendor/etc/init.insmod.touch.cfg
 vendor/etc/init/FastSwitch.rc
 vendor/etc/init/android.hardware.security.keymint@3.0-service.trustonic_rkpv1.rc
-vendor/etc/init/atcid.rc
-vendor/etc/init/audiocmdservice_atci.rc
 vendor/etc/init/bootperf.rc
 vendor/etc/init/camerahalserver.rc
 vendor/etc/init/chg_sence_init.rc
@@ -3870,7 +3861,6 @@ vendor/etc/init/init.wod.rc
 vendor/etc/init/init.xcap.rc
 vendor/etc/init/ipsec_mon.rc
 vendor/etc/init/kswapd0_bind.rc
-vendor/etc/init/loghidlvendorservice.rc
 vendor/etc/init/mbrain-mtk-default.rc
 vendor/etc/init/md_monitor.rc
 vendor/etc/init/mtk_agpsd_p.rc
