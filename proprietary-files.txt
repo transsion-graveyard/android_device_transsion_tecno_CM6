@@ -3570,6 +3570,9 @@ odm/etc/vconfig/display/ccorr_golden2.conf
 odm/etc/vconfig/display/ccorr_golden3.conf
 odm/etc/vconfig/display/ccorr_stand.conf
 odm/etc/vconfig/media/media_codecs_c2.xml
+vendor/etc/media_codecs.xml
+vendor/etc/media_codecs_c2.xml
+vendor/etc/media_codecs_performance.xml
 odm/etc/vconfig/sensor/sensor_config.json
 odm/etc/vconfig/tran_avb.pubkey
 odm/etc/vconfig/tran_fp/tran_fp_project_info.json
