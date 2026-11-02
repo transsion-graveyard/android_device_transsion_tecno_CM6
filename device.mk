@@ -547,10 +547,6 @@ PRODUCT_PACKAGES += \
     libutilscallstack \
     server_configurable_flags
 
-# Tetheroffload
-PRODUCT_PACKAGES += \
-    android.hardware.tetheroffload-V1-ndk
-
 # UI
 PRODUCT_PACKAGES += \
     libui

@@ -2218,8 +2218,6 @@ vendor/lib64/libdts-eagle-shared.so
 vendor/lib64/libdtsdsec.so
 
 # Display-Hardware
-vendor/bin/hw/android.hardware.graphics.composer@3.2-service
-vendor/bin/hw/android.hardware.graphics.composer@3.3-service
 vendor/bin/hw/android.hardware.graphics.composer@3.4-service
 vendor/bin/hw/mt6789/android.hardware.graphics.allocator-V2-service-mediatek.mt6789;SYMLINK=vendor/bin/hw/android.hardware.graphics.allocator-V2-service-mediatek,vendor/bin/hw/android.hardware.graphics.allocator-V2-service-mediatek.mt6789
 vendor/etc/init/android.hardware.graphics.allocator-V2-service-mediatek.rc
@@ -2410,9 +2408,7 @@ vendor/bin/hw/android.hardware.usb.gadget-aidl-service.mediatek
 vendor/bin/hw/android.hardware.vibrator-service.mediatek
 vendor/bin/hw/vendor.mediatek.hardware.gpuserv-service
 vendor/bin/hw/vendor.mediatek.hardware.mmagent-service
-vendor/bin/hw/vendor.mediatek.hardware.mmlpq@V1-service
 vendor/bin/hw/vendor.mediatek.hardware.mms-service
-vendor/bin/hw/vendor.mediatek.hardware.neuropilot.neuronservice.neuronservice.mediatek
 vendor/bin/hw/vendor.mediatek.hardware.nvram-service
 vendor/bin/hw/vendor.mediatek.hardware.nwk_opt@1.0-service
 vendor/bin/hw/vendor.mediatek.hardware.pq_aidl-service
@@ -2491,7 +2487,6 @@ vendor/lib64/vendor.mediatek.hardware.mmagent-V1-ndk.so
 vendor/lib64/vendor.mediatek.hardware.mmagent@1.0.so
 vendor/lib64/vendor.mediatek.hardware.mmagent@1.1.so
 vendor/lib64/vendor.mediatek.hardware.mmlpq-V3-ndk.so
-vendor/lib64/vendor.mediatek.hardware.mmlpq-V5-ndk.so
 vendor/lib64/vendor.mediatek.hardware.mms-V1-ndk.so
 vendor/lib64/vendor.mediatek.hardware.mtklight-V1-ndk.so
 vendor/lib64/vendor.mediatek.hardware.mtkradioex.assist-V2-ndk.so
@@ -2520,7 +2515,6 @@ vendor/lib64/vendor.mediatek.hardware.neuropilot.agent-V1-ndk.so
 vendor/lib64/vendor.mediatek.hardware.neuropilot.agent@1.0.so
 vendor/lib64/vendor.mediatek.hardware.neuropilot.agent@1.1.so
 vendor/lib64/vendor.mediatek.hardware.neuropilot.agent@1.2.so
-vendor/lib64/vendor.mediatek.hardware.neuropilot.neuronservice-V1-ndk.so
 vendor/lib64/vendor.mediatek.hardware.nps.nos.fastswitch-V1-ndk.so
 vendor/lib64/vendor.mediatek.hardware.nvram-V1-ndk.so
 vendor/lib64/vendor.mediatek.hardware.nwk_opt_new-V1-ndk.so
@@ -2554,9 +2548,6 @@ vendor/lib64/nfc_nci_nxp_snxxx_v2_w.so
 vendor/lib64/vendor.tms.tmsnfc_aidl-V1-ndk.so
 
 # Neural-networks
-vendor/bin/hw/android.hardware.neuralnetworks-shim-service-mtk
-vendor/bin/hw/android.hardware.neuralnetworks-shim-service-mtk-lazy
-vendor/lib64/libneuralnetworks_sl_driver_mtk_prebuilt.so
 vendor/lib64/libneuron_graph_delegate.mtk.so
 vendor/lib64/mt6789/libneuron_adapter_mgvi.so;SYMLINK=vendor/lib64/libneuron_adapter_mgvi.so
 vendor/lib64/mt6789/libneuron_runtime.6.so;SYMLINK=vendor/lib64/libneuron_runtime.6.so
@@ -3683,7 +3674,6 @@ vendor/bin/ccci_mdinit
 vendor/bin/ccci_rpcd
 vendor/bin/charon
 vendor/bin/chg_sence
-vendor/bin/conninfra_loader
 vendor/bin/dmc_core
 vendor/bin/eara_io_service
 vendor/bin/epdg_wod
@@ -3691,9 +3681,7 @@ vendor/bin/fuelgauged
 vendor/bin/fuelgauged_nvram
 vendor/bin/gsm0710muxd
 vendor/bin/hw/android.hardware.security.keymint@3.0-service.trustonic
-vendor/bin/hw/android.hardware.security.secretkeeper@1.0-service.trustonic
 vendor/bin/hw/mtkfusionrild
-vendor/bin/hw/tetheroffloadservice
 vendor/bin/hw/trancamserver
 vendor/bin/hw/vendor.trustonic.tee-service
 vendor/bin/hw/vtservice_aidl
@@ -3708,7 +3696,6 @@ vendor/bin/mt6789/v3avpud-64b.mt6789;SYMLINK=vendor/bin/v3avpud-64b,vendor/bin/v
 vendor/bin/mtk_agpsd
 vendor/bin/mtk_lbs_service
 vendor/bin/mtk_pkm_service
-vendor/bin/mtk_plpath_utils_ota
 vendor/bin/mtk_storageproxyd
 vendor/bin/muxreport
 vendor/bin/netdagent
@@ -4442,7 +4429,6 @@ vendor/lib64/mt6789/libimageio_plat_pipe.so;SYMLINK=vendor/lib64/libimageio_plat
 vendor/lib64/mt6789/liblpcnr.so;SYMLINK=vendor/lib64/liblpcnr.so
 vendor/lib64/mt6789/libmmagent.so;SYMLINK=vendor/lib64/libmmagent.so
 vendor/lib64/mt6789/libmml.so;SYMLINK=vendor/lib64/libmml.so
-vendor/lib64/mt6789/libmmlpqImpl.so;SYMLINK=vendor/lib64/libmmlpqImpl.so
 vendor/lib64/mt6789/libmorpho_video_stabilizer.so;SYMLINK=vendor/lib64/libmorpho_video_stabilizer.so
 vendor/lib64/mt6789/libmsnr.so;SYMLINK=vendor/lib64/libmsnr.so
 vendor/lib64/mt6789/libpq_cust_base.so;SYMLINK=vendor/lib64/libpq_cust_base.so

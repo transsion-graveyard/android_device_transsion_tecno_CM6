@@ -736,14 +736,6 @@
             <instance>default</instance>
         </interface>
     </hal>
-    <hal format="aidl">
-        <name>vendor.mediatek.hardware.mmlpq</name>
-        <version>2-5</version>
-        <interface>
-            <name>IMmlpq</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
     <hal format="hidl">
         <name>vendor.mediatek.hardware.mms</name>
         <version>1.6-7</version>
@@ -1010,13 +1002,6 @@
         <name>vendor.mediatek.hardware.neuropilot.agent</name>
         <interface>
             <name>IAgent</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="aidl">
-        <name>vendor.mediatek.hardware.neuropilot.neuronservice</name>
-        <interface>
-            <name>INeuronService</name>
             <instance>default</instance>
         </interface>
     </hal>
