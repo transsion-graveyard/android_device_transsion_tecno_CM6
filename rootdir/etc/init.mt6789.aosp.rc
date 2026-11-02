@@ -51,3 +51,9 @@ on post-fs-data
     chmod 0664 /sys/kernel/ged/hal/lowpwr_mode
     chown system system /sys/kernel/ged/hal/ged_npu_hint
     chmod 0664 /sys/kernel/ged/hal/ged_npu_hint
+
+on charger
+    mkdir /dev/thermal 0750 system system
+    mkdir /dev/thermal/tz-by-name 0750 system system
+    mkdir /dev/thermal/cdev-by-name 0750 system system
+    start vendor.thermal.symlinks
