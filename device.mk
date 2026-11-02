@@ -438,6 +438,9 @@ PRODUCT_PACKAGES += \
     android.hardware.radio.config@1.2 \
     android.hardware.radio.config@1.3
 
+# RIL
+ENABLE_VENDOR_RIL_SERVICE := true
+
 # Renderscript
 PRODUCT_PACKAGES += \
     android.hardware.renderscript@1.0
