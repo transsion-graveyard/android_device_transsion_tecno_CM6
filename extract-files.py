@@ -113,11 +113,12 @@ blob_fixups: blob_fixups_user_type = {
     'vendor/bin/mnld': blob_fixup()
         .replace_needed('libmnl.so', 'libmnl_mtk.so')
         .replace_needed('android.hardware.sensors-V2-ndk.so', 'android.hardware.sensors-V3-ndk.so'),
-    ('vendor/lib64/mt6789/libcam.utils.sensorprovider.so',
-     'vendor/lib64/hw/mt6789/vendor.mediatek.hardware.pq_aidl-impl.so'): blob_fixup()
+    'vendor/lib64/mt6789/libcam.utils.sensorprovider.so': blob_fixup()
+        .replace_needed('android.hardware.sensors-V2-ndk.so', 'android.hardware.sensors-V3-ndk.so'),
+    'vendor/lib64/hw/mt6789/vendor.mediatek.hardware.pq_aidl-impl.so': blob_fixup()
+        .replace_needed('libtinyxml2.so', 'libtinyxml2-v34.so')
         .replace_needed('android.hardware.sensors-V2-ndk.so', 'android.hardware.sensors-V3-ndk.so'),
     ('vendor/bin/hw/mt6789/android.hardware.graphics.allocator-V2-service-mediatek.mt6789',
-     'vendor/lib64/hw/hwcomposer.mtk_common.so',
      'vendor/lib64/hw/mt6789/android.hardware.graphics.allocator-V2-mediatek.so',
      'vendor/lib64/hw/mt6789/mapper.mediatek.so',
      'vendor/lib64/libaimemc.so',
@@ -127,6 +128,9 @@ blob_fixups: blob_fixups_user_type = {
      'vendor/lib64/libgpud.so',
      'vendor/lib64/vendor.mediatek.hardware.camera.isphal-V1-ndk.so',
      'vendor/lib64/vendor.mediatek.hardware.pq_aidl-V8-ndk.so'): blob_fixup()
+        .replace_needed('android.hardware.graphics.common-V6-ndk.so', 'android.hardware.graphics.common-V7-ndk.so'),
+    'vendor/lib64/hw/hwcomposer.mtk_common.so': blob_fixup()
+        .replace_needed('libtinyxml2.so', 'libtinyxml2-v34.so')
         .replace_needed('android.hardware.graphics.common-V6-ndk.so', 'android.hardware.graphics.common-V7-ndk.so'),
     'vendor/lib64/mt6789/libmtkcam_grallocutils.so': blob_fixup()
         .replace_needed('android.hardware.graphics.common-V5-ndk.so', 'android.hardware.graphics.common-V7-ndk.so'),
