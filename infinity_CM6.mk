@@ -23,3 +23,6 @@ PRODUCT_MODEL := TECNO CM6
 PRODUCT_MANUFACTURER := TECNO
 
 PRODUCT_GMS_CLIENTID_BASE := android-transsion
+
+# Whether Including Google Apps (Default: true)
+WITH_GAPPS := false
