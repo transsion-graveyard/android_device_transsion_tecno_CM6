@@ -447,11 +447,7 @@ PRODUCT_PACKAGES += \
 
 # Rootdir
 PRODUCT_PACKAGES += \
-    init.insmod.sh \
-    init.pstore_blk.sh \
-    init.tasksetEnd.sh \
-    init.tasksetStart.sh \
-    init.tran_mcf.sh
+    init.insmod.sh
 
 PRODUCT_PACKAGES += \
     fstab.mt6789 \

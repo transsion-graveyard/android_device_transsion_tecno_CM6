@@ -10,30 +10,6 @@ sh_binary {
     vendor: true,
 }
 
-sh_binary {
-    name: "init.pstore_blk.sh",
-    src: "bin/init.pstore_blk.sh",
-    vendor: true,
-}
-
-sh_binary {
-    name: "init.tasksetEnd.sh",
-    src: "bin/init.tasksetEnd.sh",
-    vendor: true,
-}
-
-sh_binary {
-    name: "init.tasksetStart.sh",
-    src: "bin/init.tasksetStart.sh",
-    vendor: true,
-}
-
-sh_binary {
-    name: "init.tran_mcf.sh",
-    src: "bin/init.tran_mcf.sh",
-    vendor: true,
-}
-
 // Init configuration files
 
 

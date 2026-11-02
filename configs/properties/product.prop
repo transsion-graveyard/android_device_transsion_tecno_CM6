@@ -207,7 +207,6 @@ ro.tran.hiber.support=1
 persist.tran.ai.net.support=1
 persist.tran.ai.net.ui_auto.support=1
 ro.tran.aosp.freezer.no.support=1
-persist.odm.tr_powerhal.kswapd0_bind.feature.support=-1
 ro.tran_low_storage_support=1
 ro.tran_remove_format_private.support=1
 ro.tr_cloudserver.feature.support=1

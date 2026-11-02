@@ -3847,7 +3847,6 @@ vendor/etc/init/init.storage_feature_cloudctl.rc
 vendor/etc/init/init.touch.rc
 vendor/etc/init/init.tp.rc
 vendor/etc/init/init.tran_healthinfo_upload.rc
-vendor/etc/init/init.tran_mcf.rc
 vendor/etc/init/init.volte_imcb.rc
 vendor/etc/init/init.volte_imsm_93.rc
 vendor/etc/init/init.volte_md_status.rc
@@ -3860,7 +3859,6 @@ vendor/etc/init/init.wmt_drv.rc
 vendor/etc/init/init.wod.rc
 vendor/etc/init/init.xcap.rc
 vendor/etc/init/ipsec_mon.rc
-vendor/etc/init/kswapd0_bind.rc
 vendor/etc/init/mbrain-mtk-default.rc
 vendor/etc/init/md_monitor.rc
 vendor/etc/init/mtk_agpsd_p.rc
