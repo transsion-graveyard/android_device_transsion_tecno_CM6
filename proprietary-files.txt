@@ -4287,8 +4287,6 @@ vendor/etc/virtual-spn-conf-by-efspn.xml
 vendor/etc/virtual-spn-conf-by-imsi.xml
 vendor/etc/wfd_source_capability.csv
 vendor/etc/xgf.cfg
--vendor/framework/androidx.camera.extensions.impl.dummy.jar
--vendor/framework/com.transsion.tranfacsdk.jar
 vendor/lib64/7816-3-T1.so
 vendor/lib64/APUWareAisteAidlServer.so
 vendor/lib64/APUWareApusysAidlServer.so
