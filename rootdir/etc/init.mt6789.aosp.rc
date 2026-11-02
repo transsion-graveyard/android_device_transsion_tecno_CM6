@@ -1,0 +1,53 @@
+# CM6 device-specific init additions.
+# Installed to /vendor/etc/init and imported automatically by init.
+
+on post-fs-data
+    # GED, GPU
+    # Keep these permissions in parity with the stock MTK power init rc. The AOSP
+    # power HAL writes the GED nodes from powerhint.json.
+    chown system system /sys/kernel/ged/hal/timer_base_dvfs_margin
+    chmod 0664 /sys/kernel/ged/hal/timer_base_dvfs_margin
+    chown system system /sys/kernel/ged/hal/loading_base_dvfs_step
+    chmod 0664 /sys/kernel/ged/hal/loading_base_dvfs_step
+    chown system system /sys/kernel/ged/hal/dvfs_margin_value
+    chmod 0664 /sys/kernel/ged/hal/dvfs_margin_value
+    chown system system /sys/kernel/ged/hal/dvfs_loading_mode
+    chmod 0664 /sys/kernel/ged/hal/dvfs_loading_mode
+    chown system system /sys/kernel/ged/hal/dvfs_workload_mode
+    chmod 0664 /sys/kernel/ged/hal/dvfs_workload_mode
+    chown system system /sys/class/misc/mali0/device/power_policy
+    chmod 0664 /sys/class/misc/mali0/device/power_policy
+    chown system system /sys/class/misc/mali0/device/pm_poweroff
+    chmod 0660 /sys/class/misc/mali0/device/pm_poweroff
+    chown system system /sys/kernel/ged/hal/total_gpu_freq_level_count
+    chmod 0664 /sys/kernel/ged/hal/total_gpu_freq_level_count
+    chown system system /sys/kernel/ged/hal/custom_boost_gpu_freq
+    chmod 0664 /sys/kernel/ged/hal/custom_boost_gpu_freq
+    chown system system /sys/kernel/ged/hal/custom_upbound_gpu_freq
+    chmod 0664 /sys/kernel/ged/hal/custom_upbound_gpu_freq
+    chown system system /proc/mgq/job_status
+    chmod 0664 /proc/mgq/job_status
+    chown system system /sys/kernel/ged/hal/dcs_mode
+    chmod 0664 /sys/kernel/ged/hal/dcs_mode
+    chown system system /sys/kernel/ged/hal/fw_idle
+    chmod 0664 /sys/kernel/ged/hal/fw_idle
+    chown system system /sys/kernel/ged/hal/gpu_boost_level
+    chmod 0664 /sys/kernel/ged/hal/gpu_boost_level
+    chown system system /sys/kernel/ged/hal/loading_window_size
+    chmod 0664 /sys/kernel/ged/hal/loading_window_size
+    chown system system /sys/kernel/ged/hal/loading_stride_size
+    chmod 0664 /sys/kernel/ged/hal/loading_stride_size
+    chown system system /sys/kernel/ged/hal/fallback_timing
+    chmod 0664 /sys/kernel/ged/hal/fallback_timing
+    chown system system /sys/kernel/ged/hal/fallback_interval
+    chmod 0664 /sys/kernel/ged/hal/fallback_interval
+    chown system system /sys/kernel/ged/hal/fallback_window_size
+    chmod 0664 /sys/kernel/ged/hal/fallback_window_size
+    chown system system /sys/kernel/ged/hal/fallback_frequency_adjust
+    chmod 0664 /sys/kernel/ged/hal/fallback_frequency_adjust
+    chown system system /sys/kernel/ged/hal/force_loading_base
+    chmod 0664 /sys/kernel/ged/hal/force_loading_base
+    chown system system /sys/kernel/ged/hal/lowpwr_mode
+    chmod 0664 /sys/kernel/ged/hal/lowpwr_mode
+    chown system system /sys/kernel/ged/hal/ged_npu_hint
+    chmod 0664 /sys/kernel/ged/hal/ged_npu_hint
