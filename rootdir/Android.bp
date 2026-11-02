@@ -34,12 +34,6 @@ sh_binary {
     vendor: true,
 }
 
-sh_binary {
-    name: "init.tran_memparams.sh",
-    src: "bin/init.tran_memparams.sh",
-    vendor: true,
-}
-
 // Init configuration files
 prebuilt_etc {
     name: "factory_init.connectivity.common.rc",

@@ -451,8 +451,7 @@ PRODUCT_PACKAGES += \
     init.pstore_blk.sh \
     init.tasksetEnd.sh \
     init.tasksetStart.sh \
-    init.tran_mcf.sh \
-    init.tran_memparams.sh \
+    init.tran_mcf.sh
 
 PRODUCT_PACKAGES += \
     fstab.mt6789 \

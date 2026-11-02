@@ -1139,15 +1139,5 @@ on property:persist.vendor.tran.wipedata=1 && property:ro.boot.atm=enable
 
 
 
-#USD: add auto set mem_param_sh by zekun.yang 20251217 start
-service tran_memparams_sh /vendor/bin/init.tran_memparams.sh
-    class main
-    user root
-    group root system
-    disabled
-    oneshot
 
-on property:sys.boot_completed=1
-    start tran_memparams_sh
-#USD: add auto set mem_param_sh by zekun.yang 20251217 end
 
