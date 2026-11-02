@@ -2376,9 +2376,6 @@ vendor/etc/vintf/manifest/vibrator-mtk-default.xml
 
 # Google
 vendor/apex/com.google.android.widevine.nonupdatable.apex
--vendor/app/NetworkStackGoogleGoResOverlay/NetworkStackGoogleGoResOverlay.apk
--vendor/app/NetworkStackGoogleResOverlay/NetworkStackGoogleResOverlay.apk
--vendor/app/TetheringGoogleResOverlay/TetheringGoogleResOverlay.apk
 
 # Graphics
 vendor/lib/egl/egl.cfg
@@ -3645,8 +3642,6 @@ odm/lib64/libwa_sat.so
 odm/lib64/mt6789/libFy-3A-Core.so;SYMLINK=odm/lib64/libFy-3A-Core.so
 odm/lib64/mt6789/libFy-3A-Param.so;SYMLINK=odm/lib64/libFy-3A-Param.so
 odm/lib64/mt6789/libyuvenhance.so;SYMLINK=odm/lib64/libyuvenhance.so
--vendor/app/NetworkStackResOverlay/NetworkStackResOverlay.apk
--vendor/app/TetheringResOverlay/TetheringResOverlay.apk
 vendor/app/mcRegistry/020f0000000000000000000000000000.drbin
 vendor/app/mcRegistry/020f0000000000000000000000000000.tlbin
 vendor/app/mcRegistry/05060000000000000000000000000000.tabin
