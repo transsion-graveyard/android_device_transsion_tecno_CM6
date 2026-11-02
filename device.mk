@@ -581,16 +581,17 @@ PRODUCT_PACKAGES += \
     android.hardware.vibrator-V2-ndk \
     libvibratorutils
 
-# Wifi
+# Wi-Fi (source stack; MTK libwifi-hal and vendor tools kept)
 PRODUCT_PACKAGES += \
     android.hardware.wifi-service \
-    android.hardware.wifi-V3-ndk \
-    android.hardware.wifi.common-V2-ndk \
-    android.hardware.wifi.hostapd-V3-ndk \
-    android.hardware.wifi.supplicant-V4-ndk \
-    android.system.wifi.keystore@1.0 \
-    libwifi-system-iface \
-    wlan_assistant
+    hostapd \
+    wpa_supplicant \
+    wlan_assistant \
+    libkeystore-engine-wifi-hidl \
+    libkeystore-wifi-hidl
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/wifi/wifi_hal.xml:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/vendor_hals/wifi_hal.xml
 
 # Permissions provided by AOSP Soong modules
 PRODUCT_PACKAGES += \

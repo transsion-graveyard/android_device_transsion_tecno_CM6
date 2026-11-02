@@ -2392,8 +2392,6 @@ vendor/lib64/libOpenCL.so
 # HotwordEnrollment
 
 # Keymaster
-vendor/lib64/libkeystore-engine-wifi-hidl.so
-vendor/lib64/libkeystore-wifi-hidl.so
 
 # Lights
 vendor/bin/hw/android.hardware.lights-service.mediatek
@@ -2601,9 +2599,12 @@ vendor/lib64/hw/vibrator.default.so
 vendor/lib64/vendor.aac.hardware.richtap.vibrator-V1-ndk.so
 
 # WiFi
-vendor/etc/init/android.hardware.wifi.supplicant-service.rc
-vendor/lib64/vendor.transsion.hardware.wifi.hostapd-V1-ndk.so
-vendor/lib64/vendor.transsion.hardware.wifi.tranSupplicant-V1-ndk.so
+vendor/bin/hostapd_cli
+vendor/bin/wpa_cli
+vendor/lib64/libwifi-hal.so:vendor/lib64/libwifi-hal_mtk.so;FIX_SONAME
+vendor/etc/wifi/p2p_supplicant_overlay.conf
+vendor/etc/wifi/wpa_supplicant.conf
+vendor/etc/wifi/wpa_supplicant_overlay.conf
 
 # Misc
 odm/app/mcRegistry/03020000000000000000000000000000.tabin
@@ -3683,8 +3684,6 @@ vendor/app/mcRegistry/abcd270ea5c44c58bcd3384a2fa2539e.tabin
 vendor/app/mcRegistry/ce4550edbcb1662566b006ebcb303050.tabin
 vendor/app/mcRegistry/df1edda8627911e980ae507b9d9a7e7d.tabin
 vendor/bin/AgentTest
-vendor/bin/atcid
-vendor/bin/ated
 vendor/bin/audiocmdservice_atci
 vendor/bin/autobt
 vendor/bin/bip
@@ -3763,9 +3762,6 @@ vendor/bin/volte_rcs_ua
 vendor/bin/volte_stack
 vendor/bin/volte_ua
 vendor/bin/wfca
-vendor/bin/wifi_dump
-vendor/bin/wifitest
-vendor/bin/wifitest7x
 vendor/bin/wmt_launcher
 vendor/bin/wmt_loader
 vendor/bin/xcap
@@ -4584,12 +4580,6 @@ vendor/lib64/libvow_comp_test.so
 vendor/lib64/libvp8dec_sa.ca7.so
 vendor/lib64/libvpu.so
 vendor/lib64/libvpu5.so
-vendor/lib64/libwapi.so
-vendor/lib64/libwifical.so
-vendor/lib64/libwifinvram.so
-vendor/lib64/libwifinvramdata.so
-vendor/lib64/libwifitest.so
-vendor/lib64/libwifitesttool.so
 vendor/lib64/libwo.so
 vendor/lib64/libwpfa.so
 vendor/lib64/mt6789/arm.graphics-V5-ndk.so;SYMLINK=vendor/lib64/arm.graphics-V5-ndk.so
