@@ -18,13 +18,6 @@
             <instance>default</instance>
         </interface>
     </hal>
-    <hal format="aidl">
-        <name>vendor.mediatek.hardware.mbrainj</name>
-        <interface>
-            <name>IMBrainJava</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
     <system-sdk>
         <version>36</version>
     </system-sdk>

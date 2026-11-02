@@ -55,7 +55,6 @@ ro.vendor.mtk_config_max_dram_size=
 ro.vendor.mtk_eccci_c2k=1
 ro.vendor.mtk_mcf_support=1
 persist.vendor.meta.connecttype=usb
-vendor.mbrain.build.version=
 persist.vendor.camera3.pipeline.bufnum.min.high_ram.imgo=6
 persist.vendor.camera3.pipeline.bufnum.min.low_ram.imgo=5
 persist.vendor.camera3.pipeline.bufnum.base.imgo=3
