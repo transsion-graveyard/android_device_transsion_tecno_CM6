@@ -204,7 +204,6 @@ ro.vendor.camera.custom.ae.range=0
 ro.vendor.camera.custom.ais.support=0
 ro.vendor.cam.flash_control.unsupport=0
 ro.vendor.camera.smallface_gtm2normalgtm_support=0
-ro.vendor.camera.enable_fpsgo_manual=false
 ro.vendor.camera.3rdcamapp_af_non_support=0
 ro.vendor.camera.preview_record.limitfreq=0
 import /mnt/vendor/tr_manifest/build.prop
