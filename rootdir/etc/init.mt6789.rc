@@ -1031,9 +1031,6 @@ on property:sys.boot_completed=1
 
     # zram writeback
     setprop persist.sys.zram_enabled 1
-#USD: add for memfusion2_2 by dongyun.liu at 20240927 start
-    # swapon_all /vendor/etc/fstab.enableswap
-#USD: add for memfusion2_2 by dongyun.liu at 20240927 end
 
 on property:sys.boot_completed=1
     write /proc/perfmgr/boost_ctrl/cpu_ctrl/boot_freq "-1 -1 -1 -1 -1 -1"
@@ -1140,24 +1137,7 @@ on property:persist.vendor.tran.wipedata=1 && property:ro.boot.atm=enable
     tran_factory_reset
 # USD:add custom factory reset by youyang.lin 20250529 end
 
-#USD: add for memfusion2_2 by dongyun.liu at 20240927 start
-on property:persist.odm.tr_memfusion.swapfile.support=false && property:sys.boot_completed=1
-    swapon_all /vendor/etc/fstab.enableswap
-on property:persist.odm.tr_memfusion.swapfile.support=true && property:ro.odm.tr_memfusion.version22.support=false && property:sys.boot_completed=1
-    swapon_all /vendor/etc/fstab.enableswap
-#USD: add for memfusion2_2 by dongyun.liu at 20240927 end
 
-#USD: add auto set pid  by dongyun.liu 20240821 start
-service mf_nowb_sh /vendor/bin/init.mf_nowb.sh
-    class main
-    user root
-    group root system
-    disabled
-    oneshot
-
-on property:sys.boot_completed=1
-    start mf_nowb_sh
-#USD: add auto set pid  by dongyun.liu 20240821 end
 
 #USD: add auto set mem_param_sh by zekun.yang 20251217 start
 service tran_memparams_sh /vendor/bin/init.tran_memparams.sh

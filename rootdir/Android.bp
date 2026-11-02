@@ -11,12 +11,6 @@ sh_binary {
 }
 
 sh_binary {
-    name: "init.mf_nowb.sh",
-    src: "bin/init.mf_nowb.sh",
-    vendor: true,
-}
-
-sh_binary {
     name: "init.pstore_blk.sh",
     src: "bin/init.pstore_blk.sh",
     vendor: true,

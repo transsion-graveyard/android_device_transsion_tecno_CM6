@@ -3724,7 +3724,6 @@ vendor/bin/loghidlvendorservice
 vendor/bin/mcDriverDaemon
 vendor/bin/md_monitor
 vendor/bin/md_monitor_ctrl
-vendor/bin/memfusion
 vendor/bin/mnld
 vendor/bin/mrdump_tool
 vendor/bin/mt6789/jpegtool;SYMLINK=vendor/bin/jpegtool
@@ -3852,7 +3851,6 @@ vendor/etc/init/init.fpsgo.rc
 vendor/etc/init/init.gps_drv.rc
 vendor/etc/init/init.led.rc
 vendor/etc/init/init.md_apps.rc
-vendor/etc/init/init.memfusion.rc
 vendor/etc/init/init.otg.rc
 vendor/etc/init/init.storage_feature_cloudctl.rc
 vendor/etc/init/init.touch.rc
@@ -3875,7 +3873,6 @@ vendor/etc/init/kswapd0_bind.rc
 vendor/etc/init/loghidlvendorservice.rc
 vendor/etc/init/mbrain-mtk-default.rc
 vendor/etc/init/md_monitor.rc
-vendor/etc/init/memfusion.rc
 vendor/etc/init/mtk_agpsd_p.rc
 vendor/etc/init/mtk_gnss.rc
 vendor/etc/init/mtk_lbs_service.rc
@@ -4271,8 +4268,6 @@ vendor/etc/usb_audio_accessory_only_policy_configuration.xml
 vendor/etc/vconfig/cloudengine/0000000000/0000000000
 vendor/etc/vconfig/ecc_list_tran2.xml
 vendor/etc/vconfig/gift/arc.ini
-vendor/etc/vconfig/memfusion2/fstab.enableswap
-vendor/etc/vconfig/memfusion2/fstab.enableswap_wb
 vendor/etc/vconfig/scaler/resolution_tuner_app_list.xml
 vendor/etc/vconfig/sim/card_tray_detect.cfg
 vendor/etc/vconfig/tran_sched/trans_sched_config.xml

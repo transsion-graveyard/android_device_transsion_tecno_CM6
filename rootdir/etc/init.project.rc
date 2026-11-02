@@ -56,10 +56,6 @@ on property:sys.boot_completed=1
     write /sys/kernel/tracing/instances/mmstat/events/mmstat/enable 1
     write /sys/kernel/tracing/instances/mmstat/tracing_on 1
 
-#USD: add for Memfusion2_2 by dongyun.liu 20240926 start
-on property:sys.boot_completed=1 && property:persist.odm.tr_memfusion.swapfile.support=true && property:ro.odm.tr_memfusion.version22.support=true
-    swapon_all /vendor/etc/vconfig/memfusion2/fstab.enableswap_wb
-#USD: add for Memfusion2_2 by dongyun.liu 20240926 end
 
 #USD: add kswapd params by junyi.liu 20260319 start
 #Set KSWAPD parameters for different RAM devices.

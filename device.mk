@@ -448,7 +448,6 @@ PRODUCT_PACKAGES += \
 # Rootdir
 PRODUCT_PACKAGES += \
     init.insmod.sh \
-    init.mf_nowb.sh \
     init.pstore_blk.sh \
     init.tasksetEnd.sh \
     init.tasksetStart.sh \
