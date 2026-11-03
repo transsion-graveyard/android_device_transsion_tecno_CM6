@@ -1,0 +1,23 @@
+//
+// SPDX-FileCopyrightText: 2026 The LineageOS Project
+// SPDX-License-Identifier: Apache-2.0
+//
+
+cc_binary {
+    name: "android.hardware.vibrator-service.cm6",
+    relative_install_path: "hw",
+    vendor: true,
+    init_rc: ["android.hardware.vibrator.cm6.rc"],
+    vintf_fragments: ["android.hardware.vibrator.cm6.xml"],
+    srcs: [
+        "main.cpp",
+        "Vibrator.cpp",
+        "VibratorManager.cpp",
+        "VibrationSession.cpp",
+    ],
+    shared_libs: [
+        "libbase",
+        "libbinder_ndk",
+        "android.hardware.vibrator-V4-ndk",
+    ],
+}

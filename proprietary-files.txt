@@ -2368,7 +2368,6 @@ vendor/etc/vintf/manifest/manifest_isphal.xml
 vendor/etc/vintf/manifest/manifest_media_c2_default.xml
 vendor/etc/vintf/manifest/mtk_lbs_service.xml
 vendor/etc/vintf/manifest/vendor.transsion.hardware.trancam.trancamserver.xml
-vendor/etc/vintf/manifest/vibrator-mtk-default.xml
 
 # Google
 vendor/apex/com.google.android.widevine.nonupdatable.apex
@@ -2403,7 +2402,6 @@ vendor/bin/hw/android.hardware.media.c2-mediatek-64b
 vendor/bin/hw/android.hardware.secure_element@1.2-service-mediatek
 vendor/bin/hw/android.hardware.usb-aidl-service.mediatek
 vendor/bin/hw/android.hardware.usb.gadget-aidl-service.mediatek
-vendor/bin/hw/android.hardware.vibrator-service.mediatek
 vendor/bin/hw/vendor.mediatek.hardware.gpuserv-service
 vendor/bin/hw/vendor.mediatek.hardware.mmagent-service
 vendor/bin/hw/vendor.mediatek.hardware.mms-service
@@ -2568,11 +2566,6 @@ vendor/etc/vconfig/thermalEngine/mtkGameScene.json
 vendor/etc/vconfig/thermalEngine/qt.cfg
 
 # Thermal-Hardware
-
-# Vibrator
-vendor/etc/init/vibrator-mtk-default.rc
-vendor/lib64/hw/vibrator.default.so
-vendor/lib64/vendor.aac.hardware.richtap.vibrator-V1-ndk.so
 
 # WiFi
 vendor/lib64/libwifi-hal.so:vendor/lib64/libwifi-hal_mtk.so;FIX_SONAME

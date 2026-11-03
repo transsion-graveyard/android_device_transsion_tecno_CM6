@@ -570,6 +570,7 @@ PRODUCT_PACKAGES += \
 
 # Vibrator
 PRODUCT_PACKAGES += \
+    android.hardware.vibrator-service.cm6 \
     android.hardware.vibrator-V2-ndk \
     libvibratorutils
 
