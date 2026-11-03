@@ -2525,6 +2525,9 @@ vendor/etc/vconfig/thermalEngine/qt.cfg
 
 # Thermal-Hardware
 
+# Transsion Camera
+system_ext/app/TranssionCamera/TranssionCamera.apk
+
 # WiFi
 vendor/lib64/libwifi-hal.so:vendor/lib64/libwifi-hal_mtk.so;FIX_SONAME
 vendor/etc/wifi/p2p_supplicant_overlay.conf

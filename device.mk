@@ -350,6 +350,7 @@ PRODUCT_PACKAGES += \
     FrameworksResTarget \
     LineagePlatformResTarget \
     NetworkStackResTarget \
+    TranCameraResTarget \
     SettingsResTarget \
     SystemUIResTarget \
     TetheringResTarget \

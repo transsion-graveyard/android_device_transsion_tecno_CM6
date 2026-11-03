@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="celebrity_food_hint">취향을 개선해 보기</string>
+    <string name="celebrity_sunset_hint">일몰 효과 강화해 보기</string>
+    <string name="documents_hint">문서 사용해 보기</string>
+    <string name="magic_sky_hint">스카이샵 사용해 보기</string>
+    <string name="portrait_hint">포트레이트 사용해 보기</string>
+    <string name="super_night_hint">슈퍼 나이트 사용해 보기</string>
+</resources>

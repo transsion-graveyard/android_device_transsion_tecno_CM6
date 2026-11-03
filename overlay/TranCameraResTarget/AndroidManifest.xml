@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:compileSdkVersion="34" android:compileSdkVersionCodename="14" package="com.transsion.camera.overlay.product" platformBuildVersionCode="34" platformBuildVersionName="14">
+    <overlay android:isStatic="true" android:priority="30" android:targetPackage="com.transsion.camera"/>
+    <application android:extractNativeLibs="false" android:hasCode="false">
+        <meta-data android:name="brand" android:value="tecno"/>
+        <meta-data android:name="projectName" android:value="CM6"/>
+        <meta-data android:name="market" android:value="OP"/>
+    </application>
+</manifest>
