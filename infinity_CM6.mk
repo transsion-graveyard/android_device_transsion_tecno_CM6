@@ -26,3 +26,8 @@ PRODUCT_GMS_CLIENTID_BASE := android-transsion
 
 # Whether Including Google Apps (Default: true)
 WITH_GAPPS := false
+
+# Infinity
+TARGET_HAS_UDFPS := true
+INFINITY_MAINTAINER := "qiratdahaf"
+PERF_ANIM_OVERRIDE := true

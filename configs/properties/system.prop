@@ -273,3 +273,8 @@ persist.log.tag.InputEventReceiverDispatchCycle=I
 # https://issuetracker.google.com/issues/385124056 with alias 4
 ro.build.backported_fixes.alias_bitset.long_list=18
 # end of file
+
+# InfinityX
+ro.infinity.camera=50MP + 50MP + 8MP
+ro.infinity.soc=MT6789
+ro.product.marketname=Camon 40 Pro 4G
