@@ -715,3 +715,7 @@ persist.vendor.fingerprint.sensor_location=540|2200|100
 persist.vendor.fingerprint.type=udfps_optical
 ro.tr_light.hbm.v2.lcd.level=5119
 ro.tr_light.hbm.v2.oled.level=5119
+
+# VRR (variable refreshrate detection)
+ro.surface_flinger.use_content_detection_for_refresh_rate=true
+ro.surface_flinger.set_touch_timer_ms=200
