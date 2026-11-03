@@ -1,0 +1,12 @@
+service vendor.ir-default /vendor/bin/hw/android.hardware.ir-service.cm6
+    interface aidl android.hardware.ir.IConsumerIr/default
+    class hal
+    user system
+    group system
+
+on boot
+    chmod 666 /dev/lirc0
+    chown system system /dev/lirc0
+
+    chmod 666 /dev/irtx
+    chown system system /dev/irtx

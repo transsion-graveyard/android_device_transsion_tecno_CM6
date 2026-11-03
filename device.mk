@@ -225,7 +225,7 @@ PRODUCT_PACKAGES += \
 
 # Infrared
 PRODUCT_PACKAGES += \
-    android.hardware.ir-service.example \
+    android.hardware.ir-service.cm6 \
     android.hardware.ir-V1-ndk
 
 # Kernel
