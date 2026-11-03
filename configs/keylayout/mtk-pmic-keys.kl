@@ -1,0 +1,11 @@
+# TECNO CM6 PMIC keys
+#
+# The side key reports Linux key code 605 (0x25d) from the
+# "mtk-pmic-keys" input device.  Generic.kl has no mapping for 605,
+# so the event is currently dropped by InputReader.
+#
+# The PMIC device also reports the normal power key.  Keep it mapped
+# here because a device-specific keylayout replaces Generic.kl for this
+# input device.
+key 116   POWER
+key 605   ASSIST
