@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- The MTK bypass_charger node reads back only 0/1 while its write
+         values are 0/110. Always write the configured value instead of
+         consulting the node's readback first. -->
+    <bool name="config_chargingControlToggleSetAlways">true</bool>
+</resources>

@@ -1,0 +1,9 @@
+//
+// SPDX-FileCopyrightText: 2026 The Infinity-X Project
+// SPDX-License-Identifier: Apache-2.0
+//
+
+runtime_resource_overlay {
+    name: "LineagePlatformResTarget",
+    vendor: true,
+}

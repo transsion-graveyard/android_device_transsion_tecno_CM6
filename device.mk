@@ -235,6 +235,15 @@ PRODUCT_PACKAGES += \
     android.hardware.health-V1-ndk \
     android.hardware.health-V4-ndk
 
+# Health | Bypass Charging
+PRODUCT_PACKAGES += \
+    vendor.lineage.health-service.default
+$(call soong_config_set,lineage_health,charging_control_charging_path,/sys/devices/platform/charger/bypass_charger)
+$(call soong_config_set,lineage_health,charging_control_charging_enabled,0)
+$(call soong_config_set,lineage_health,charging_control_charging_disabled,110)
+$(call soong_config_set_bool,lineage_health,charging_control_supports_bypass,true)
+$(call soong_config_set_bool,lineage_health,charging_control_supports_toggle,true)
+
 # Infrared
 PRODUCT_PACKAGES += \
     android.hardware.ir-service.cm6 \
@@ -333,6 +342,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_ENFORCE_RRO_TARGETS := *
 PRODUCT_PACKAGES += \
     FrameworksResTarget \
+    LineagePlatformResTarget \
     NetworkStackResTarget \
     SettingsResTarget \
     SystemUIResTarget \
