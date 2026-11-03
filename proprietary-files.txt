@@ -2360,7 +2360,6 @@ odm/etc/vintf/manifest/fingerprint-default.xml
 odm/etc/vintf/manifest/vendor.anc.fingerprint.extension.aidl_service.xml
 vendor/etc/vintf/manifest/CommandService.xml
 vendor/etc/vintf/manifest/gnss-mtk.xml
-vendor/etc/vintf/manifest/lights-mtk-default.xml
 vendor/etc/vintf/manifest/manifest_allocator.xml
 vendor/etc/vintf/manifest/manifest_cameraprovider.xml
 vendor/etc/vintf/manifest/manifest_hwcomposer.xml
@@ -2387,11 +2386,6 @@ vendor/lib64/libOpenCL.so
 # HotwordEnrollment
 
 # Keymaster
-
-# Lights
-vendor/bin/hw/android.hardware.lights-service.mediatek
-vendor/etc/init/lights-mtk-default.rc
-vendor/lib64/android.hardware.light@2.0.so
 
 # Listen
 vendor/lib64/hw/android.hardware.soundtrigger3-impl.so;SYMLINK=vendor/lib64/android.hardware.soundtrigger3-impl.so
@@ -2479,7 +2473,6 @@ vendor/lib64/vendor.mediatek.hardware.mmagent@1.0.so
 vendor/lib64/vendor.mediatek.hardware.mmagent@1.1.so
 vendor/lib64/vendor.mediatek.hardware.mmlpq-V3-ndk.so
 vendor/lib64/vendor.mediatek.hardware.mms-V1-ndk.so
-vendor/lib64/vendor.mediatek.hardware.mtklight-V1-ndk.so
 vendor/lib64/vendor.mediatek.hardware.mtkradioex.assist-V2-ndk.so
 vendor/lib64/vendor.mediatek.hardware.mtkradioex.assist-V4-ndk.so
 vendor/lib64/vendor.mediatek.hardware.mtkradioex.atci-V1-ndk.so

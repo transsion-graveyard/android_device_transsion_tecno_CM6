@@ -238,6 +238,7 @@ PRODUCT_COPY_FILES += \
 
 # Lights
 PRODUCT_PACKAGES += \
+    android.hardware.light-service.cm6 \
     android.hardware.light-V1-ndk \
     android.hardware.light-V2-ndk
 
