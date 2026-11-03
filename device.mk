@@ -130,6 +130,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libRSCpuRef
 
+# DeviceConfig
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/device-config-defaults:$(TARGET_COPY_OUT_SYSTEM)/etc/device-config-defaults
+
 # DRM
 PRODUCT_PACKAGES += \
     android.hardware.drm-V1-ndk \
