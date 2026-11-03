@@ -134,6 +134,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/device-config-defaults:$(TARGET_COPY_OUT_SYSTEM)/etc/device-config-defaults
 
+# Display | SurfaceFlinger
+SOONG_CONFIG_NAMESPACES += surfaceflinger
+SOONG_CONFIG_surfaceflinger += frame_rate_category_high
+SOONG_CONFIG_surfaceflinger_frame_rate_category_high := 120
+
 # DRM
 PRODUCT_PACKAGES += \
     android.hardware.drm-V1-ndk \
