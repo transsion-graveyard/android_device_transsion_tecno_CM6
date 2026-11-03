@@ -1,6 +1,10 @@
 # CM6 device-specific init additions.
 # Installed to /vendor/etc/init and imported automatically by init.
 
+# pixel-libperfmgr waits for this before starting its NodeLooperThread.
+on early-init
+    setprop vendor.powerhal.init 1
+
 on post-fs-data
     # GED, GPU
     # Keep these permissions in parity with the stock MTK power init rc. The AOSP

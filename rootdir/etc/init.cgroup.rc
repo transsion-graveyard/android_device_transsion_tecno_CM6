@@ -30,18 +30,3 @@ on post-fs-data
 
 on property:sys.boot_completed=1
     write /proc/sys/kernel/sched_migration_cost_ns 200000
-
-    # restore boot perf. tune
-    write /sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq 0
-    write /sys/devices/system/cpu/cpufreq/policy6/scaling_min_freq 0
-    write /sys/class/devfreq/mtk-dvfsrc-devfreq/userspace/set_freq 0
-    write /dev/cpuctl/system/cpu.uclamp.min 0
-    write /dev/cpuctl/system/cpu.uclamp.latency_sensitive 0
-    write /dev/cpuctl/system-background/cpu.uclamp.min 0
-    write /dev/cpuctl/system-background/cpu.uclamp.latency_sensitive 0
-    write /dev/cpuctl/foreground/cpu.uclamp.min 0
-    write /dev/cpuctl/foreground/cpu.uclamp.latency_sensitive 0
-    write /dev/cpuctl/top-app/cpu.uclamp.min 0
-    write /dev/cpuctl/top-app/cpu.uclamp.latency_sensitive 0
-    write /dev/cpuctl/background/cpu.uclamp.min 0
-    write /dev/cpuctl/background/cpu.uclamp.latency_sensitive 0
