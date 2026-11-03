@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+        Device NetworkStack config for TECNO CM6 (mt6789), built ground-up from the
+        stock vendor overlay:
+          vendor/app/NetworkStackResOverlay/NetworkStackResOverlay.apk
+          (pkg com.mediatek.networkstack.overlay, targetName NetworkStackConfig)
+        Both resources exist in this ROM's NetworkStack module
+        (packages/modules/NetworkStack) under the "NetworkStackConfig" overlayable policy.
+    -->
+
+    <string-array name="config_captive_portal_https_urls" translatable="false">
+        <item>https://connectivitycheck.gstatic.com/generate_204</item>
+        <item>https://www.google.cn/generate_204</item>
+    </string-array>
+
+    <bool name="config_no_sim_card_uses_neighbor_mcc">true</bool>
+</resources>

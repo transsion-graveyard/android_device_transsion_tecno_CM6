@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+      <dimen name="default_minimal_size_resizable_task">110.0dp</dimen>
+      <dimen name="docked_stack_divider_insets">8.0dp</dimen>
+</resources>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+        Device Tethering config for TECNO CM6 (mt6789), built ground-up from the
+        stock vendor overlay:
+          vendor/app/TetheringResOverlay/TetheringResOverlay.apk
+          (pkg com.mediatek.networkstack.tethering.overlay, targetName TetheringConfig)
+        All resources exist in this ROM's Tethering module
+        (packages/modules/Connectivity/Tethering) under the "TetheringConfig"
+        overlayable policy. Stock uses the MediaTek USB gadget naming (usb\\d) for
+        the NCM interface.
+    -->
+
+    <string-array name="config_tether_ncm_regexs" translatable="false">
+        <item>usb\\d</item>
+    </string-array>
+
+    <string-array name="config_tether_usb_regexs" translatable="false">
+        <item>rndis\\d</item>
+    </string-array>
+
+    <string-array name="config_tether_wifi_regexs" translatable="false">
+        <item>softap\\d</item>
+        <item>ap\\d</item>
+        <item>ap_br_ap\\d</item>
+    </string-array>
+
+    <bool name="config_tether_enable_legacy_wifi_p2p_dedicated_ip">true</bool>
+
+    <integer name="config_p2p_leases_subnet_prefix_length">0</integer>
+</resources>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Radius of the UDFPS enrollment progress ring, in dp.
+         AOSP defaults this to 280; the ring radius is
+         (sensorRadius + config_udfpsEnrollProgressBar). With the default 280 and
+         our HAL sensor radius of 100 the ring renders oversized (~760px diameter).
+         Set to 100 to match other UDFPS MT6789/Infinix devices (sensor radius 95,
+         same overlay value) so the progress ring encircles the fingerprint icon. -->
+    <integer name="config_udfpsEnrollProgressBar" translatable="false">100</integer>
+</resources>

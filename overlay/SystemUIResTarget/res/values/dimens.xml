@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Microns (um) per pixel for the CM6 1080x2436 panel (392.78 dpi):
+         1 inch = 25400 um, so pixel_pitch = 25400 / 392.78 ~= 64.0 um/px.
+         SystemUI's UdfpsOverlayInteractor.calculateIconSize() divides
+         R.dimen.udfps_icon_size by this value; with the AOSP default (-1) the
+         computed UDFPS icon/ring size is invalid and renders oversized. -->
+    <dimen name="pixel_pitch">64.0</dimen>
+
+    <!-- Distance from the bottom of the screen to the keyguard indication.
+         Kept small so the lock icon/indication does not overlap the UDFPS. -->
+    <dimen name="keyguard_indication_margin_bottom">12dp</dimen>
+
+    <!-- Y coordinate of the physical power button center, in pixels.
+         Used to align the power-button hint / keyguard side gesture. -->
+    <dimen name="physical_power_button_center_screen_location_y">1100px</dimen>
+
+    <!-- MUST be set per device. Allign left and right side staatusbar alignment. -->
+    <dimen name="status_bar_padding_end">2dp</dimen>
+    <dimen name="status_bar_padding_start">16dp</dimen>
+
+</resources>

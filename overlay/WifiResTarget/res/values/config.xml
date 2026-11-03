@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+        Device Wi-Fi config for TECNO CM6 (mt6789), built ground-up from the stock
+        Wi-Fi overlays in the firmware dump:
+          vendor/overlay/WifiResOverlay/WifiResOverlay.apk             (prio 0, target com.android.wifi.resources)
+          product/overlay/WifiSystemResOverlay/WifiSystemResOverlay.apk (prio 5)
+        Every resource below is verified to exist in this ROM's Wifi module
+        (packages/modules/Wifi/service/ServiceWifiResources) and is declared inside
+        the "WifiCustomization" overlayable policy.
+
+        Excluded (absent from this ROM's Wifi module):
+          config_wifi_random_mac_oui
+    -->
+
+    <integer-array name="config_wifiRssiLevelThresholds">
+        <item>-90</item>
+        <item>-85</item>
+        <item>-75</item>
+        <item>-64</item>
+    </integer-array>
+
+    <bool name="config_showConfirmationDialogForThirdPartyAppsEnablingWifi">true</bool>
+    <bool name="config_wifi5ghzSupport">true</bool>
+    <bool name="config_wifiAllowInsecureEnterpriseConfigurationsForSettingsAndSUW">true</bool>
+    <bool name="config_wifiAllowMultipleNetworksOnSameAwareNdi">true</bool>
+    <bool name="config_wifiDppAkmSupported">true</bool>
+    <bool name="config_wifiNetworkCentricQosPolicyFeatureEnabled">true</bool>
+    <bool name="config_wifiP2pGoIpAddressAllocationInEapolFrames">true</bool>
+    <bool name="config_wifiSaeH2eSupported">true</bool>
+    <bool name="config_wifiSoftapOweSupported">true</bool>
+    <bool name="config_wifiSoftapOweTransitionSupported">true</bool>
+    <bool name="config_wifiSoftapResetMaxClientSettingConfig">false</bool>
+    <bool name="config_wifiUpdateCountryCodeFromScanResultGeneric">true</bool>
+    <bool name="config_wifi_background_scan_support">true</bool>
+    <bool name="config_wifi_connected_mac_randomization_supported">true</bool>
+    <bool name="config_wifi_fast_bss_transition_enabled">true</bool>
+    <bool name="config_wifi_p2p_mac_randomization_supported">true</bool>
+    <bool name="config_wifi_softap_acs_supported">true</bool>
+    <bool name="config_wifi_softap_ieee80211ac_supported">true</bool>
+    <bool name="config_wifi_softap_sae_supported">true</bool>
+
+    <integer name="config_wifiDelayDisconnectOnImsLostMs">1000</integer>
+    <integer name="config_wifiVerboseLoggingAlwaysOnLevel">1</integer>
+
+    <string name="config_wifiSoftap2gChannelList">1-13</string>
+    <string name="config_wifiSoftap5gChannelList">36,38,40,42,44,46,48,149,153,157,161,165</string>
+    <string name="config_wifiSoftap6gChannelList">5,21,37,53,69,85,101,117,133,149,165,181,197,213,229</string>
+    <string name="config_wifi_tcp_buffers">1730560,3461120,6922240,524288,1048576,4525824</string>
+</resources>

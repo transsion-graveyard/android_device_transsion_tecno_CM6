@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+        Device framework config for TECNO CM6 (mt6789), built ground-up from the
+        stock framework_res overlays in the firmware dump. Priority order (highest
+        first): tr_region (980) > tr_product (970) > FrameworkResOverlayExt (2)
+        > FrameworkResOverlay (0). An entry is only ported if the resource exists
+        in THIS ROM's framework-res; Transsion-only / renamed resources are listed
+        under "Excluded" and are intentionally absent.
+
+        Sources:
+          tr_product/overlay/android/CM6_overlay_android.apk  (com.transsion.rro.framework_res.tr_product.cm6)
+          tr_region/overlay/android/CM6_overlay_android.apk   (com.transsion.rro.framework_res.tr_region.cm6)
+          vendor/overlay/FrameworkResOverlay/FrameworkResOverlay.apk       (com.mediatek.frameworkresoverlay)
+          vendor/overlay/FrameworkResOverlayExt/FrameworkResOverlayExt.apk (com.mediatek.FrameworkResOverlayExt)
+
+        Excluded (not present in this framework-res, or app not shipped):
+          config_dozeAfterScreenOff            -> this ROM names it config_dozeAfterScreenOffByDefault
+          config_hearing_aid_profile_supported -> resource does not exist here
+          config_dozeComponent                 -> com.transsion.aod (TranAodApk) is not shipped in this ROM
+          irq_device_map, power_profile (MTK)  -> overridden by higher-priority tr_product / use device default
+          config_priorityOnlyDndExemptPackages, required_apps_managed_*, supported_locales,
+          config_defaultDialer/Sms/Assistant/... -> reference Transsion apps absent from this ROM
+    -->
+
+    <!-- ===== LED fix (intentional; device HAS an LED, shipped cm6 led hal from dt) ===== -->
+    <bool name="config_intrusiveNotificationLed">true</bool>
+
+    <!-- ===== Verify DT2W (transsion FTS gesture wake, matches stock) =====
+         Stock: TranTp writes /proc/gesture_function "cc1"; at screen-off the
+         adaptive-ts driver enters TRAN_GESTURE_SUSPEND_MODE and reports
+         KEY_F26 (linux 198) on double-tap (widget: mtk-tpd.kl maps it to
+         WAKEUP). This bool makes PowerManagerService forward the
+         Settings.Secure.DOUBLE_TAP_TO_WAKE state to the power HAL
+         (Mode::DOUBLE_TAP_TO_WAKE), which fires the powerhint.json
+         DOUBLE_TAP_TO_WAKE action that arms the node. -->
+    <bool name="config_supportDoubleTapWake">true</bool>
+
+    <!-- ===== From FrameworkResOverlay (MediaTek, prio 0) ===== -->
+    <string-array name="config_globalActionsList">
+        <item>emergency</item>
+        <item>lockdown</item>
+        <item>power</item>
+        <item>restart</item>
+        <item>logout</item>
+        <item>screenshot</item>
+        <item>bugreport</item>
+        <item>standby</item>
+    </string-array>
+    <bool name="config_powerDecoupleAutoSuspendModeFromDisplay">true</bool>
+    <bool name="config_powerDecoupleInteractiveModeFromDisplay">true</bool>
+    <bool name="config_showNavigationBar">true</bool>
+    <bool name="config_supportsCamToggle">true</bool>
+    <bool name="config_supportsMicToggle">true</bool>
+    <bool name="config_supportMicNearUltrasound">true</bool>
+    <bool name="config_supportSpeakerNearUltrasound">true</bool>
+    <integer name="config_num_physical_slots">2</integer>
+    <integer name="config_screenBrightnessDoze">5</integer>
+    <string name="config_displayLightSensorType">android.sensor.light</string>
+
+    <!-- Brightness float model: min from tr_product (higher prio), max/default from FrameworkResOverlay -->
+    <item name="config_screenBrightnessSettingMinimumFloat" format="float" type="dimen">0.00293041</item>
+    <item name="config_screenBrightnessSettingMaximumFloat" format="float" type="dimen">1.0</item>
+    <item name="config_screenBrightnessSettingDefaultFloat" format="float" type="dimen">0.2</item>
+
+    <!-- ===== From FrameworkResOverlayExt (MediaTek, prio 2) ===== -->
+    <integer-array name="config_autoBrightnessLcdBacklightValues">
+        <item>8</item>
+        <item>64</item>
+        <item>98</item>
+        <item>104</item>
+        <item>110</item>
+        <item>116</item>
+        <item>122</item>
+        <item>128</item>
+        <item>134</item>
+        <item>182</item>
+        <item>255</item>
+        <item>255</item>
+        <item>255</item>
+        <item>255</item>
+        <item>255</item>
+        <item>255</item>
+        <item>255</item>
+        <item>255</item>
+    </integer-array>
+    <bool name="config_enableWifiDisplay">true</bool>
+    <bool name="config_suspendWhenScreenOffDueToProximity">true</bool>
+    <integer name="config_defaultPeakRefreshRate">120</integer>
+    <integer name="config_defaultRefreshRate">120</integer>
+
+    <!-- ===== From tr_product (prio 970) ===== -->
+    <bool name="config_automatic_brightness_available">true</bool>
+    <bool name="config_dockedStackDividerFreeSnapMode">true</bool>
+
+    <integer name="config_maximumScreenDimDuration">20000</integer>
+
+    <string name="config_mainBuiltInDisplayCutout">M -24,0 L -24,36 L 24,36 L 24,0 Z @dp</string>
+
+    <item name="config_screenBrightnessDimFloat" format="float" type="dimen">0.0145</item>
+    <item name="config_screenBrightnessMinimumDimAmountFloat" format="float" type="dimen">0.01</item>
+    <fraction name="config_maximumScreenDimRatio">33.334003%</fraction>
+
+    <integer-array name="config_ambientBrighteningThresholds">
+        <item>9000</item>
+        <item>4000</item>
+        <item>2000</item>
+        <item>1000</item>
+        <item>800</item>
+        <item>400</item>
+    </integer-array>
+    <integer-array name="config_ambientDarkeningThresholds">
+        <item>800</item>
+        <item>800</item>
+        <item>900</item>
+        <item>700</item>
+        <item>500</item>
+        <item>300</item>
+    </integer-array>
+    <integer-array name="config_ambientThresholdLevels">
+        <item>10</item>
+        <item>100</item>
+        <item>430</item>
+        <item>2000</item>
+        <item>20000</item>
+    </integer-array>
+    <array name="config_autoBrightnessDisplayValuesNits">
+        <item>5</item>
+        <item>34.6545</item>
+        <item>62.5</item>
+        <item>90.6504</item>
+        <item>97.1545</item>
+        <item>100.1016</item>
+        <item>140.5303</item>
+        <item>150.5788</item>
+        <item>161.0192</item>
+        <item>175.2868</item>
+        <item>181.3028</item>
+        <item>192.7367</item>
+        <item>243.0856</item>
+        <item>291.0505</item>
+        <item>351.9145</item>
+        <item>500</item>
+        <item>550</item>
+    </array>
+    <integer-array name="config_autoBrightnessLevels">
+        <item>6</item>
+        <item>18</item>
+        <item>34</item>
+        <item>82</item>
+        <item>128</item>
+        <item>256</item>
+        <item>384</item>
+        <item>512</item>
+        <item>768</item>
+        <item>900</item>
+        <item>1536</item>
+        <item>2000</item>
+        <item>2560</item>
+        <item>3148</item>
+        <item>4475</item>
+        <item>5000</item>
+    </integer-array>
+    <string-array name="config_nightDisplayColorTemperatureCoefficients">
+        <item>0.0</item>
+        <item>0.0</item>
+        <item>1.0</item>
+        <item>-0.00000000962353339</item>
+        <item>0.000153045476</item>
+        <item>0.387075169</item>
+        <item>-0.0000000189359041</item>
+        <item>0.000302412211</item>
+        <item>-0.250539474</item>
+    </string-array>
+    <string-array name="config_nightDisplayColorTemperatureCoefficientsNative">
+        <item>0.0</item>
+        <item>0.0</item>
+        <item>1.0</item>
+        <item>-0.00000000962353339</item>
+        <item>0.000153045476</item>
+        <item>0.387075169</item>
+        <item>-0.0000000189359041</item>
+        <item>0.000302412211</item>
+        <item>-0.250539474</item>
+    </string-array>
+    <integer-array name="config_screenBrightnessBacklight">
+        <item>1</item>
+        <item>15</item>
+        <item>30</item>
+        <item>45</item>
+        <item>60</item>
+        <item>75</item>
+        <item>90</item>
+        <item>105</item>
+        <item>120</item>
+        <item>135</item>
+        <item>150</item>
+        <item>165</item>
+        <item>180</item>
+        <item>195</item>
+        <item>210</item>
+        <item>225</item>
+        <item>240</item>
+        <item>255</item>
+    </integer-array>
+    <array name="config_screenBrightnessNits">
+        <item>2.9694</item>
+        <item>31.9561</item>
+        <item>64.5156</item>
+        <item>90.3381</item>
+        <item>119.3679</item>
+        <item>154.8711</item>
+        <item>190.7143</item>
+        <item>212.7924</item>
+        <item>237.6338</item>
+        <item>264.3849</item>
+        <item>292.8303</item>
+        <item>322.5649</item>
+        <item>356.2101</item>
+        <item>390.9088</item>
+        <item>427.0092</item>
+        <item>466.4044</item>
+        <item>505.9489</item>
+        <item>550</item>
+    </array>
+
+    <!-- ===== From tr_region (prio 980) ===== -->
+    <bool name="config_adaptive_sleep_available">true</bool>
+    <bool name="config_systemCaptionsServiceCallsEnabled">true</bool>
+    <integer name="config_veryLongPressOnPowerBehavior">1</integer>
+
+    <!-- Enforce no persistant AOD - CM6 supports only supports trasient AOD -->
+    <bool name="config_dozeAlwaysOnDisplayAvailable">false</bool>
+
+    <!-- ===== Screen-off UDFPS unlock =====
+         UdfpsController.isScreenOffUnlockEnabled() gates mAodInterruptRunnable.run()
+         in onAodInterrupt(): with the screen off (mScreenOn=false) the AOD finger-down
+         is otherwise deferred and onFingerDown never runs, so the HBM dim layer is
+         never shown. Stock enables the toggle and defaults it on. -->
+    <bool name="config_screen_off_udfps_enabled">true</bool>
+    <bool name="config_screen_off_udfps_default_on">true</bool>
+    <!-- Lift-to-wake (pickup gesture) -->
+    <bool name="config_dozePulsePickup">true</bool>
+    <bool name="config_dozePickupGestureEnabled">true</bool>
+
+    <!-- ===== High-perf transitions / power modes / haptics / sustained perf / unplug wake. -->
+    <bool name="config_deviceSupportsHighPerfTransitions">true</bool>
+    <bool name="config_enableAutoPowerModes">true</bool>
+    <bool name="config_enableHapticTextHandle">true</bool>
+    <bool name="config_sustainedPerformanceModeSupported">true</bool>
+    <bool name="config_unplugTurnsOnScreen">true</bool>
+
+    <!-- ===== From stock product overlay
+         (framework-res__sys_mssi_64_64only_cn_armv82__auto_generated_rro_product).
+         Values verified against the stock RRO; only entries that DIFFER from this
+         ROM's framework-res default / other overlays are listed here.
+         Stock keeps config_device_volte_available / _vt_available /
+         _wfc_ims_available = false (same as ours), so those are NOT overridden.
+         config_showNavigationBar and config_unplugTurnsOnScreen are already set above. -->
+
+    <!-- SIM hot-swap: with this false the framework (UiccSlot, R.bool.config_hotswapCapable)
+         raises the "restart required" prompt on SIM insert/remove. Stock sets it true so
+         SIMs are activated/removed live without a reboot. -->
+    <bool name="config_hotswapCapable">true</bool>
+    <bool name="config_use_sim_language_file">true</bool>
+    <bool name="skip_restoring_network_selection">true</bool>
+    <bool name="config_allow_ussd_over_ims">true</bool>
+    <bool name="config_useDevInputEventForAudioJack">true</bool>
+    <bool name="config_setColorTransformAccelerated">true</bool>
+    <bool name="config_sms_ask_every_time_support">true</bool>
+    <bool name="config_enableMultiUserUI">true</bool>
+    <bool name="config_switch_phone_on_voice_reg_state_change">false</bool>
+
+</resources>

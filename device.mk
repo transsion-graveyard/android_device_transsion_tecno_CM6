@@ -313,6 +313,13 @@ PRODUCT_PACKAGES += \
 
 # Overlays
 PRODUCT_ENFORCE_RRO_TARGETS := *
+PRODUCT_PACKAGES += \
+    FrameworksResTarget \
+    NetworkStackResTarget \
+    SettingsResTarget \
+    SystemUIResTarget \
+    TetheringResTarget \
+    WifiResTarget
 
 # Partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
