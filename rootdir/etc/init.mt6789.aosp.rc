@@ -52,6 +52,12 @@ on post-fs-data
     chown system system /sys/kernel/ged/hal/ged_npu_hint
     chmod 0664 /sys/kernel/ged/hal/ged_npu_hint
 
+# CM6/FTS double-tap-to-wake. /proc/gesture_function is created by the
+# touch driver; the power HAL's DOUBLE_TAP_TO_WAKE hint updates it after
+# settings changes, but it starts at cc0 on this build. Arm it once at boot.
+on boot
+    write /proc/gesture_function cc1
+
 on charger
     mkdir /dev/thermal 0750 system system
     mkdir /dev/thermal/tz-by-name 0750 system system
