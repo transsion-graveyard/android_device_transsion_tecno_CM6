@@ -244,6 +244,9 @@ $(call soong_config_set,lineage_health,charging_control_charging_disabled,110)
 $(call soong_config_set_bool,lineage_health,charging_control_supports_bypass,true)
 $(call soong_config_set_bool,lineage_health,charging_control_supports_toggle,true)
 
+# IMS
+$(call inherit-product, vendor/mediatek/ims/ims.mk)
+
 # Infrared
 PRODUCT_PACKAGES += \
     android.hardware.ir-service.cm6 \
