@@ -14,7 +14,6 @@ vendor/lib64/libaudiofmtconv.so
 vendor/lib64/libaudioloudc.so
 vendor/lib64/libaudiopolicyconfigxml_mtk_vendor.so
 vendor/lib64/libaudioprimarydevicehalifclient.so
-vendor/lib64/libaudiosmartpamtk.so
 vendor/lib64/libaudiotoolkit_vendor.so
 vendor/lib64/libtinycompress.so
 
@@ -2202,18 +2201,7 @@ system_ext/bin/kpoc_charger
 system_ext/etc/init/kpoc_charger.rc
 system_ext/lib64/libtranshowlogo.so
 
-# DRM
-vendor/lib64/liboemcrypto.so
-
 # DRM-Hardware
-
-# DRM-Widevine
-vendor/lib64/mediadrm/libdrmclearkeyplugin.so
-vendor/lib64/mediadrm/libmockdrmcryptoplugin.so
-
-# DTS
-vendor/lib64/libdts-eagle-shared.so
-vendor/lib64/libdtsdsec.so
 
 # Display-Hardware
 vendor/bin/hw/android.hardware.graphics.composer@3.4-service
@@ -2412,12 +2400,10 @@ vendor/lib64/hw/vendor.mediatek.hardware.nvram-impl.so
 vendor/lib64/hw/vendor.mediatek.hardware.videotelephony-impl.so
 vendor/lib64/libmtk-fusion-ril-prop-vsim.so
 vendor/lib64/libmtk-ril.so
-vendor/lib64/libmtk_bsg.so
 vendor/lib64/libmtkconfig.so
 vendor/lib64/libmtkconfigutils.so
 vendor/lib64/libmtkcutils.so
 vendor/lib64/libmtkgpuserv.so
-vendor/lib64/libmtkgpuservsdk_vendor.so
 vendor/lib64/libmtkhardware_legacy.so
 vendor/lib64/libmtkisp_metadata_v2.so
 vendor/lib64/libmtkisp_metadata_V3.so
@@ -2435,14 +2421,11 @@ vendor/lib64/libmtkshifter_vendor.so
 vendor/lib64/libMtkSpeechEnh.so
 vendor/lib64/libMtkSpeechEnh_swb.so
 vendor/lib64/libmtkspparser.so
-vendor/lib64/libmtkspparser_swb.so
 vendor/lib64/libmtksysutils.so
 vendor/lib64/libmtktinyxml.so
 vendor/lib64/libmtkutils.so
 vendor/lib64/mt6789/libmtk_drvb.so;SYMLINK=vendor/lib64/libmtk_drvb.so
 vendor/lib64/mt6789/libmtk_mali_user.so;SYMLINK=vendor/lib64/libmtk_mali_user.so
-vendor/lib64/vendor.mediatek.framework.mtksf_ext-V3-ndk.so
-vendor/lib64/vendor.mediatek.framework.mtksf_ext-V7-ndk.so
 vendor/lib64/vendor.mediatek.framework.mtksf_ext-V9-ndk.so
 vendor/lib64/vendor.mediatek.hardware.apuware.aiste-V1-ndk.so
 vendor/lib64/vendor.mediatek.hardware.apuware.apusys-V5-ndk.so
@@ -2457,7 +2440,6 @@ vendor/lib64/vendor.mediatek.hardware.lbs@1.0.so
 vendor/lib64/vendor.mediatek.hardware.mbrain-V6-ndk.so
 vendor/lib64/vendor.mediatek.hardware.mmagent-V1-ndk.so
 vendor/lib64/vendor.mediatek.hardware.mmagent@1.0.so
-vendor/lib64/vendor.mediatek.hardware.mmagent@1.1.so
 vendor/lib64/vendor.mediatek.hardware.mmlpq-V3-ndk.so
 vendor/lib64/vendor.mediatek.hardware.mms-V1-ndk.so
 vendor/lib64/vendor.mediatek.hardware.mtkradioex.assist-V2-ndk.so
@@ -2525,10 +2507,6 @@ vendor/lib64/mt6789/libneuron_runtime.so;SYMLINK=vendor/lib64/libneuron_runtime.
 
 # Novatek
 odm/etc/vconfig/display/nt37703a_fhdp_dsi_vdo_dsc_tm_tm_120hz_cm6_cust_color.xml
-odm/etc/vconfig/tran_fp/tran_fp_CM6_JV0307_tm_nt37703a.json
-
-# Power-Hardware
-vendor/lib64/hw/power.default.so
 
 # Sensors
 vendor/etc/elliptic_sensor.xml
@@ -3434,7 +3412,6 @@ vendor/etc/media_codecs_c2.xml
 vendor/etc/media_codecs_performance.xml
 odm/etc/vconfig/sensor/sensor_config.json
 odm/etc/vconfig/tran_avb.pubkey
-odm/etc/vconfig/tran_fp/tran_fp_project_info.json
 odm/etc/vintf/manifest_dsds.xml
 odm/etc/vintf/manifest_qsqs.xml
 odm/etc/vintf/manifest_ss.xml
@@ -3529,7 +3506,6 @@ vendor/app/mcRegistry/df1edda8627911e980ae507b9d9a7e7d.tabin
 vendor/bin/bip
 vendor/bin/ccci_mdinit
 vendor/bin/ccci_rpcd
-vendor/bin/chg_sence
 vendor/bin/epdg_wod
 vendor/bin/fuelgauged
 vendor/bin/fuelgauged_nvram
@@ -3623,7 +3599,6 @@ vendor/etc/init.insmod.mt6789.cfg
 vendor/etc/init.insmod.touch.cfg
 vendor/etc/init/android.hardware.security.keymint@3.0-service.trustonic_rkpv1.rc
 vendor/etc/init/camerahalserver.rc
-vendor/etc/init/chg_sence_init.rc
 vendor/etc/init/fuelgauged_init.rc
 vendor/etc/init/fuelgauged_nvram_init.rc
 vendor/etc/init/gpuserv-default.rc
@@ -3635,7 +3610,6 @@ vendor/etc/init/init.cccirpcd.rc
 vendor/etc/init/init.charger.rc
 vendor/etc/init/init.connfem.rc
 vendor/etc/init/init.gps_drv.rc
-vendor/etc/init/init.led.rc
 vendor/etc/init/init.md_apps.rc
 vendor/etc/init/init.otg.rc
 vendor/etc/init/init.touch.rc
@@ -3910,10 +3884,8 @@ vendor/lib64/libTranVideoSpot.so
 vendor/lib64/libTranfacFunction.so
 vendor/lib64/libTranfacUtils.so
 vendor/lib64/libUasClient.so
-vendor/lib64/libVkLayer_mfrc.so
 vendor/lib64/lib_iir.so
 vendor/lib64/lib_lvacfs.so
-vendor/lib64/lib_power_applist.so
 vendor/lib64/libaaa_aaautil.so
 vendor/lib64/libaaa_afassist_V2.so
 vendor/lib64/libaaa_afassistctrl.so
@@ -3926,10 +3898,7 @@ vendor/lib64/libaimemc.so
 vendor/lib64/libaiste.so
 vendor/lib64/libappgamepq.so
 vendor/lib64/libapu_mdw.so
-vendor/lib64/libapu_mdw_batch.so
 vendor/lib64/libapusys.so
-vendor/lib64/libarmnn.so
-vendor/lib64/libarmnn_ndk.mtk.vndk.so
 vendor/lib64/libaurisysdemo.so
 vendor/lib64/libbessound_hd_mtk_vendor.so
 vendor/lib64/libblisrc32_vendor.so
@@ -3959,10 +3928,7 @@ vendor/lib64/libcrypto-md.so
 vendor/lib64/libcsalgo.so
 vendor/lib64/libcurl-md.so
 vendor/lib64/libcvsd_mtk.so
-vendor/lib64/libdecrypt.so
-vendor/lib64/libdynamiclog.so
 vendor/lib64/libeeprom_recode.so
-vendor/lib64/libfft_vendor.so
 vendor/lib64/libfgauge_gm30.so
 vendor/lib64/libfile_op.so
 vendor/lib64/libforkexecwrap.so
@@ -4003,7 +3969,6 @@ vendor/lib64/libmcve.so
 vendor/lib64/libminiui.so
 vendor/lib64/libminizip.so
 vendor/lib64/libmipc.so
-vendor/lib64/libmmprofile.so
 vendor/lib64/libmnetlink_v104.so
 vendor/lib64/libmp4enc_sa.ca7.so
 vendor/lib64/libmsbc_mtk.so
@@ -4037,30 +4002,18 @@ vendor/lib64/libmvpu_pattern_25.so
 vendor/lib64/libmvpu_pattern_25_pub.so
 vendor/lib64/libmvpu_pattern_30.so
 vendor/lib64/libmvpu_pattern_pub.so
-vendor/lib64/libmvpu_runtime.so
-vendor/lib64/libmvpu_runtime_25.so
-vendor/lib64/libmvpu_runtime_25_pub.so
-vendor/lib64/libmvpu_runtime_30.so
 vendor/lib64/libmvpu_runtime_builtin.so
-vendor/lib64/libmvpu_runtime_builtin_25.so
 vendor/lib64/libmvpu_runtime_pub.so
 vendor/lib64/libmvpu_wrapper.so
-vendor/lib64/libmvpuop25_mtk_cv.so
-vendor/lib64/libmvpuop25_mtk_nn.so
-vendor/lib64/libmvpuop30_mtk_nn.so
 vendor/lib64/libmvpuop_mtk_cv.so
 vendor/lib64/libmvpuop_mtk_nn.so
 vendor/lib64/libnir_neon_driver_ndk.mtk.vndk.so
 vendor/lib64/libnpagent.so
-vendor/lib64/libnpagent_server.so
 vendor/lib64/libnputils.so
 vendor/lib64/libnvram.so
 vendor/lib64/libnvram_sec.so
-vendor/lib64/libnwk_opt_halwrap_vendor.so
 vendor/lib64/libocs_mtk_arsi.so
 vendor/lib64/libpixelflinger.so
-vendor/lib64/libpower_timer.so
-vendor/lib64/libpowerhal.so
 vendor/lib64/libpqcustutils.so
 vendor/lib64/libpqframework.so
 vendor/lib64/libpqhdrmetaparser.so
@@ -4100,7 +4053,6 @@ vendor/lib64/libultrahdr.so:vendor/lib64/libultrahdr_CM6.so;FIX_SONAME
 vendor/lib64/libultrahdr_mtk.so
 vendor/lib64/liburee_meta_drmkeyinstall.so
 vendor/lib64/libvcodec_oal.so
-vendor/lib64/libvcodecdrv_header_stub.so
 vendor/lib64/libverno.so
 vendor/lib64/libvgoservice.so
 vendor/lib64/libvia-ril.so
@@ -4110,7 +4062,6 @@ vendor/lib64/libvolte_core_shr.so
 vendor/lib64/libvolte_xdmc_shr.so
 vendor/lib64/libvp8dec_sa.ca7.so
 vendor/lib64/libvpu.so
-vendor/lib64/libvpu5.so
 vendor/lib64/libwo.so
 vendor/lib64/libwpfa.so
 vendor/lib64/mt6789/arm.graphics-V5-ndk.so;SYMLINK=vendor/lib64/arm.graphics-V5-ndk.so
@@ -4236,4 +4187,3 @@ vendor/lib64/vendor.transsion.performance.sched.aidl-V2-ndk.so
 vendor/lib64/vendor.trustonic.tee-V1-ndk.so
 vendor/lib64/vendor.trustonic.tui-V1-ndk.so
 vendor/lib64/vpp_hdrmeta_handler_plugin.so
-vendor/res/sound/testpattern1.wav
