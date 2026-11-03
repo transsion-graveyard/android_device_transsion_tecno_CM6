@@ -247,6 +247,9 @@ $(call soong_config_set_bool,lineage_health,charging_control_supports_toggle,tru
 # IMS
 $(call inherit-product, vendor/mediatek/ims/ims.mk)
 
+# IMS - Inherit Lineage compat stubs
+$(call inherit-product, hardware/lineage/compat/frameworks/compat.mk)
+
 # Infrared
 PRODUCT_PACKAGES += \
     android.hardware.ir-service.cm6 \
