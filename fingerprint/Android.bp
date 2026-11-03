@@ -1,0 +1,45 @@
+// In-tree fingerprint HAL for TECNO CM6.
+//
+// The source-built engine (vendor/lib64/anc.hal.so) is loaded at runtime via
+// dlopen() from Engine.h; it lives in another soong namespace and is
+// intentionally NOT a build dependency. The whole fingerprint stack (HAL
+// binary, engine, extension AIDL, libMcClient) installs on vendor.
+cc_binary {
+    name: "android.hardware.biometrics.fingerprint-service.jiiov",
+    defaults: ["hidl_defaults"],
+    vendor: true,
+    relative_install_path: "hw",
+    init_rc: ["fingerprint.jiiov.rc"],
+    vintf_fragments: [
+        "manifest_fingerprint_jiiov.xml",
+        "extension/manifest_anc_extension.xml",
+    ],
+
+    srcs: [
+        "service.cpp",
+        "Fingerprint.cpp",
+        "Session.cpp",
+        "SfDisplay.cpp",
+    ],
+
+    header_libs: [
+        "libanc_extension_headers",
+    ],
+
+    shared_libs: [
+        "libbase",
+        "libbinder_ndk",
+        "libcutils",
+        "liblog",
+        "libutils",
+        "android.hardware.biometrics.common-V3-ndk",
+        "android.hardware.biometrics.fingerprint-V3-ndk",
+        "android.hardware.keymaster-V4-ndk",
+        "vendor.anc.fingerprint.extension-V1-ndk",
+    ],
+
+    cflags: [
+        "-Wall",
+        "-Wextra",
+    ],
+}

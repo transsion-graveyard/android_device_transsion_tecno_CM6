@@ -226,7 +226,6 @@ vendor/lib64/libbt-vendor.so
 
 # Camera
 odm/lib64/libaipe_bokeh.so
-odm/lib64/libanc_extension_service.so
 odm/lib64/libanc_hdr.so
 odm/lib64/libanc_hdr_adapter_gc08a8wide_17201942_back_g97.so
 odm/lib64/libanc_hdr_adapter_gc08a8wide_17201942_back_g97_fast.so
@@ -2226,16 +2225,6 @@ vendor/lib64/hw/hwcomposer.mtk_common.so
 vendor/lib64/hw/mt6789/android.hardware.graphics.allocator-V2-mediatek.so;SYMLINK=vendor/lib64/hw/android.hardware.graphics.allocator-V2-mediatek.so
 vendor/lib64/vendor.mediatek.hardware.graphics-V1-ndk.so
 
-
-# Fingerprint
-odm/etc/init/fingerprint-default.rc
-odm/lib64/hw/jiiov.fingerprint.default.so
-odm/lib64/vendor.anc.fingerprint.extension-V1-ndk.so
-vendor/bin/hw/android.hardware.biometrics.fingerprint-service
-vendor/lib64/hw/tran_fingerprint.default.so
-vendor/lib64/vendor.hardware.biometrics.extension.fingerprint-V1-ndk.so
-vendor/lib64/vendor.transsion.hardware.biometrics.fingerprint-V1-ndk.so
-
 # Firmware
 odm/firmware/aw87xxx_acf.bin
 odm/firmware/BT_FW.cfg
@@ -2356,8 +2345,6 @@ vendor/etc/vintf/manifest/android.hardware.security.secureclock-service.trustoni
 vendor/etc/vintf/manifest/android.hardware.security.sharedsecret-service.trustonic.xml
 
 # Prebuilt HAL VINTF
-odm/etc/vintf/manifest/fingerprint-default.xml
-odm/etc/vintf/manifest/vendor.anc.fingerprint.extension.aidl_service.xml
 vendor/etc/vintf/manifest/CommandService.xml
 vendor/etc/vintf/manifest/gnss-mtk.xml
 vendor/etc/vintf/manifest/manifest_allocator.xml
@@ -3268,7 +3255,6 @@ odm/etc/asset/camera/watermark/watermark_640x480.nv21
 odm/etc/asset/camera/watermark/watermark_config
 odm/etc/asset/face/license.lic
 odm/etc/displayconfig/display_id_4627039422300187648.xml
-odm/etc/init/vendor.anc.rc
 odm/etc/media_profiles_V1_0.xml
 odm/etc/sensors/hals.conf
 odm/etc/vconfig/audio/Denoise_Param_Call_AI.json
@@ -3453,7 +3439,6 @@ odm/etc/vintf/manifest_dsds.xml
 odm/etc/vintf/manifest_qsqs.xml
 odm/etc/vintf/manifest_ss.xml
 odm/etc/vintf/manifest_tsts.xml
-odm/lib64/anc.hal.so
 odm/lib64/libPortraitEnhance_64.so
 odm/lib64/libTranColorEffectEngine.so
 odm/lib64/libTranDeFlare.so
@@ -3678,7 +3663,6 @@ vendor/etc/init/trancamserver.rc
 vendor/etc/init/trustonic.rc
 vendor/etc/init/trustonic_kmsetkey_ca.rc
 vendor/etc/init/v3avpud-64b.rc
-vendor/etc/init/vendor.transsion.rc
 vendor/etc/init/vendor.trustonic.tee-service.rc
 vendor/etc/init/vgoservice.rc
 vendor/etc/init/volte_clientapi_ua.rc
@@ -4105,7 +4089,6 @@ vendor/lib64/libtms_log_record.so
 vendor/lib64/libtneclient.so
 vendor/lib64/libtouch_rejection.so
 vendor/lib64/libtran_camkit_utils.so
-vendor/lib64/libtran_hal.so
 vendor/lib64/libtran_oismgr.so
 vendor/lib64/libtran_sensorhub_oismgr.so
 vendor/lib64/libtrancamJsonConvertor.so

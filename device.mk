@@ -178,7 +178,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.biometrics.common-V3-ndk \
     android.hardware.biometrics.common.thread \
-    android.hardware.biometrics.fingerprint-V3-ndk
+    android.hardware.biometrics.fingerprint-V3-ndk \
+    android.hardware.biometrics.fingerprint-service.jiiov \
+    vendor.anc.fingerprint.extension-V1-ndk \
+    anc_hal
 
 # GNS
 PRODUCT_PACKAGES += \

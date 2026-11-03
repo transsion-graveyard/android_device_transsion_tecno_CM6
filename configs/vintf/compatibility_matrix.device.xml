@@ -6,14 +6,6 @@
 -->
 <compatibility-matrix version="9.0" type="framework">
     <hal format="aidl">
-        <name>android.hardware.biometrics.fingerprint</name>
-        <version>3</version>
-        <interface>
-            <name>IFingerprint</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="aidl">
         <name>android.hardware.bluetooth</name>
         <interface>
             <name>IBluetoothHci</name>
@@ -213,34 +205,6 @@
         <version>1-2</version>
         <interface>
             <name>ICompression</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="aidl">
-        <name>vendor.dolby.dms</name>
-        <interface>
-            <name>IDms</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="aidl">
-        <name>vendor.hardware.transuccservice</name>
-        <interface>
-            <name>ITranHalSuccService</name>
-            <instance>com.transsion.stability.succ</instance>
-        </interface>
-    </hal>
-    <hal format="aidl">
-        <name>vendor.hardware.trantp</name>
-        <interface>
-            <name>ITrantp</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="aidl">
-        <name>vendor.hardware.trantp</name>
-        <interface>
-            <name>ITrantp</name>
             <instance>default</instance>
         </interface>
     </hal>
@@ -1137,13 +1101,6 @@
         <version>1.0</version>
         <interface>
             <name>IHDCPConnection</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="aidl">
-        <name>vendor.transsion.hardware.biometrics.fingerprint</name>
-        <interface>
-            <name>ITranssionFingerprintDaemon</name>
             <instance>default</instance>
         </interface>
     </hal>

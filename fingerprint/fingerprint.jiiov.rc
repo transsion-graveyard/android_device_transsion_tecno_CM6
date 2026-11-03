@@ -1,0 +1,38 @@
+service fingerprint.jiiov /vendor/bin/hw/android.hardware.biometrics.fingerprint-service.jiiov
+    class hal
+    user system
+    group system input
+    capabilities NET_ADMIN
+    interface aidl android.hardware.biometrics.fingerprint.IFingerprint/default
+
+on post-fs-data
+    mkdir /data/vendor/fingerprint/ 0771 system system
+    mkdir /mnt/vendor/persist/fingerprint 0771 system system
+    # Merged from stock odm/etc/init/vendor.anc.rc (jiiov HAL requirements):
+    # /dev/jiiov_fp ships root-owned; the HAL (uid system) opens O_RDWR.
+    chmod 0660 /dev/jiiov_fp
+    chown system root /dev/jiiov_fp
+    mkdir /data/vendor/fingerprint/factory_test 0777 system system
+    # Merged from stock vendor/etc/init/vendor.transsion.rc (Tran HAL compat
+    # + debug dumps; harmless when tran_fingerprint.default.so is absent):
+    mkdir /data/vendor/fpdump 0777 system system
+    mkdir /data/vendor/tran_fp 0777 system system
+    # Legacy tran_fp kernel-module node (compat; jiiov path is primary):
+    chmod 0660 /dev/tran_fp
+    chown system root /dev/tran_fp
+
+on boot
+    # focaltech FOD rect node ships root:root 0644; the HAL (uid system)
+    # arms the FOD area through it on every authenticate().
+    chmod 0666 /sys/devices/platform/soc/11019000.spi5/spi_master/spi5/spi5.0/special_area
+    # Arm the FOD spot before the first suspend. The HAL also attempts this
+    # at startup, but can lose the race with this chmod; doing it here makes
+    # the boot state deterministic and the property suppresses a re-arm.
+    write /sys/devices/platform/soc/11019000.spi5/spi_master/spi5/spi5.0/special_area "1 0 0 0 7920 34544 9360 35984 1"
+    setprop vendor.fp.special_area_armed 1
+    # Stock OpticalSetHbm() writes this node from the fingerprint HAL. Keep
+    # the same ownership for the AOSP bridge; no synthetic uevent is used.
+    chmod 0666 /sys/kernel/tran_display/lcm_hbm_state
+    chmod 0666 /sys/kernel/tran_display/lcm_name
+    chmod 0660 /proc/mtkfb
+    chown system system /proc/mtkfb

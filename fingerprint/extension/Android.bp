@@ -1,0 +1,41 @@
+// ANC fingerprint extension AIDL (recovered from stock NDK lib).
+// Interface version 1, hash a87b3c9b657bb24a7df897e225a6963e08b78063.
+// Generates vendor.anc.fingerprint.extension-V1-ndk (replaces prebuilt).
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+aidl_interface {
+    name: "vendor.anc.fingerprint.extension",
+    vendor_available: true,
+    owner: "transsion",
+    srcs: [
+        "vendor/anc/fingerprint/extension/IFingerprintExtension.aidl",
+        "vendor/anc/fingerprint/extension/IFingerprintExtensionClientCallback.aidl",
+        "vendor/anc/fingerprint/extension/AncStatus.aidl",
+    ],
+    stability: "vintf",
+    backend: {
+        ndk: {
+            enabled: true,
+            min_sdk_version: "30",
+        },
+        cpp: {
+            enabled: false,
+        },
+        java: {
+            enabled: false,
+        },
+    },
+    versions: ["1"],
+}
+
+// Rebuilt extension service logic (stock libanc_extension_service.so).
+// Header-only: AncFingerprintExtension + AncExtensionRegister().
+// Included by the fingerprint HAL binary (which already links the NDK
+// backend + binder libs that the header uses).
+cc_library_headers {
+    name: "libanc_extension_headers",
+    vendor_available: true,
+    export_include_dirs: ["."],
+}

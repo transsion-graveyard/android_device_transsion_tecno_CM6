@@ -1,0 +1,43 @@
+// anc.hal.so source rebuild (replaces the stock odm/lib64/anc.hal.so prebuilt).
+//
+// Installed to /vendor/lib64 so the whole fingerprint stack lives on vendor:
+// the HAL binary, the extension AIDL NDK library, libMcClient and the engine.
+// Engine.h still falls back to the stock /odm path for compatibility, but the
+// vendor copy is preferred.
+//
+// Evidence: logbook/aidl/ANC_HAL_REBUILD_SPEC.md (interface + manager +
+// TAC envelopes + ioctl map + workers, all with function@address),
+// logbook/aidl/ANC_ENUM_TABLES.md (all enum tables).
+//
+// Layer map (header-only, TU = AncHal.cpp):
+//   AncTypes.h            shared structs + cmd ids + ioctl map + slots
+//   tac/CaSession.h       TEEC session/transmit/send (libMcClient, prebuilt)
+//   sensor/SensorDevice.h /dev/jiiov_fp + TA-backed sensor ops
+//   algo/AlgoEnvelope.h   ALGORITHM/TOKEN/TEMPLATE builders
+//   manager/Manager.h     events + work consumer + finger wait
+//   manager/EnrollAuth.h  DoEnroll/DoAuthenticate + result mapping
+//   custom/CustomManager.h touch/HBM workers + netlink + factory dispatch
+cc_library_shared {
+    name: "anc_hal",
+    // Install to vendor (/vendor/lib64/anc.hal.so). Keep the SONAME stable:
+    // Engine.h dlopens it by name.
+    vendor: true,
+    stem: "anc.hal",
+    srcs: [
+        "AncHal.cpp",
+    ],
+    local_include_dirs: ["."],
+    cflags: [
+        "-Wall",
+        "-Wextra",
+        "-Wno-unused-parameter",
+    ],
+    shared_libs: [
+        "libbase",
+        "libcutils",
+        "liblog",
+        "libutils",
+        "libMcClient",
+        "libc++",
+    ],
+}
