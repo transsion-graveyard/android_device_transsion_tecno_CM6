@@ -218,7 +218,7 @@ PRODUCT_PACKAGES += \
 
 # Health
 PRODUCT_PACKAGES += \
-    android.hardware.health-service.example \
+    android.hardware.health-service.cm6 \
     android.hardware.health-service.example_recovery \
     android.hardware.health-V1-ndk \
     android.hardware.health-V4-ndk

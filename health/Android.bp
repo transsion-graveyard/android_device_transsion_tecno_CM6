@@ -1,0 +1,21 @@
+// SPDX-FileCopyrightText: 2026 The Infinity-X Project
+// SPDX-License-Identifier: Apache-2.0
+
+cc_binary {
+    name: "android.hardware.health-service.cm6",
+    vendor: true,
+    relative_install_path: "hw",
+    defaults: [
+        "libhealth_aidl_impl_user",
+        "libhealth_aidl_charger_defaults",
+    ],
+    srcs: ["Health.cpp"],
+    cflags: [
+        "-Wall",
+        "-Werror",
+    ],
+    static_libs: ["libhealth_aidl_impl"],
+    init_rc: ["android.hardware.health-service.cm6.rc"],
+    vintf_fragments: ["android.hardware.health-service.cm6.xml"],
+    overrides: ["charger"],
+}
