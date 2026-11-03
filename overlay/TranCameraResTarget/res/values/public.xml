@@ -488,12 +488,12 @@
     <public type="dimen" name="vlog_video_recording_time_text_size" id="0x7f0500cc" />
     <public type="dimen" name="vlog_video_recordingtime_text_margin_end" id="0x7f0500cd" />
     <public type="dimen" name="vlog_video_recordingtime_text_margin_start" id="0x7f0500ce" />
-    <public type="drawable" name="$ic_multi_fb_ai_on_background__0" id="0x7f060000" />
-    <public type="drawable" name="$ic_multi_fb_ai_on_background__1" id="0x7f060001" />
-    <public type="drawable" name="$ic_multi_fb_ai_on_background__2" id="0x7f060002" />
-    <public type="drawable" name="$ic_multi_fb_ai_on_background__3" id="0x7f060003" />
-    <public type="drawable" name="$ic_multi_fb_ai_on_background__4" id="0x7f060004" />
-    <public type="drawable" name="$ic_multi_fb_ai_on_background__5" id="0x7f060005" />
+    <public type="drawable" name="tran_chunk_mfbai0" id="0x7f060000" />
+    <public type="drawable" name="tran_chunk_mfbai1" id="0x7f060001" />
+    <public type="drawable" name="tran_chunk_mfbai2" id="0x7f060002" />
+    <public type="drawable" name="tran_chunk_mfbai3" id="0x7f060003" />
+    <public type="drawable" name="tran_chunk_mfbai4" id="0x7f060004" />
+    <public type="drawable" name="tran_chunk_mfbai5" id="0x7f060005" />
     <public type="drawable" name="a_video_filter_capetown" id="0x7f060006" />
     <public type="drawable" name="a_video_filter_mauritius" id="0x7f060007" />
     <public type="drawable" name="a_video_filter_monochrome" id="0x7f060008" />
