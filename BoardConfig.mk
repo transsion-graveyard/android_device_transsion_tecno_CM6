@@ -233,12 +233,14 @@ WIFI_HAL_INTERFACE_COMBINATIONS += ,{{{STA}, 1}, {{NAN}, 1}}
 
 WIFI_HIDL_UNIFIED_SUPPLICANT_SERVICE_RC_ENTRY := true
 
-# Device vendor sepolicy
+# Device sepolicy
 SEPOLICIES_PATH := $(CONFIGS_PATH)/sepolicies
-BOARD_VENDOR_SEPOLICY_DIRS += $(SEPOLICIES_PATH)/vendor
-
 # Inherit the MediaTek base vendor policy
 include device/mediatek/sepolicy_vndr/SEPolicy.mk
+# Device Selinux
+BOARD_VENDOR_SEPOLICY_DIRS += $(SEPOLICIES_PATH)/vendor
+SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(SEPOLICIES_PATH)/private
+SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += $(SEPOLICIES_PATH)/public
 
 # Inherit the proprietary files
 include vendor/transsion/tecno/CM6/BoardConfigVendor.mk
