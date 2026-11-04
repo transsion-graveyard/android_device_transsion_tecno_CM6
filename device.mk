@@ -183,6 +183,9 @@ PRODUCT_PACKAGES += \
     android.hardware.fastboot-service.example_recovery \
     fastbootd
 
+# Fenrir compatibility flag
+$(call soong_config_set_bool,fastbootd,bypass_lock_state,true)
+
 # Fingerprint - Biometrics
 PRODUCT_PACKAGES += \
     android.hardware.biometrics.common-V3-ndk \
