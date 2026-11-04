@@ -15,3 +15,336 @@ service vendor.charger /vendor/bin/hw/android.hardware.health-service.cm6 --char
     file /sys/fs/pstore/console-ramoops-0 r
     file /sys/fs/pstore/console-ramoops r
     file /proc/last_kmsg r
+
+# Charger-mode setup inherited from stock vendor init.charger.rc.
+# The stock rc is no longer extracted from proprietary-files.txt.
+on post-fs-data
+
+    #SDD:add OTG feature for TESSCR-6368 by weike.xu 20210512 start
+    chmod 0666 /sys/devices/platform/odm/odm:tran_battery/OTG_CTL
+    chmod 0666 /sys/devices/platform/charger/OTG_CTL
+    chown system system /sys/class/tran_class/water_detect/tran_wd_cmd
+    chmod 0664 /sys/class/tran_class/water_detect/tran_wd_cmd
+    #SDD:add OTG feature for TESSCR-6368 by weike.xu 20210512 end
+
+    #BSP: modify for battery aging feature XLBEPUB-6 by fan.hong 20200723 start
+    chmod 0666 /sys/devices/platform/odm/odm:tran_battery_aging/AGING_FG
+    chmod 0666 /sys/devices/platform/odm/odm:tran_battery_aging/AGING_CALCULATE
+    chmod 0666 /sys/devices/platform/odm/odm:tran_battery_aging/ESTIMATE_RATE
+    chmod 0666 /sys/devices/platform/odm/odm:tran_battery_aging/AGING_RESET
+    chmod 0666 /sys/devices/platform/odm/odm:tran_battery_aging/PLUG_TIMES
+    chmod 0666 /sys/devices/platform/odm/odm:tran_battery/tran_set_current
+	chmod 0666 /sys/devices/platform/soc/soc:odm/soc:odm:tran_battery/tran_set_current
+    chmod 0666 /sys/devices/platform/odm/odm:tran_battery/chg_mode
+    chmod 0666 /sys/led/led/tran_led_cmd
+    chmod 0666 /sys/pdlc/pdlc/tran_pdlc_cmd
+    #USD:CHG add led uncouple by pei.huang 20240507 start
+    chown system system /sys/led/led/tran_led_cmd
+    chown system system /sys/pdlc/pdlc/tran_pdlc_cmd
+    #USD:CHG add led uncouple by pei.huang 20240507 end
+    #USD:CHG add led uncouple by pei.huang 20240507 start
+    chmod 0666 /sys/led/led/tran_led_check
+    chown system system /sys/led/led/tran_led_check
+    #USD:CHG add led uncouple by pei.huang 20240507 end
+    chmod 0666 /sys/wireless/wireless/Rx/brushFW
+    chmod 0666 /sys/wireless/wireless/Rx/reverse_charger
+    chmod 0666 /sys/wireless/wireless/Rx/rxdetect
+    chmod 0666 /sys/wireless/wireless/Rx/fake_rx_detect
+    chmod 0666 /sys/wireless/wireless/Rx/rxfwver
+    #BSP: modify for battery aging feature XLBEPUB-6 by fan.hong 20200723 end
+
+    #BSP:CHG add super fast charger thermal parameter control by XLQEHBY-1890 minglong.li 20220121 start
+    chmod 0666 /sys/devices/platform/pca_dv2_algo/super_fast_charge_thermal
+    chown system system /sys/devices/platform/pca_dv2_algo/super_fast_charge_thermal
+    #BSP:CHG add super fast charger thermal parameter control by XLQEHBY-1890 minglong.li 20220121 end
+
+    #MG-CHG(Bypass):bypass function by yongqing 20221008 start
+    chown system system /sys/devices/platform/charger/tran_aichg_bigdata
+    chmod 0666 /sys/devices/platform/charger/tran_aichg_bigdata
+    chown system system /sys/devices/platform/charger/tran_aichg_disable_charger
+    chmod 0666 /sys/devices/platform/charger/tran_aichg_disable_charger
+    chown system system /sys/devices/platform/odm/odm:smart_charging/smart_charging
+    chmod 0666 /sys/devices/platform/odm/odm:smart_charging/smart_charging
+    #MG-CHG(Bypass):bypass function by yongqing 20221008 end
+
+    #BSP:CHG leds function by minglong.li 20230223 start
+    chown system system /sys/devices/platform/11d03000.i2c7/i2c-7/7-006a/tran_led_cmd
+    chmod 0666 /sys/devices/platform/11d03000.i2c7/i2c-7/7-006a/tran_led_cmd
+	chown system system /sys/devices/platform/soc/11d00000.i2c/i2c-1/1-0064/tran_led_cmd
+    chmod 0666 /sys/devices/platform/soc/11d00000.i2c/i2c-1/1-0064/tran_led_cmd
+	chown system system /sys/devices/platform/soc/11d00000.i2c/i2c-1/1-0045/tran_led_cmd
+    chmod 0666 /sys/devices/platform/soc/11d00000.i2c/i2c-1/1-0045/tran_led_cmd
+    #BSP:CHG leds function by minglong.li 20230223 start
+
+    #MD_CHG:add for charger by shaoan.zhu start Wed 20 Jul 2022 07:29:35 PM CST
+    chown system system /sys/devices/platform/11007000.i2c13/i2c-13/13-0055/battery_class/bq27z561_slave/batt_status
+    chmod 0666 /sys/devices/platform/11007000.i2c13/i2c-13/13-0055/battery_class/bq27z561_slave/batt_status
+    chown system system /sys/devices/platform/1101b000.i2c12/i2c-12/12-0055/battery_class/bq27z561_master/batt_status
+    chmod 0666 /sys/devices/platform/1101b000.i2c12/i2c-12/12-0055/battery_class/bq27z561_master/batt_status
+    chown system system /sys/devices/platform/11cc2000.i2c/i2c-12/12-0055/tran_class/tran_fg_master/batt_status
+    chmod 0666 /sys/devices/platform/11cc2000.i2c/i2c-12/12-0055/tran_class/tran_fg_master/batt_status
+    chown system system /sys/class/tran_class/tran_fg_master/batt_status
+    chmod 0666 /sys/class/tran_class/tran_fg_master/batt_status
+    #MD_CHG:add for charger by shaoan.zhu end Wed 20 Jul 2022 07:29:37 PM CST
+
+    chmod 0666 /sys/devices/platform/odm/odm:tc_gauge/tran_fixed_bat_tmp
+    chown system system /sys/devices/platform/odm/odm:tc_gauge/tran_fixed_bat_tmp
+
+    chown system system /sys/devices/platform/charger/adapter_capacity
+    chmod 0666 /sys/devices/platform/charger/adapter_capacity
+
+	chown system system  /sys/devices/platform/soc/11d00000.i2c/i2c-1/1-0030/rgb_blink
+	chmod 0666  /sys/devices/platform/soc/11d00000.i2c/i2c-1/1-0030/rgb_blink
+
+	chown system system  /sys/devices/platform/soc/11d00000.i2c/i2c-1/1-0030/rgb_breathe
+	chmod 0666  /sys/devices/platform/soc/11d00000.i2c/i2c-1/1-0030/rgb_breathe
+
+	chown system system  /sys/devices/platform/soc/11d00000.i2c/i2c-1/1-0030/rgb_brightness
+	chmod 0666  /sys/devices/platform/soc/11d00000.i2c/i2c-1/1-0030/rgb_brightness
+
+# MD_CHG:add for charger by kangning.hu 20230915 add start
+# tran_auto_test
+    chmod 0666 /sys/class/power_supply/tran-auto-test/vbus
+    chmod 0666 /sys/class/power_supply/tran-auto-test/ibus
+    chmod 0666 /sys/class/power_supply/tran-auto-test/vbat
+    chmod 0666 /sys/class/power_supply/tran-auto-test/ibat
+    chmod 0666 /sys/class/power_supply/tran-auto-test/vta
+    chmod 0666 /sys/class/power_supply/tran-auto-test/ita
+    chmod 0666 /sys/class/power_supply/tran-auto-test/bat_temp
+    chmod 0666 /sys/class/power_supply/tran-auto-test/pcb_temp
+    chmod 0666 /sys/class/power_supply/tran-auto-test/sw_temp
+    chmod 0666 /sys/class/power_supply/tran-auto-test/cp_temp
+    chmod 0666 /sys/class/power_supply/tran-auto-test/usb_temp
+    chmod 0666 /sys/class/power_supply/tran-auto-test/ta_temp
+    chmod 0666 /sys/class/power_supply/tran-auto-test/chg_type
+    chmod 0666 /sys/class/power_supply/tran-auto-test/chg_status
+    chmod 0666 /sys/class/power_supply/tran-auto-test/soc
+    chmod 0666 /sys/class/power_supply/tran-auto-test/r_cable
+    chmod 0666 /sys/class/power_supply/tran-auto-test/game_mode
+    chmod 0666 /sys/class/power_supply/tran-auto-test/cv
+    chmod 0666 /sys/class/power_supply/tran-auto-test/iterm
+    chmod 0666 /sys/class/power_supply/tran-auto-test/mivr
+    chmod 0666 /sys/class/power_supply/tran-auto-test/ilmt
+    chmod 0666 /sys/class/power_supply/tran-auto-test/fix_chg_type
+    chmod 0666 /sys/class/power_supply/tran-auto-test/stop_chg
+    chmod 0666 /sys/class/power_supply/tran-auto-test/quick_chg_back
+    chmod 0666 /sys/class/power_supply/tran-auto-test/irq_test
+    chmod 0666 /sys/class/power_supply/tran-auto-test/master_vbat
+    chmod 0666 /sys/class/power_supply/tran-auto-test/master_ibat
+    chmod 0666 /sys/class/power_supply/tran-auto-test/master_temp
+    chmod 0666 /sys/class/power_supply/tran-auto-test/master_soc
+    chmod 0666 /sys/class/power_supply/tran-auto-test/master_fcc
+    chmod 0666 /sys/class/power_supply/tran-auto-test/master_rc
+    chmod 0666 /sys/class/power_supply/tran-auto-test/slave_vbat
+    chmod 0666 /sys/class/power_supply/tran-auto-test/slave_ibat
+    chmod 0666 /sys/class/power_supply/tran-auto-test/slave_temp
+    chmod 0666 /sys/class/power_supply/tran-auto-test/slave_soc
+    chmod 0666 /sys/class/power_supply/tran-auto-test/slave_fcc
+    chmod 0666 /sys/class/power_supply/tran-auto-test/slave_rc
+    chmod 0666 /sys/class/power_supply/tran-auto-test/run_path
+    chown system system /sys/class/power_supply/tran-auto-test/vbus
+    chown system system /sys/class/power_supply/tran-auto-test/ibus
+    chown system system /sys/class/power_supply/tran-auto-test/vbat
+    chown system system /sys/class/power_supply/tran-auto-test/ibat
+    chown system system /sys/class/power_supply/tran-auto-test/vta
+    chown system system /sys/class/power_supply/tran-auto-test/ita
+    chown system system /sys/class/power_supply/tran-auto-test/bat_temp
+    chown system system /sys/class/power_supply/tran-auto-test/pcb_temp
+    chown system system /sys/class/power_supply/tran-auto-test/sw_temp
+    chown system system /sys/class/power_supply/tran-auto-test/cp_temp
+    chown system system /sys/class/power_supply/tran-auto-test/usb_temp
+    chown system system /sys/class/power_supply/tran-auto-test/ta_temp
+    chown system system /sys/class/power_supply/tran-auto-test/chg_type
+    chown system system /sys/class/power_supply/tran-auto-test/chg_status
+    chown system system /sys/class/power_supply/tran-auto-test/soc
+    chown system system /sys/class/power_supply/tran-auto-test/r_cable
+    chown system system /sys/class/power_supply/tran-auto-test/game_mode
+    chown system system /sys/class/power_supply/tran-auto-test/cv
+    chown system system /sys/class/power_supply/tran-auto-test/iterm
+    chown system system /sys/class/power_supply/tran-auto-test/mivr
+    chown system system /sys/class/power_supply/tran-auto-test/ilmt
+    chown system system /sys/class/power_supply/tran-auto-test/fix_chg_type
+    chown system system /sys/class/power_supply/tran-auto-test/stop_chg
+    chown system system /sys/class/power_supply/tran-auto-test/quick_chg_back
+    chown system system /sys/class/power_supply/tran-auto-test/irq_test
+    chown system system /sys/class/power_supply/tran-auto-test/master_vbat
+    chown system system /sys/class/power_supply/tran-auto-test/master_ibat
+    chown system system /sys/class/power_supply/tran-auto-test/master_temp
+    chown system system /sys/class/power_supply/tran-auto-test/master_soc
+    chown system system /sys/class/power_supply/tran-auto-test/master_fcc
+    chown system system /sys/class/power_supply/tran-auto-test/master_rc
+    chown system system /sys/class/power_supply/tran-auto-test/slave_vbat
+    chown system system /sys/class/power_supply/tran-auto-test/slave_ibat
+    chown system system /sys/class/power_supply/tran-auto-test/slave_temp
+    chown system system /sys/class/power_supply/tran-auto-test/slave_soc
+    chown system system /sys/class/power_supply/tran-auto-test/slave_fcc
+    chown system system /sys/class/power_supply/tran-auto-test/slave_rc
+    chown system system /sys/class/power_supply/tran-auto-test/run_path
+	# MD_CHG:add for charger by kangning.hu 20230915 add end
+
+    chmod 0666 /sys/devices/platform/odm/odm:wireless_manager/Rx/reverse_charger
+    chown system system /sys/devices/platform/odm/odm:wireless_manager/Rx/reverse_charger
+    chmod 0666 /sys/devices/platform/soc/soc:odm/soc:odm:wireless_manager/Rx/reverse_charger
+    chown system system /sys/devices/platform/soc/soc:odm/soc:odm:wireless_manager/Rx/reverse_charger
+
+	#BSP:added for EU battery information query by mingjian.chen 20250414 start
+	chown system system /sys/devices/platform/charger/battery_health_level
+	chmod 0664 /sys/devices/platform/charger/battery_health_level
+	chown system system /sys/devices/platform/charger/battery_health_percent
+	chmod 0664 /sys/devices/platform/charger/battery_health_percent
+	chown system system /sys/devices/platform/charger/bat_authent_support
+	chmod 0664 /sys/devices/platform/charger/bat_authent_support
+	chown system system sys/devices/platform/charger/bat_authent_soft_support
+	chmod 0664 /sys/devices/platform/charger/bat_authent_soft_support
+	chown system system /sys/devices/platform/charger/phone_active_date_reset
+	chmod 0664 /sys/devices/platform/charger/phone_active_date_reset
+	chown system system /sys/devices/platform/charger/bat_mac_date
+	chmod 0664 /sys/devices/platform/charger/bat_mac_date
+	chown system system /sys/devices/platform/charger/phone_active_date
+	chmod 0664 /sys/devices/platform/charger/phone_active_date
+	#BSP:added for EU battery information query by mingjian.chen 20250414 end
+
+on init
+	# MD_CHG:add for charger by kangning.hu 20230915 add start
+#Charger
+	chown system system /sys/devices/platform/charger/tran_battery_cycle
+	chmod 0666 /sys/devices/platform/charger/tran_battery_cycle
+	chown system system /sys/devices/platform/charger/reset_nv_battery_cycle
+	chmod 0666 /sys/devices/platform/charger/reset_nv_battery_cycle
+	chown system system /sys/devices/platform/charger/cycle_test
+	chmod 0666 /sys/devices/platform/charger/cycle_test
+	chown system system /sys/devices/platform/charger/ffc_status_cv
+	chmod 0666 /sys/devices/platform/charger/ffc_status_cv
+# MD_CHG:add for charger by kangning.hu 20230915 add end
+
+on charger
+    setprop service.kpoc_charger.triggered 1
+
+on property:service.kpoc_charger.triggered=1 && property:vendor.all.modules.ready=1
+    chmod 0660 /dev/spm
+    chown system system /dev/spm
+    start spm_script
+    chmod 0666 /dev/kmsg
+    chmod 0775 /mnt/vendor
+    mkdir /mnt/vendor/nvcfg
+    mount ext4 /dev/block/by-name/nvcfg /mnt/vendor/nvcfg rw wait
+    chown system system /mnt/vendor/nvcfg
+    chmod 0771 /mnt/vendor/nvcfg
+    restorecon_recursive /mnt/vendor/nvcfg
+    write /sys/devices/platform/battery_meter/FG_daemon_log_level 7
+    write /sys/bus/platform/devices/battery/FG_daemon_log_level 7
+    # Permissions for System Server and daemons.
+    chown system system /sys/power/autosleep
+    chown system system /sys/power/state
+    chown system system /sys/power/wakeup_count
+    chown radio wakelock /sys/power/wake_lock
+    chown radio wakelock /sys/power/wake_unlock
+    chmod 0660 /sys/power/state
+    chmod 0660 /sys/power/wake_lock
+    chmod 0660 /sys/power/wake_unlock
+    chmod 0660 /sys/power/wakeup_count
+    write /sys/power/pm_freeze_timeout 2000
+
+    # gauge symbolic
+    symlink /sys/kernel/gauge /dev/gauge
+    symlink /sys/devices/platform/soc/11280000.i2c/i2c-5/5-0034/11280000.i2c:mt6375@34:mtk-gauge /dev/gauge
+
+    start fuelgauged
+    start fuelgauged_nvram
+
+    chown system system /sys/class/leds/lcd-backlight/brightness
+    chown system system /sys/class/leds/lcd-backlight1/brightness
+    chown system system /sys/class/leds/red/brightness
+    chown system system /sys/class/leds/green/brightness
+
+    start vendor.light-default
+
+    chown system system /sys/devices/platform/charger/tran_battery_cycle
+    chmod 0666 /sys/devices/platform/charger/tran_battery_cycle
+
+    # Stop bootprof
+    write /proc/bootprof "0"
+
+on boot
+
+    #TCD:add XLJLHLJYR-21 by shouhui.li 2020.08.05 start
+    chmod 0666 /dev/MT_pmic_adc_cali
+    chmod 0666 /sys/class/leds/red/brightness
+    chmod 0666 /sys/class/leds/blue/brightness
+    chmod 0666 /sys/class/leds/green/brightness
+    chmod 0666 /sys/devices/platform/tran_battery/tran_bat_temp
+    chmod 0666 /sys/devices/platform/odm/odm:tran_battery/tran_bat_temp
+    #TCD:add XLJLHLJYR-21 by shouhui.li 2020.08.05 end
+
+    #CHG:ADD add LFQHLJYB-261 by minglong.li 20220104 LF7 backled start
+    chmod 0666 /sys/devices/platform/11007000.i2c0/i2c-0/0-005b/rgb_blink
+    chown system system /sys/devices/platform/11007000.i2c0/i2c-0/0-005b/rgb_blink
+    chmod 0666 /sys/devices/platform/11007000.i2c0/i2c-0/0-005b/rgb_breathe
+    chown system system /sys/devices/platform/11007000.i2c0/i2c-0/0-005b/rgb_breathe
+    chmod 0666 /sys/devices/platform/11007000.i2c0/i2c-0/0-005b/rgb_brightness
+    chown system system /sys/devices/platform/11007000.i2c0/i2c-0/0-005b/rgb_brightness
+    chmod 0666 /sys/devices/platform/11007000.i2c0/i2c-0/0-005b/rgb_alone_contrl
+    chown system system /sys/devices/platform/11007000.i2c0/i2c-0/0-005b/rgb_alone_contrl
+    chmod 0666 /sys/devices/platform/11007000.i2c0/i2c-0/0-005b/enable_IC
+    chown system system /sys/devices/platform/11007000.i2c0/i2c-0/0-005b/enable_IC
+    chmod 0666 /sys/devices/platform/11007000.i2c0/i2c-0/0-005b/get_backled_fpc
+    chown system system /sys/devices/platform/11007000.i2c0/i2c-0/0-005b/get_backled_fpc
+    #CHG:ADD add LFQHLJYB-261 by minglong.li 20220104 LF7 backled end
+
+    chmod 0666 /sys/class/leds/aw2026_led/brightness
+    chown system system /sys/class/leds/aw2026_led/brightness
+    chmod 0666 /sys/devices/platform/soc/11d00000.i2c/i2c-1/1-0064/leds/aw2026_led/brightness
+    chown system system /sys/devices/platform/soc/11d00000.i2c/i2c-1/1-0064/leds/aw2026_led/brightness
+
+    #TDD:add XWWYWPO-58 by weijia.huang 2018.07.19 start
+    chmod 0666 /sys/devices/platform/odm/odm:tran_battery/CHG_CAPACITY_TEST
+    chmod 0666 /proc/mtk_battery_cmd/en_safety_timer
+    #TDD:add XWWYWPO-58 by weijia.huang 2018.07.19 end
+
+    #BSP:CHG AICHARGER bigdata minglong.li 20220331 start
+    chown system system /sys/devices/platform/charger/tran_aichg_bigdata
+    chmod 0666 /sys/devices/platform/charger/tran_aichg_bigdata
+    chown system system /sys/devices/platform/charger/tran_aichg_disable_charger
+    chmod 0666 /sys/devices/platform/charger/tran_aichg_disable_charger
+    #BSP:CHG AICHARGER bigdata minglong.li 20220331 end
+
+    #USD:add temperature node by liangyuan.nong 20241226 start
+    chown system system /sys/class/power_supply/battery/temperature
+    chown system system /sys/class/power_supply/battery/temp
+    chmod 0666 /sys/class/power_supply/battery/temp
+    chmod 0666 /sys/class/power_supply/battery/temperature
+    #USD:add temperature node by liangyuan.nong 20241226 end
+
+    chown system system /sys/devices/platform/charger/tran_start_dec_soc
+    chmod 0666 /sys/devices/platform/charger/tran_start_dec_soc
+    chown system system /sys/devices/platform/charger/charge_decimal_level
+    chmod 0666 /sys/devices/platform/charger/charge_decimal_level
+    chown system system /sys/devices/platform/charger/bypass_charger
+    chmod 0666 /sys/devices/platform/charger/bypass_charger
+    chown system system /sys/devices/platform/charger/shipmode_enable
+    chmod 0666 /sys/devices/platform/charger/shipmode_enable
+    chown system system /sys/devices/platform/charger/tran_custom_disable_charger
+    chmod 0666 /sys/devices/platform/charger/tran_custom_disable_charger
+    chown system system /sys/devices/platform/charger/bat_warning_cmd
+    chmod 0666 /sys/devices/platform/charger/bat_warning_cmd
+
+    chown system system /sys/devices/platform/charger/chgspeed_ctl
+    chmod 0666 /sys/devices/platform/charger/chgspeed_ctl
+
+    chmod 0666 /sys/class/battery_repair/discharge
+    chmod 0666 /sys/devices/platform/charger/low_power_shutdown
+    chmod 0666 /sys/devices/platform/charger/tran_bat_repair_setup
+    chmod 0666 /sys/devices/platform/charger/tran_battery_last_cycle
+    chmod 0666 /sys/devices/platform/charger/tran_battery_cycle
+
+    # USD: add boost_ic_pwm_mode(CN6OS16-42) by jie.liu13  20260316 start
+    chown system system /sys/devices/platform/charger/boostic_pwm_mode
+    chmod 0666 /sys/devices/platform/charger/boostic_pwm_mode
+    # USD: add boost_ic_pwm_mode(CN6OS16-42) by jie.liu13  20260316 end
+
+on property:persist.sys.mutilelvel.charge=1
+    write /sys/devices/platform/charger/chgspeed_ctl "1:1"
+on property:persist.sys.mutilelvel.charge=2
+    write /sys/devices/platform/charger/chgspeed_ctl "1:2"
+on property:persist.sys.mutilelvel.charge=3
+    write /sys/devices/platform/charger/chgspeed_ctl "1:3"

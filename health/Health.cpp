@@ -77,6 +77,16 @@ int main(int argc, char** argv) {
     auto config = std::make_unique<healthd_config>();
     InitHealthdConfig(config.get());
 
+    // CM6 has no standard battery/state_of_health node. The stock trancharge
+    // service exposes the Transsion values through these charger nodes:
+    //   battery_health_percent -> transsion_bat_health_percent
+    //   tran_battery_cycle     -> transsion_bat_cycle
+    // Use the same nodes so the AOSP HAL reports the stock values.
+    config->batteryStateOfHealthPath =
+            "/sys/devices/platform/charger/battery_health_percent";
+    config->batteryCycleCountPath =
+            "/sys/devices/platform/charger/tran_battery_cycle";
+
     auto binder = SharedRefBase::make<HealthImpl>(kInstanceName, std::move(config));
 
     if (argc >= 2 && argv[1] == kChargerArg) {

@@ -3610,7 +3610,6 @@ vendor/etc/init/init.bip.rc
 vendor/etc/init/init.bt_drv.rc
 vendor/etc/init/init.cccimdinit.rc
 vendor/etc/init/init.cccirpcd.rc
-vendor/etc/init/init.charger.rc
 vendor/etc/init/init.connfem.rc
 vendor/etc/init/init.gps_drv.rc
 vendor/etc/init/init.md_apps.rc
