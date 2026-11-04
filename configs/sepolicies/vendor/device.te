@@ -1,0 +1,16 @@
+# Camera
+type cml421_ois_device, dev_type;
+type cwvi5300_device, dev_type;
+
+# Tkv
+type tkv_block_device, dev_type;
+
+# Fingerprint
+# NOTE: jiiov_fp_device is declared in the DT fingerprint.te (single source of truth).
+
+# Tranfs
+type tranfs_block_device, dev_type;
+
+# CCCI (Mediatek modem debug) - declared in mtk sepolicy_vndr base
+#type ccci_mdl_device, dev_type;
+

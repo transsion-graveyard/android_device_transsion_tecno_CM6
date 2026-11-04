@@ -1,0 +1,30 @@
+type trancamserver, domain, halserverdomain;
+type trancamserver_exec, exec_type, file_type, vendor_file_type;
+
+init_daemon_domain(trancamserver)
+
+# AIDL service registered via vndbinder/servicemanager
+allow trancamserver self:binder { call transfer };
+allow trancamserver servicemanager:binder { call transfer };
+allow servicemanager trancamserver:binder transfer;
+allow trancamserver vndbinder_device:chr_file rw_file_perms;
+
+allow trancamserver hal_trancamserver_hwservice:hwservice_manager { find add };
+allow trancamserver hidl_base_hwservice:hwservice_manager add;
+
+# TransSched is intentionally not brought up on this ROM - silence lookup noise
+dontaudit trancamserver default_android_service:service_manager find;
+
+# AIDL ITrancamserver/default registered with servicemanager (stock CM6 maps
+# this exact string to hal_trancamserver_service in vendor_service_contexts)
+allow trancamserver binder_device:chr_file rw_file_perms;
+allow trancamserver hal_trancamserver_service:service_manager { add find };
+
+# Stock CM6 trancamserver binder relationships.
+allow trancamserver mtk_hal_camera:binder transfer;
+allow trancamserver system_server:binder transfer;
+allow trancamserver hwservicemanager:binder { call transfer };
+allow cameraserver trancamserver:binder { call transfer };
+allow cameraserver trancamserver:fd use;
+allow cameraserver hal_trancamserver_hwservice:hwservice_manager find;
+allow cameraserver hal_trancamserver_service:service_manager find;

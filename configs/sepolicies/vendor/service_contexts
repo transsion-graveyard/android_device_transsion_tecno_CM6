@@ -1,0 +1,16 @@
+# Aligned with stock CM6 /vendor/etc/selinux/vendor_service_contexts
+vendor.mediatek.hardware.mtkradioex.ntn.IMtkRadioExNtn/slot1    u:object_r:hal_radio_service:s0
+vendor.mediatek.hardware.mtkradioex.ntn.IMtkRadioExNtn/slot2    u:object_r:hal_radio_service:s0
+vendor.mediatek.hardware.mtkradioex.ntn.IMtkRadioExNtn/slot3    u:object_r:hal_radio_service:s0
+vendor.mediatek.hardware.mtkradioex.ntn.IMtkRadioExNtn/slot4    u:object_r:hal_radio_service:s0
+vendor.transsion.hardware.biometrics.fingerprint.ITranssionFingerprintDaemon/default u:object_r:hal_fingerprint_service:s0
+vendor.transsion.hardware.trancam.trancamserver.ITrancamserver/default    u:object_r:hal_trancamserver_service:s0
+# ANC fingerprint extension (stock vendor_service_contexts line 183);
+# registered in-process by the DT fingerprint HAL (AncExtensionRegister).
+vendor.anc.fingerprint.extension.IFingerprintExtension/default     u:object_r:anc_extension_service:s0
+# MTK codec2 store instance; stock vendor_service_contexts line 173. Without it
+# the service falls back to default_android_service and mediaserver's find fails.
+android.hardware.media.c2.IComponentStore/default9    u:object_r:hal_codec2_service:s0
+# MTK nwk_opt AIDL service; stock vendor_service_contexts line 95. Without it the
+# service falls back to default_android_service and mtk_hal_nwk_opt's add fails.
+vendor.mediatek.hardware.nwk_opt_new.INwkOptNew/default    u:object_r:mtk_hal_nwk_opt_service:s0

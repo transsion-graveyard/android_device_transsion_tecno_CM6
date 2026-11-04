@@ -1,0 +1,9 @@
+# Fingerprint
+gf.debug.                                   u:object_r:vendor_fingerprint_prop:s0
+
+# Hardware
+ro.hardware.chipname                        u:object_r:exported_default_prop:s0
+
+# SVN
+ro.product.svn                              u:object_r:build_prop:s0
+persist.device_config.activity_manager.  u:object_r:device_config_activity_manager_native_boot_prop:s0

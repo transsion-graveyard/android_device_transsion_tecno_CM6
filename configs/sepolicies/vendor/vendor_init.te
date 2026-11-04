@@ -1,0 +1,17 @@
+allow vendor_init cgroup:file rw_file_perms;
+allow vendor_init proc:file { write w_file_perms };
+allow vendor_init proc_watermark_boost_factor:file w_file_perms;
+
+set_prop(vendor_init, vendor_camera_prop)
+set_prop(vendor_init, vendor_mtk_audiohal_prop)
+set_prop(vendor_init, vendor_mtk_audio_prop)
+set_prop(vendor_init, vendor_mtk_camera_prop)
+set_prop(vendor_init, vendor_fingerprint_prop)
+get_prop(vendor_init, vts_status_prop)
+dontaudit vendor_init vendor_userdir_file:dir write;
+
+rw_dir_file(vendor_init, sysfs_ged)
+
+# MTK SF frame-timing + boot-perf props are set from vendor build.prop (match stock labels)
+set_prop(vendor_init, vendor_mtk_debug_sf_duration_prop)
+set_prop(vendor_init, vendor_mtk_boot_perf_prop)

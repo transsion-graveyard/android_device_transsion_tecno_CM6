@@ -1,0 +1,20 @@
+# Trustonic TEE AIDL services - label defined by generic MTK base
+# (device/mediatek/sepolicy_vndr/base/vendor/service.te)
+
+# Project Infinity-X (tecno CM6): custom servicemanager label for our AIDL
+# fingerprint HAL registration. The platform pins fingerprint_service adds to
+# hal_fingerprint_server membership, which this domain deliberately avoids -
+# see hal_fingerprint_default.te.
+type jiiov_fp_service, service_manager_type;
+
+# AIDL Trancam camera extension service (stock CM6 labels
+# vendor.transsion.hardware.trancam.trancamserver.ITrancamserver/default)
+type hal_trancamserver_service, service_manager_type;
+
+# ANC fingerprint extension AIDL service (stock
+# vendor.anc.fingerprint.extension.IFingerprintExtension/default, type
+# anc_extension_service in stock vendor_sepolicy.cil).
+type anc_extension_service, service_manager_type;
+
+# MTK camera background service (IBGService). Declared in the DT bgs_service.te
+# (single source of truth, with hal_attribute_service(hal_mtk_bgs, ...)).

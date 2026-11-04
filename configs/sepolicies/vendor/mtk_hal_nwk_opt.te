@@ -1,0 +1,18 @@
+# The MTK base used here declares mtk_hal_nwk_opt with hwbinder_use() only, but
+# the stock A16 policy also grants it servicemanager binder call/transfer:
+#   allow mtk_hal_nwk_opt servicemanager:binder { call transfer };
+#   allow servicemanager mtk_hal_nwk_opt:binder { call transfer };
+# Reproduce that here instead of touching the shared device/mediatek base.
+binder_use(mtk_hal_nwk_opt)
+
+# The stock A16 policy maps the AIDL instance
+#   vendor.mediatek.hardware.nwk_opt_new.INwkOptNew/default
+# to a dedicated service type (stock vendor_service_contexts line 95):
+#   (type mtk_hal_nwk_opt_service)
+#   (allow hal_mtk_nwk_opt_client mtk_hal_nwk_opt_service (service_manager (find)))
+#   (allow hal_mtk_nwk_opt_server mtk_hal_nwk_opt_service (service_manager (add find)))
+# The MTK base this ROM uses only declares the HIDL-era mtk_hal_nwk_opt_hwservice,
+# so the AIDL registration fell back to default_android_service and the daemon
+# crash-looped on the { add } denial. Mirror the stock service type here.
+type mtk_hal_nwk_opt_service, service_manager_type, hal_service_type, protected_service;
+hal_attribute_service(hal_nwk_opt, mtk_hal_nwk_opt_service)

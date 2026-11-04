@@ -1,0 +1,2 @@
+# DT-side additions for MTK mobicore daemon (base owns the domain)
+allow mobicore property_socket:sock_file write;

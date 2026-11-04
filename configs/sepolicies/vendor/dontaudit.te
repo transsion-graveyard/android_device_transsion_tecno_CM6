@@ -1,0 +1,14 @@
+dontaudit {
+  audioserver
+  surfaceflinger
+  rild
+  hal_audio_default
+  mtk_hal_camera
+} default_prop:file r_file_perms;
+
+dontaudit {
+  audioserver
+  surfaceflinger
+  rild
+  mediaserver
+} vendor_default_prop:file r_file_perms;

@@ -1,0 +1,19 @@
+# Missing stock rules for the MTK tinysys Context Hub HAL.
+# The hal_contexthub_default type is declared in
+# system/sepolicy/vendor/hal_contexthub_default.te; this file only adds
+# the permissions the stock service had.
+
+allow hal_contexthub_default self:capability2 block_suspend;
+allow hal_contexthub_default self:cap2_userns block_suspend;
+
+allow hal_contexthub_default sysfs_wake_lock:file { ioctl read write getattr lock append map open watch watch_reads };
+
+allow hal_contexthub_default system_suspend_server:binder { call transfer };
+allow hal_contexthub_default system_suspend_server:fd use;
+allow hal_contexthub_default system_suspend_hwservice:hwservice_manager find;
+allow hal_contexthub_default hal_system_suspend_service:service_manager find;
+
+allow hal_contexthub_default servicemanager:binder { call transfer };
+allow hal_contexthub_default hwservicemanager:binder { call transfer };
+allow hal_contexthub_default hwservicemanager_prop:file { read getattr map open };
+allow hal_contexthub_default hidl_manager_hwservice:hwservice_manager find;

@@ -1,0 +1,38 @@
+allow init sysfs_devices_block:file rw_file_perms;
+allow init tranfs_block_device:blk_file { read relabelto };
+allow init trustonic_kmsetkey_ca_exec:file execute;
+allow init tmpfs:blk_file { open read };
+dontaudit init tmpfs:blk_file ioctl;
+
+get_prop(init, vendor_mtk_service_nvram_restore_prop)
+get_prop(init, vts_status_prop)
+
+allow init ccci_ccb_device:chr_file { read write open ioctl map };
+allow init ccci_device:chr_file { read write open };
+allow init sysfs_ccci:file { read open };
+ifelse(target_build_variant, `user', `', `
+allow init ccci_mdl_device:chr_file { read write open ioctl map getattr };
+allow init sysfs_soc_ccb_gear:file { read open };
+')
+allow init sysfs_boot_info:file { read open };
+allow init mdlog_data_file:file { append };
+allow init tranfs_block_device:lnk_file relabelto;
+allow init mobicore_user_device:chr_file { ioctl read write open getattr };
+
+# bootreceiver tracing setup - benign one-shot debugfs writes
+dontaudit init debugfs_bootreceiver_tracing:dir { write add_name };
+
+# Transsion modem connect-type; stock allows vendor_init to set it
+# (stock vendor_sepolicy.cil: allow vendor_init vendor_mtk_meta_connecttype_prop ...).
+set_prop(vendor_init, vendor_mtk_meta_connecttype_prop)
+
+# init creates/chowns bip_socket under /dev/socket (socket_device).
+allow init socket_device:sock_file { create setattr };
+
+# init.mt6789.aosp.rc applies the stock watermark tuning directly.
+allow init proc_watermark_scale_factor:file w_file_perms;
+
+# Stock vendor init.charger.rc chowns/chmods the Transsion battery nodes.
+allow init sysfs_battery_health:file { getattr setattr };
+allow init sysfs_batteryinfo:file { getattr setattr };
+allow init sysfs_batteryinfo:dir search;

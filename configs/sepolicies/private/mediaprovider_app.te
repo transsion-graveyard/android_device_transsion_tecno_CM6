@@ -1,0 +1,5 @@
+# com.android.providers.media.module (uid 10323, mediaprovider_app) looks up the
+# "isub" (subscription) binder service at startup. Stock plat policy grants no
+# mediaprovider_app -> radio_service access either, so the find denial is
+# stock-identical and benign: the lookup just fails and is handled. Silence it.
+dontaudit mediaprovider_app radio_service:service_manager find;

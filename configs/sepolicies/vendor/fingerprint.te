@@ -1,0 +1,71 @@
+# CM6 fingerprint stack: AOSP AIDL V3 HAL + Transsion wrapper + JIIOV optical
+# sensor + ANC (Trustonic TEE) extension.
+#
+# The stock Transsion vendor sepolicy defined the types below - they are visible
+# in the stock /vendor/etc/selinux/vendor_sepolicy.cil - but they are absent
+# from the MTK base policy this ROM builds. Without them the device/data/sysfs
+# nodes lose their labels and the fingerprint domain loses the matching allows.
+# Recreate the exact stock type set and allow rules here.
+
+# /dev/jiiov_fp - JIIOV optical under-display sensor char device.
+type jiiov_fp_device, dev_type;
+
+# /dev/tran_fp - Transsion (Goodix-style) fingerprint char device.
+type gf_device, dev_type;
+
+# /sys/kernel/tran_fp - tran_fp kernel module read/write sysfs attributes
+# (fod_location_xy, ic_name, vendor_name). Stock declares it as fs_type +
+# sysfs_type (see the stock vendor_sepolicy.cil typeattributeset).
+type sysfs_fp_name_path, fs_type, sysfs_type;
+
+# /data/vendor/fingerprint - calibration and factory-test data.
+type jiiov_vendor_data_file, file_type, data_file_type;
+
+# --- fingerprint HAL access to its nodes -------------------------------------
+
+# NOTE: AOSP forbids ioctl on every non-device class (domain.te "neverallowxperm
+# * *:{ dir file ... } ioctl { 0 }"), so dir/file rules below intentionally omit
+# it; only the chr_file device nodes keep ioctl.
+allow hal_fingerprint_default jiiov_fp_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow hal_fingerprint_default gf_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow hal_fingerprint_default sysfs_fp_name_path:dir { read getattr lock open watch watch_reads search };
+allow hal_fingerprint_default sysfs_fp_name_path:file { read write getattr lock append map open watch watch_reads };
+allow hal_fingerprint_default jiiov_vendor_data_file:dir { read write create getattr setattr lock rename open watch watch_reads add_name remove_name reparent search rmdir };
+allow hal_fingerprint_default jiiov_vendor_data_file:file { read write create getattr setattr lock append map unlink rename open watch watch_reads };
+
+# The JIIOV HAL opens a NETLINK_KOBJECT_UEVENT socket to watch the display/touch
+# state while an optical (UDFPS) session is active. Netlink sockets inherit the
+# creating process type, so the denial is against the domain itself.
+allow hal_fingerprint_default self:netlink_kobject_uevent_socket { create read write bind getattr setopt getopt };
+
+# --- init / vendor_init create + chown the nodes and data dir ---------------
+# (fingerprint/fingerprint.jiiov.rc; merged from stock
+#  odm/etc/init/fingerprint-default.rc, odm/etc/init/vendor.anc.rc,
+#  vendor/etc/init/vendor.transsion.rc)
+
+allow init jiiov_fp_device:chr_file { ioctl read write getattr open };
+allow vendor_init jiiov_fp_device:chr_file { ioctl read write getattr open };
+# post-fs-data mkdir/chown/chmod of /data/vendor/{fingerprint,fpdump,tran_fp}
+# and /mnt/vendor/persist/fingerprint by init (rc runs as init; new labels
+# jiiov_vendor_data_file/fpdump_vendor_data_file need explicit manage).
+allow init jiiov_vendor_data_file:dir { create read write getattr setattr lock rename open watch watch_reads add_name remove_name reparent search rmdir };
+allow init jiiov_vendor_data_file:file { create read write getattr setattr lock append map unlink rename open watch watch_reads };
+allow init fpdump_vendor_data_file:dir { create read write getattr setattr lock rename open watch watch_reads add_name remove_name reparent search rmdir };
+allow init fpdump_vendor_data_file:file { create read write getattr setattr lock append map unlink rename open watch watch_reads };
+
+# --- framework (system_app) reads/writes the jiiov data dir -----------------
+
+allow system_app jiiov_vendor_data_file:dir { read write create getattr setattr lock rename open watch watch_reads add_name remove_name reparent search rmdir };
+allow system_app jiiov_vendor_data_file:file { read write create getattr setattr lock append map unlink rename open watch watch_reads };
+
+# --- factory / meta test access ---------------------------------------------
+
+allow factory jiiov_fp_device:chr_file { ioctl read write getattr open };
+allow factory gf_device:chr_file { ioctl read write open };
+allow factory jiiov_vendor_data_file:dir { search };
+allow factory sysfs_fp_name_path:dir { read open search };
+allow factory sysfs_fp_name_path:file { read write open };
+
+allow meta_tst jiiov_fp_device:chr_file { ioctl read write getattr open };
+allow meta_tst gf_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow meta_tst jiiov_vendor_data_file:dir { search };

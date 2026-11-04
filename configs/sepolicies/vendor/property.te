@@ -1,0 +1,38 @@
+# Audio
+vendor_public_prop(vendor_audioserver_prop);
+
+# NFC
+vendor_internal_prop(vendor_nfc_prop);
+
+# Transsion Voice
+vendor_internal_prop(vendor_tran_voice_prop);
+
+# Transsion NFC
+vendor_internal_prop(vendor_tran_nfc_chip_prop);
+
+# Transsion VPNR Audio
+vendor_internal_prop(vendor_tran_vpnr_audio_prop);
+
+# NVRAM first-restore flag set by nvram_daemon
+vendor_internal_prop(vendor_nvram_first_restore_prop);
+
+# Fingerprint HAL publishes its display module name
+vendor_internal_prop(vendor_transsion_fingerprint_prop);
+
+# Fingerprint HAL finger-present status broadcast
+vendor_internal_prop(vendor_tran_fp_status_prop);
+
+# MTK SurfaceFlinger frame-timing debug props (stock label: vendor_mtk_debug_sf_duration_prop)
+vendor_restricted_prop(vendor_mtk_debug_sf_duration_prop);
+
+# MTK boot perf state (stock label: vendor_mtk_boot_perf_prop)
+vendor_restricted_prop(vendor_mtk_boot_perf_prop);
+
+# MTK venc driver debug prop read from libvcodecdrv_v3a.so. Only vendor.gce.test
+# is vendor-prefixed so it can be labeled here; the bare gce.test/vilte.test/
+# prepend.test stay default_prop and are dontaudited (vcodec_debug_prop.te).
+vendor_restricted_prop(vendor_mtk_venc_debug_prop);
+
+# MTK mediaserver fork reads vendor.sys.media.target.version (unmapped on stock,
+# so it lands in default_prop and the read is denied).
+vendor_restricted_prop(vendor_mtk_media_target_version_prop);

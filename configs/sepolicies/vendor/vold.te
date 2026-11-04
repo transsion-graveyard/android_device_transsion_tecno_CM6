@@ -1,0 +1,6 @@
+# vold traverses /mnt/vendor/persist (labeled persist_data_file) from a binder
+# thread during fstrim / remountUid. Base MTK vold.te dontaudits the identical
+# traversal for nvdata/md_sec/nvcfg/protect_f/protect_s but omits persist, and
+# stock vendor policy has no vold rule for persist_data_file at all, so the
+# denial is stock-identical and benign. Silence it without granting access.
+dontaudit vold persist_data_file:dir r_dir_perms;

@@ -1,0 +1,5 @@
+allow isolated_app app_data_file:file setattr;
+
+# content_capture_service is explicitly protected from isolated_app by the
+# platform neverallow in system/sepolicy/private/isolated_app_all.te. The
+# occasional find probe is expected to fail; do not grant it here.

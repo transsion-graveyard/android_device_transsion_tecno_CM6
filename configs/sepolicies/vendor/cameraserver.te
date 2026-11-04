@@ -1,0 +1,15 @@
+allow cameraserver dmabuf_system_heap_device:chr_file { ioctl read getattr lock map open watch watch_reads };
+allow cameraserver dmabuf_system_secure_heap_device:chr_file r_file_perms;
+allow cameraserver { sysfs_sub_torch_file sysfs_torch_file sysfs_wide_torch_file }:file rw_file_perms;
+
+get_prop(cameraserver, vendor_camera_prop)
+
+allow cameraserver same_process_hal_file:file { execute read open getattr map };
+
+# Stock CM6 camera server <-> MTK/Transsion camera HAL relationships.
+allow cameraserver mtk_hal_camera:binder { call transfer };
+allow cameraserver mtk_hal_camera:fd use;
+allow cameraserver trancamserver:binder { call transfer };
+allow cameraserver trancamserver:fd use;
+allow cameraserver hal_trancamserver_hwservice:hwservice_manager find;
+allow cameraserver hal_trancamserver_service:service_manager find;

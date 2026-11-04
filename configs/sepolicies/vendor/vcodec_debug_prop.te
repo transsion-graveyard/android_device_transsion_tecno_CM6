@@ -1,0 +1,13 @@
+# MTK venc driver debug props probed by libvcodecdrv_v3a.so.
+#
+# vendor.gce.test is vendor-prefixed, so it is labeled and can be read:
+get_prop(vpud_native, vendor_mtk_venc_debug_prop);
+get_prop(mediacodec, vendor_mtk_venc_debug_prop);
+#
+# gce.test / vilte.test / prepend.test are NOT vendor-prefixed, so they cannot
+# be mapped in vendor_property_contexts (check_prop_prefix / VTS) and stay
+# default_prop. The driver only probes them as debug toggles and falls back to
+# defaults when the read is denied (stock behaves the same), so silence the
+# benign denial rather than granting broad default_prop access.
+dontaudit vpud_native default_prop:file read;
+dontaudit mediacodec default_prop:file read;

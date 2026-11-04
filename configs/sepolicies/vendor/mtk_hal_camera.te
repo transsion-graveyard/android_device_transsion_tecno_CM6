@@ -1,0 +1,225 @@
+binder_call(mtk_hal_camera, trancamserver)
+
+# The camera EIS thread probes ro.zygote.disable_gl_preload through the
+# property area. Stock policy does not grant this vendor-domain read; grant it
+# explicitly because the HAL queries it during EIS setup.
+get_prop(mtk_hal_camera, zygote_config_prop)
+
+allow mtk_hal_camera cml421_ois_device:chr_file rw_file_perms;
+allow mtk_hal_camera cwvi5300_device:chr_file rw_file_perms;
+allow mtk_hal_camera sysfs_dt_firmware_android:dir search;
+allow mtk_hal_camera sysfs_dt_firmware_android:file r_file_perms;
+allow mtk_hal_camera sysfs_sub_torch_file:file rw_file_perms;
+allow mtk_hal_camera sysfs_torch_file:file rw_file_perms;
+allow mtk_hal_camera sysfs_wide_torch_file:file rw_file_perms;
+allow mtk_hal_camera sysfs_tran_cam_file:file rw_file_perms;
+allow mtk_hal_camera sysfs_sensor:dir r_dir_perms;
+allow mtk_hal_camera sysfs_sensor:file r_file_perms;
+allow mtk_hal_camera sysfs_therm:dir search;
+allow mtk_hal_camera sysfs_therm:file r_file_perms;
+# Stock vendor_sepolicy.cil parity: mtk_hal_camera gets dir {read write open add_name
+# search} and file {read write create getattr open}. The missing 'getattr' caused
+# AVC denials when the HAL stat()'d /data/vendor/multicam/sat/*.bin.
+allow mtk_hal_camera transsion_camera_data_file:dir { read write open add_name search };
+allow mtk_hal_camera transsion_camera_data_file:file { read write create getattr open };
+allow mtk_hal_camera vendor_arcsoft_data_file:dir { read write open add_name search };
+allow mtk_hal_camera vendor_arcsoft_data_file:file { read write create getattr open };
+allow mtk_hal_camera vendor_megvii_data_file:dir { read write open add_name search };
+allow mtk_hal_camera vendor_megvii_data_file:file { read write create getattr open };
+allow mtk_hal_camera vendor_watermark_data_file:dir { read write open add_name search };
+allow mtk_hal_camera vendor_watermark_data_file:file { read write create getattr open };
+allow mtk_hal_camera property_socket:sock_file write;
+allow mtk_hal_camera hal_trancamserver_hwservice:hwservice_manager find;
+allow mtk_hal_camera hal_trancamserver_service:service_manager find;
+allow mtk_hal_camera fwk_sensor_service:service_manager find;
+# optional Transsion perf-hint service (blob not shipped) - silence lookup noise
+dontaudit mtk_hal_camera default_android_service:service_manager find;
+
+get_prop(mtk_hal_camera, vendor_camera_prop)
+
+# IBGService is registered by camerahalserver on stock (hal_mtk_bgs_server attr)
+allow mtk_hal_camera mtk_hal_bgs_service:service_manager { add find };
+get_prop(mtk_hal_camera, graphics_config_prop)
+get_prop(mtk_hal_camera, graphics_config_writable_prop)
+get_prop(mtk_hal_camera, exported_default_prop)
+set_prop(mtk_hal_camera, vendor_mtk_camera_prop)
+set_prop(mtk_hal_camera, vendor_mtk_mediatek_prop)
+typeattribute mtk_hal_camera mlstrustedsubject;
+dontaudit mtk_hal_camera shell_data_file:dir search;
+allow mtk_hal_camera system_data_file:dir { search };
+dontaudit mtk_hal_camera unlabeled:filesystem getattr;
+
+
+# IPostDevice/default intentionally unmapped (service unused); silence lookup noise
+dontaudit mtk_hal_camera default_android_service:service_manager add;
+
+# EIS thread probes /data/system/user/<id>; AOSP neverallows vendor HAL
+# access to core data dirs - silence only (stock behaves the same)
+dontaudit mtk_hal_camera system_userdir_file:dir search;
+
+# MTK streaming algo maps executable memory (TRN STREAM threads)
+allow mtk_hal_camera self:process execmem;
+
+# ---------------------------------------------------------------------------
+# Stock CM6 camera HAL policy (vendor_sepolicy.cil mtk_hal_camera rules).
+# These are required by the Transsion camera stack and its camera HAL.
+# ---------------------------------------------------------------------------
+
+# Camera service / cameraserver / app binder path
+allow mtk_hal_camera cameraserver:binder { call transfer };
+allow mtk_hal_camera cameraserver:fd use;
+allow cameraserver mtk_hal_camera:binder { call transfer };
+allow cameraserver mtk_hal_camera:fd use;
+allow mtk_hal_camera platform_app_all:binder transfer;
+allow mtk_hal_camera platform_app_all:fd use;
+allow mtk_hal_camera vndservicemanager:binder { call transfer };
+allow mtk_hal_camera shell:binder { call transfer };
+allow mtk_hal_camera shell:fd use;
+allow mtk_hal_camera shell:unix_stream_socket { read write };
+allow mtk_hal_camera shell:fifo_file { write lock append map open };
+
+# Graphics / display services used by the camera pipeline
+allow mtk_hal_camera hal_graphics_allocator:binder { call transfer };
+allow mtk_hal_camera hal_graphics_allocator:fd use;
+allow mtk_hal_camera surfaceflinger:binder { call transfer };
+allow mtk_hal_camera surfaceflinger:fd use;
+allow mtk_hal_camera surfaceflinger:fifo_file { ioctl read write getattr lock append map open watch watch_reads };
+allow mtk_hal_camera hal_graphics_mapper_hwservice:hwservice_manager find;
+allow mtk_hal_camera fwk_sensor_hwservice:hwservice_manager find;
+allow mtk_hal_camera fwk_sensor_service:service_manager find;
+allow mtk_hal_camera fwk_display_hwservice:hwservice_manager find;
+allow mtk_hal_camera graphics_device:dir search;
+allow mtk_hal_camera graphics_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow mtk_hal_camera gpu_device:dir search;
+allow mtk_hal_camera gpu_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow mtk_hal_camera ion_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow mtk_hal_camera sw_sync_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow mtk_hal_camera debugfs_ion:dir search;
+allow mtk_hal_camera debugfs_tracing:file { write lock append map open };
+allow mtk_hal_camera system_server:unix_stream_socket { read write };
+allow mtk_hal_camera property_socket:sock_file write;
+allow mtk_hal_camera init:unix_stream_socket connectto;
+
+# Camera HW / ISP / sensor / actuator / flash nodes
+allow mtk_hal_camera camera_sysram_device:chr_file { ioctl read getattr lock map open watch watch_reads };
+allow mtk_hal_camera camera_pipemgr_device:chr_file { ioctl read getattr lock map open watch watch_reads };
+allow mtk_hal_camera camera_mem_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow mtk_hal_camera camera_isp_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow mtk_hal_camera camera_dip_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow mtk_hal_camera camera_tsf_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow mtk_hal_camera kd_camera_hw_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow mtk_hal_camera kd_camera_flashlight_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow mtk_hal_camera flashlight_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow mtk_hal_camera lens_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow mtk_hal_camera seninf_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow mtk_hal_camera camera_fdvt_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow mtk_hal_camera camera_dpe_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow mtk_hal_camera camera_mfb_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow mtk_hal_camera camera_wpe_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow mtk_hal_camera camera_pda_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow mtk_hal_camera camera_rsc_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow mtk_hal_camera camera_owe_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow mtk_hal_camera mtk_jpeg_device:chr_file { ioctl read getattr lock map open watch watch_reads };
+allow mtk_hal_camera ccu_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow mtk_hal_camera vpu_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow mtk_hal_camera mdla_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow mtk_hal_camera apusys_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow mtk_hal_camera sysfs_apusys_queue:dir { ioctl read getattr lock open watch watch_reads search };
+allow mtk_hal_camera sysfs_apusys_queue:file { ioctl read getattr lock map open watch watch_reads };
+allow mtk_hal_camera MAINAF_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow mtk_hal_camera MAIN2AF_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow mtk_hal_camera MAIN3AF_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow mtk_hal_camera MAIN4AF_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow mtk_hal_camera SUBAF_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow mtk_hal_camera SUB2AF_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow mtk_hal_camera FM50AF_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow mtk_hal_camera AD5820AF_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow mtk_hal_camera DW9714AF_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow mtk_hal_camera DW9814AF_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow mtk_hal_camera AK7345AF_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow mtk_hal_camera DW9714A_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow mtk_hal_camera LC898122AF_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow mtk_hal_camera LC898212AF_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow mtk_hal_camera BU6429AF_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow mtk_hal_camera DW9718AF_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow mtk_hal_camera BU64745GWZAF_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow mtk_hal_camera CAM_CAL_DRV_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow mtk_hal_camera CAM_CAL_DRV1_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow mtk_hal_camera CAM_CAL_DRV2_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow mtk_hal_camera camera_eeprom_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow mtk_hal_camera seninf_n3d_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow mtk_hal_camera mtk_cmdq_device:chr_file { ioctl read getattr lock map open watch watch_reads };
+allow mtk_hal_camera mtk_mdp_device:chr_file { ioctl read getattr lock map open watch watch_reads };
+allow mtk_hal_camera mtk_mdp_sync_device:chr_file { ioctl read getattr lock map open watch watch_reads };
+allow mtk_hal_camera MTK_SMI_device:chr_file { ioctl read getattr lock map open watch watch_reads };
+allow mtk_hal_camera offloadservice_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow mtk_hal_camera gz_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow mtk_hal_camera nvram_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+
+# NVRAM / calibration / vendor camera data
+allow mtk_hal_camera nvram_data_file:dir { ioctl read write create getattr setattr lock rename open watch watch_reads add_name remove_name reparent search rmdir };
+allow mtk_hal_camera nvram_data_file:file { ioctl read write create getattr setattr lock append map unlink rename open watch watch_reads };
+allow mtk_hal_camera nvram_data_file:lnk_file { ioctl read write create getattr setattr lock append map unlink rename open watch watch_reads };
+allow mtk_hal_camera nvdata_file:dir { ioctl read write create getattr setattr lock rename open watch watch_reads add_name remove_name reparent search rmdir };
+allow mtk_hal_camera nvdata_file:file { ioctl read write create getattr setattr lock append map unlink rename open watch watch_reads };
+allow mtk_hal_camera nvdata_file:lnk_file { ioctl read write create getattr setattr lock append map unlink rename open watch watch_reads };
+allow mtk_hal_camera nvcfg_file:dir { ioctl read write create getattr setattr lock rename open watch watch_reads add_name remove_name reparent search rmdir };
+allow mtk_hal_camera nvcfg_file:file { ioctl read write create getattr setattr lock append map unlink rename open watch watch_reads };
+allow mtk_hal_camera nvcfg_file:lnk_file { ioctl read getattr lock map open watch watch_reads };
+allow mtk_hal_camera cct_data_file:dir { ioctl read write create getattr setattr lock rename open watch watch_reads add_name remove_name reparent search rmdir };
+allow mtk_hal_camera cct_data_file:file { ioctl read write create getattr setattr lock append map unlink rename open watch watch_reads };
+allow mtk_hal_camera cct_data_file:fifo_file { ioctl read write create getattr setattr lock append map unlink rename open watch watch_reads };
+allow mtk_hal_camera vendor_camera_dump_file:dir { ioctl read write create getattr setattr lock rename open watch watch_reads add_name remove_name reparent search rmdir };
+allow mtk_hal_camera vendor_camera_dump_file:file { ioctl read write create getattr setattr lock append map unlink rename open watch watch_reads };
+allow mtk_hal_camera transsion_camera_meghdr_file:dir { read write open add_name search };
+allow mtk_hal_camera transsion_camera_meghdr_file:file { read write create getattr open };
+allow mtk_hal_camera transsion_camera_pixhdr_file:dir { read write open add_name search };
+allow mtk_hal_camera transsion_camera_pixhdr_file:file { read write create getattr open };
+allow mtk_hal_camera transsion_camera_data_meghumaneffect_file:dir { read write open add_name search };
+allow mtk_hal_camera transsion_camera_data_meghumaneffect_file:file { read write create getattr open };
+allow mtk_hal_camera vendor_portrait_data_file:dir { read write create getattr setattr open add_name remove_name search rmdir };
+allow mtk_hal_camera vendor_portrait_data_file:file { read write create getattr unlink open };
+allow mtk_hal_camera vendor_morpho_data_file:dir { read write create getattr setattr open add_name remove_name search rmdir };
+allow mtk_hal_camera vendor_morpho_data_file:file { read write create getattr unlink open };
+allow mtk_hal_camera transsion_laser_data_file:dir { read write create getattr setattr open add_name remove_name search rmdir };
+allow mtk_hal_camera transsion_laser_data_file:file { read write create getattr unlink open };
+allow mtk_hal_camera data_vendor_aao_file:dir { ioctl read write create getattr setattr lock rename open watch watch_reads add_name remove_name reparent search rmdir };
+allow mtk_hal_camera data_vendor_aao_file:file { ioctl read write create getattr setattr lock append map unlink rename open watch watch_reads };
+allow mtk_hal_camera data_vendor_aaoHwBuf_file:dir { ioctl read write create getattr setattr lock rename open watch watch_reads add_name remove_name reparent search rmdir };
+allow mtk_hal_camera data_vendor_aaoHwBuf_file:file { ioctl read write create getattr setattr lock append map unlink rename open watch watch_reads };
+allow mtk_hal_camera data_vendor_AAObitTrue_file:dir { ioctl read write create getattr setattr lock rename open watch watch_reads add_name remove_name reparent search rmdir };
+allow mtk_hal_camera data_vendor_AAObitTrue_file:file { ioctl read write create getattr setattr lock append map unlink rename open watch watch_reads };
+allow mtk_hal_camera data_vendor_flash_file:dir { ioctl read write create getattr setattr lock rename open watch watch_reads add_name remove_name reparent search rmdir };
+allow mtk_hal_camera data_vendor_flash_file:file { ioctl read write create getattr setattr lock append map unlink rename open watch watch_reads };
+allow mtk_hal_camera data_vendor_flicker_file:dir { ioctl read write create getattr setattr lock rename open watch watch_reads add_name remove_name reparent search rmdir };
+allow mtk_hal_camera data_vendor_flicker_file:file { ioctl read write create getattr setattr lock append map unlink rename open watch watch_reads };
+allow mtk_hal_camera data_vendor_afo_file:dir { ioctl read write create getattr setattr lock rename open watch watch_reads add_name remove_name reparent search rmdir };
+allow mtk_hal_camera data_vendor_afo_file:file { ioctl read write create getattr setattr lock append map unlink rename open watch watch_reads };
+allow mtk_hal_camera data_vendor_pdo_file:dir { ioctl read write create getattr setattr lock rename open watch watch_reads add_name remove_name reparent search rmdir };
+allow mtk_hal_camera data_vendor_pdo_file:file { ioctl read write create getattr setattr lock append map unlink rename open watch watch_reads };
+allow mtk_hal_camera data_vendor_raw_file:dir { ioctl read write create getattr setattr lock rename open watch watch_reads add_name remove_name reparent search rmdir };
+allow mtk_hal_camera data_vendor_raw_file:file { ioctl read write create getattr setattr lock append map unlink rename open watch watch_reads };
+
+# Camera tuning / thermal / debug
+allow mtk_hal_camera sysfs_camera_max_bw:file { write lock append map open };
+allow mtk_hal_camera sysfs_camera_max_bw_v2:file { write lock append map open };
+allow mtk_hal_camera sysfs_concurrency_scenario:file { ioctl read write getattr lock append map open watch watch_reads };
+allow mtk_hal_camera sysfs_emi_ctrl_concurrency_scenario:file { ioctl read write getattr lock append map open watch watch_reads };
+allow mtk_hal_camera sysfs_batteryinfo:dir search;
+allow mtk_hal_camera sysfs_batteryinfo:file { ioctl read getattr lock map open watch watch_reads };
+allow mtk_hal_camera sysfs_wake_lock:file { ioctl read write getattr lock append map open watch watch_reads };
+allow mtk_hal_camera sysfs_lowmemorykiller:file { ioctl read getattr lock map open watch watch_reads };
+allow mtk_hal_camera sysfs_boot_mode:file { ioctl read getattr lock map open watch watch_reads };
+allow mtk_hal_camera proc_thermal:dir search;
+allow mtk_hal_camera proc_mtkcooler:dir search;
+allow mtk_hal_camera proc_mtktz:dir search;
+allow mtk_hal_camera proc_isp_p2:dir search;
+allow mtk_hal_camera proc_isp_p2:file { ioctl read write create getattr setattr lock append map unlink rename open watch watch_reads };
+allow mtk_hal_camera proc_m4u:file { ioctl read getattr lock map open watch watch_reads };
+allow mtk_hal_camera proc_ged:file { ioctl read write getattr lock append map open watch watch_reads };
+allow mtk_hal_camera proc_mtk_jpeg:file { ioctl read getattr lock map open watch watch_reads };
+allow mtk_hal_camera proc_meminfo:file { ioctl read getattr lock map open watch watch_reads };
+allow mtk_hal_camera aee_dipdebug_vendor_file:dir { ioctl read write getattr lock open watch watch_reads add_name remove_name search };
+allow mtk_hal_camera aee_dipdebug_vendor_file:file { ioctl read write create getattr setattr lock append map unlink rename open watch watch_reads };
+allow mtk_hal_camera vendor_mtk_thermal_config_prop:property_service set;
+allow mtk_hal_camera vendor_mtk_thermal_config_prop:file { read getattr map open };

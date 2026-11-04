@@ -1,0 +1,14 @@
+# CPUInfoService (SystemUI) reads per-cpufreq nodes for the cpuinfo QS tile overlay.
+allow platform_app sysfs_devices_system_cpu:dir r_dir_perms;
+allow platform_app sysfs_devices_system_cpu:file r_file_perms;
+
+# com.transsion.camera runs as platform_app_36 in this build. Stock's
+# platform_app_202504 (the target-SDK-36 equivalent) is allowed to set
+# debug_prop (vendor_sepolicy.cil lines 16687 and 16778). Mirror that for the
+# versioned platform-app domain so the camera can write its debug.vendor.sys
+# camera_country/camera_kom toggles.
+allow platform_app_36 debug_prop:property_service set;
+
+# The unversioned platform_app domain has no stock grant. Keep it denied and
+# silent so other platform apps do not gain write access to debug props.
+dontaudit platform_app debug_prop:property_service set;

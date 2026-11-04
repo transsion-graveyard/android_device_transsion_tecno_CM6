@@ -1,0 +1,5 @@
+# CM6 lights HAL runs in the stock MTK light domain (mtk_hal_light_exec ->
+# mtk_hal_light, see file_contexts). Unlike the stock android.hardware.lights-service
+# .mediatek it also drives the charge indicator itself, so it polls the battery
+# status/capacity_level sysfs nodes (labeled sysfs_batteryinfo via genfs_contexts).
+r_dir_file(mtk_hal_light, sysfs_batteryinfo)

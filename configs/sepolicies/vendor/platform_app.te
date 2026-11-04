@@ -1,0 +1,92 @@
+#============= platform_app ==============
+allow platform_app nfc_service:service_manager find;
+allow platform_app { sysfs_sub_torch_file sysfs_torch_file sysfs_wide_torch_file }:file rw_file_perms;
+
+dontaudit platform_app usb_uvc_enabled_prop:file r_file_perms;
+
+allow platform_app sysfs_therm:dir search;
+allow platform_app sysfs_therm:file r_file_perms;
+
+dontaudit platform_app unlabeled:filesystem getattr;
+
+get_prop(platform_app, vendor_camera_prop)
+
+# Stock: hal_mtk_bgs_client attribute (platform_app_202504) finds IBGService
+allow platform_app mtk_hal_bgs_service:service_manager find;
+
+#============= platform_app_all ==============
+# The Transsion camera runs as platform_app_36, so stock-derived camera rules
+# must target platform_app_all (platform_app + platform_app_36), not the
+# unversioned platform_app type.
+allow platform_app_all nfc_service:service_manager find;
+allow platform_app_all { sysfs_sub_torch_file sysfs_torch_file sysfs_wide_torch_file sysfs_tele_torch_file }:file rw_file_perms;
+
+dontaudit platform_app_all usb_uvc_enabled_prop:file r_file_perms;
+
+# Stock vendor_sepolicy.cil platform_app_202504 camera/thermal access.
+allow platform_app_all sysfs_therm:dir { read open search };
+allow platform_app_all sysfs_therm:file { ioctl read getattr lock map open watch watch_reads };
+allow platform_app_all sysfs_thermal_trigger_file:file { read getattr open };
+allow platform_app_all sysfs_real_lcdbrightness_file:file { ioctl read getattr lock map open watch watch_reads };
+allow platform_app_all sysfs_lcm_hbm_file:file { ioctl read write getattr lock append map open watch watch_reads };
+allow platform_app_all sysfs_laser_calib_file:file { read write getattr open };
+allow platform_app_all sysfs_laser_enable_file:file { read write getattr open };
+allow platform_app_all sysfs_laser_get_calib_file:file { read write getattr open };
+allow platform_app_all sysfs_laser_info_file:file { read getattr open };
+allow platform_app_all sysfs_telescopic_file:file { ioctl read write getattr lock append map open watch watch_reads };
+allow platform_app_all sysfs_ged:dir search;
+allow platform_app_all sysfs_ged:file { ioctl read getattr lock map open watch watch_reads };
+
+dontaudit platform_app_all unlabeled:filesystem getattr;
+
+get_prop(platform_app_all, vendor_camera_prop)
+get_prop(platform_app_all, vendor_mtk_cam_security_prop)
+get_prop(platform_app_all, vendor_mtk_cxp_vendor_prop)
+get_prop(platform_app_all, vendor_mtk_cta_support_prop)
+get_prop(platform_app_all, vendor_mtk_c2_log_prop)
+
+# IBGService stays with the camera HAL (mtk_hal_camera); a platform_app_36
+# service_manager find would violate protected_service neverallow.
+
+# Camera app -> MTK camera HAL (stock platform_app_202504 rules)
+allow platform_app_all mtk_hal_camera:binder { call transfer };
+allow platform_app_all mtk_hal_camera:fd use;
+
+# Camera app directly uses these stock MTK camera/accelerator nodes.
+allow platform_app_all debugfs_ion:dir search;
+allow platform_app_all mdla_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow platform_app_all vpu_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow platform_app_all apusys_device:chr_file { ioctl read write getattr lock append open watch watch_reads };
+allow platform_app_all sw_sync_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow platform_app_all proc_mtk_jpeg:file { ioctl read write getattr lock append map open watch watch_reads };
+
+# Camera data directories (stock cameradata / portrait / watermark / ARCSoft /
+# Megvii / MegaHDR / Morpho / laser).
+allow platform_app_all transsion_camera_data_file:dir { ioctl read write getattr lock open watch watch_reads add_name remove_name search };
+allow platform_app_all transsion_camera_data_file:file { ioctl read write create getattr setattr lock append map unlink rename open watch watch_reads };
+allow platform_app_all transsion_camera_meghdr_file:dir { read write open add_name search };
+allow platform_app_all transsion_camera_meghdr_file:file { read write create getattr open };
+allow platform_app_all transsion_camera_pixhdr_file:dir { read write open add_name search };
+allow platform_app_all transsion_camera_pixhdr_file:file { read write create getattr open };
+allow platform_app_all transsion_camera_data_meghumaneffect_file:dir { read write open add_name search };
+allow platform_app_all transsion_camera_data_meghumaneffect_file:file { read write create getattr open };
+allow platform_app_all vendor_watermark_data_file:file { ioctl read write getattr lock append map open watch watch_reads };
+allow platform_app_all vendor_watermark_data_file:file { read write create setattr lock open };
+allow platform_app_all vendor_watermark_data_file:dir { write add_name search };
+allow platform_app_all vendor_portrait_data_file:file { ioctl read write getattr lock append map open watch watch_reads };
+allow platform_app_all vendor_portrait_data_file:file { read write create setattr unlink open };
+allow platform_app_all vendor_portrait_data_file:dir { read write create getattr setattr open add_name remove_name search rmdir };
+allow platform_app_all vendor_arcsoft_data_file:file { ioctl read write getattr lock append map open watch watch_reads };
+allow platform_app_all vendor_arcsoft_data_file:file { read write create setattr open };
+allow platform_app_all vendor_arcsoft_data_file:dir { write add_name search };
+allow platform_app_all vendor_megvii_data_file:file { ioctl read write getattr lock append map open watch watch_reads };
+allow platform_app_all vendor_megvii_data_file:file { read write create setattr lock open };
+allow platform_app_all vendor_megvii_data_file:dir { write add_name search };
+allow platform_app_all vendor_morpho_data_file:file { ioctl read write getattr lock append map open watch watch_reads };
+allow platform_app_all vendor_morpho_data_file:file { read write create setattr open };
+allow platform_app_all vendor_morpho_data_file:dir { write add_name search };
+allow platform_app_all transsion_laser_data_file:file { ioctl read write getattr lock append map open watch watch_reads };
+allow platform_app_all transsion_laser_data_file:file { read write create setattr open };
+allow platform_app_all transsion_laser_data_file:dir { write add_name search };
+allow platform_app_all vendor_camera_dump_file:file { ioctl read write create getattr setattr lock append map unlink rename open watch watch_reads };
+allow platform_app_all vendor_camera_dump_file:dir { ioctl read write create getattr setattr lock rename open watch watch_reads add_name remove_name reparent search rmdir };

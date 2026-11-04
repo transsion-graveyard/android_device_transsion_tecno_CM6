@@ -1,0 +1,67 @@
+# Camera
+type sysfs_tran_cam_file, fs_type, sysfs_type;
+type sysfs_laser_calib_file, fs_type, sysfs_type;
+type sysfs_laser_enable_file, fs_type, sysfs_type;
+type sysfs_laser_get_calib_file, fs_type, sysfs_type;
+type sysfs_laser_info_file, fs_type, sysfs_type;
+type sysfs_telescopic_file, fs_type, sysfs_type;
+type sysfs_tele_torch_file, fs_type, sysfs_type;
+type sysfs_thermal_trigger_file, fs_type, sysfs_type;
+type sysfs_flashlight_torch_file, fs_type, sysfs_type;
+type sysfs_real_lcdbrightness_file, fs_type, sysfs_type;
+type sysfs_lcm_hbm_file, fs_type, sysfs_type;
+type transsion_camera_data_file, file_type, data_file_type, mlstrustedobject;
+type transsion_camera_meghdr_file, file_type, data_file_type, mlstrustedobject;
+type transsion_camera_pixhdr_file, file_type, data_file_type, mlstrustedobject;
+type transsion_camera_data_meghumaneffect_file, file_type, data_file_type, mlstrustedobject;
+type transsion_laser_data_file, file_type, data_file_type, mlstrustedobject;
+type vendor_watermark_data_file, file_type, data_file_type, mlstrustedobject;
+type vendor_portrait_data_file, file_type, data_file_type, mlstrustedobject;
+type vendor_arcsoft_data_file, file_type, data_file_type, mlstrustedobject;
+type vendor_megvii_data_file, file_type, data_file_type, mlstrustedobject;
+type vendor_morpho_data_file, file_type, data_file_type, mlstrustedobject;
+# vendor_camera_dump_file is already declared by device/mediatek/sepolicy_vndr/base.
+
+# Data
+type storage_dbg_data_file, file_type, core_data_file_type, data_file_type;
+
+# Fingerprint
+# NOTE: sysfs_fp_name_path and jiiov_vendor_data_file are declared in the DT
+# fingerprint.te (kept as the single source of truth), not re-declared here.
+type sysfs_tran_display, fs_type, sysfs_type;
+type vendor_gf_data_file, file_type, data_file_type;
+type fpdump_vendor_data_file, file_type, data_file_type;
+
+# NFC
+type nfc_vendor_data_file, file_type, data_file_type;
+
+# Gesture
+type proc_gesture_function, fs_type, proc_type, sysfs_type;
+type proc_gesture_state, fs_type, proc_type, sysfs_type;
+type proc_fingerprint_status, fs_type, proc_type;
+
+# OTG
+type sysfs_OTG_STATE_file, fs_type, sysfs_type;
+type sysfs_OTG_CTL_file, fs_type, sysfs_type;
+
+# Charger bypass switch (stock MTK label)
+type sysfs_aichg_file, fs_type, sysfs_type;
+
+# MTK charger framework battery state-of-health percentage
+type sysfs_battery_health, fs_type, sysfs_type;
+
+# Torch
+type sysfs_sub_torch_file, fs_type, sysfs_type;
+type sysfs_torch_file, fs_type, sysfs_type;
+type sysfs_wide_torch_file, fs_type, sysfs_type;
+
+# VMAX
+type aw87xxx_vmax, fs_type, sysfs_type;
+
+# PQ debug: stock labels /firmware/devicetree/base/chosen/tran,fdt as this type
+# (stock vendor_sepolicy.cil genfscon line 1318); mtk_hal_pq reads it.
+type sysfs_tran_fdt, fs_type, sysfs_type;
+
+# CCCI (Mediatek modem debug) - declared in mtk sepolicy_vndr base
+#type sysfs_soc_ccb_gear, fs_type, sysfs_type;
+

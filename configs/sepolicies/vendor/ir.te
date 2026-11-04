@@ -1,0 +1,15 @@
+# IR property type
+type vendor_irtx_prop, property_type;
+
+# Classify for app access (matches stock: system_public_property_type)
+typeattribute vendor_irtx_prop system_property_type;
+typeattribute vendor_irtx_prop system_public_property_type;
+
+# Allow apps to read IR related vendor properties via property service
+get_prop(priv_app, vendor_irtx_prop)
+get_prop(platform_app, vendor_irtx_prop)
+get_prop(system_app, vendor_irtx_prop)
+get_prop(untrusted_app, vendor_irtx_prop)
+
+# odm.prop sets ro.vendor.tran.ir.support=1 from vendor_init
+set_prop(vendor_init, vendor_irtx_prop)

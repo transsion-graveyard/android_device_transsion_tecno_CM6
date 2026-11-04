@@ -1,0 +1,38 @@
+# The MTK base xcap.te is a stub (only ccci_device + sys_admin), while stock
+# CM6 vendor_sepolicy.cil shows xcap is a member of netdomain (line 1583) and
+# mtkimsmddomain (line 1767) with full udp/tcp/rawip socket access
+# (lines 19724-19752). This restores the stock rule set.
+
+net_domain(xcap)
+typeattribute xcap mtkimsmddomain;
+
+# IMS socket + ePDG-style network access (mirrors base bip.te / stock xcap)
+allow xcap self:capability { setuid setgid net_raw net_admin };
+
+allow xcap self:udp_socket { ioctl read write create getattr bind connect setopt shutdown };
+allow xcap node:udp_socket node_bind;
+allow xcap port:udp_socket name_bind;
+
+allow xcap self:tcp_socket { ioctl read write create bind connect listen accept setopt };
+allow xcap port:tcp_socket { name_connect name_bind };
+allow xcap node:tcp_socket node_bind;
+
+allow xcap self:rawip_socket { read write create getattr bind setopt };
+allow xcap node:rawip_socket node_bind;
+
+allow xcap self:netlink_route_socket read;
+
+# RIL mux report properties (stock lines 19739-19744)
+set_prop(xcap, vendor_mtk_ril_mux_report_case_prop)
+set_prop(xcap, vendor_mtk_ctl_muxreport-daemon_prop)
+
+# netd socket (stock lines 19748-19752)
+allow xcap netd:unix_stream_socket connectto;
+allow xcap netd_socket:sock_file write;
+allow netd xcap:fd use;
+allow netd xcap:tcp_socket { read write getopt setopt };
+allow netd xcap:udp_socket { read write getopt setopt };
+
+# xcap's /system/etc/hosts read is denied on stock too (vendor_sepolicy.cil has
+# no allow/dontaudit for xcap on system_file); benign, silence the audit.
+dontaudit xcap system_file:file read;

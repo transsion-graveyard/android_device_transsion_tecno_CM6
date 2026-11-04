@@ -1,0 +1,11 @@
+# mediaserver reads MTK SF frame-timing debug props (matches stock)
+get_prop(mediaserver, vendor_mtk_debug_sf_duration_prop)
+
+# MTK mediaserver fork reads vendor.sys.media.target.version
+get_prop(mediaserver, vendor_mtk_media_target_version_prop)
+
+# MediaCodecListGenerator is a system_ext coredomain and probes the same MTK
+# media target-version property while building the codec list. It cannot be
+# referenced directly from vendor policy (the domain is platform-private), so
+# grant read-only access to the public coredomain attribute.
+allow coredomain vendor_mtk_media_target_version_prop:file { getattr open read map };

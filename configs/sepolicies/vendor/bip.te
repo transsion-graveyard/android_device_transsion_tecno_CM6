@@ -1,0 +1,3 @@
+# bip probes DNS properties; platform neverallows net_dns_prop:file reads for
+# this domain, so silence the audit instead of granting access.
+dontaudit bip net_dns_prop:file { read open getattr map };

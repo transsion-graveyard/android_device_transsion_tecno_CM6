@@ -1,0 +1,2 @@
+# SurfaceFlinger reads MTK frame-timing debug props (stock grants the same)
+get_prop(surfaceflinger, vendor_mtk_debug_sf_duration_prop)
