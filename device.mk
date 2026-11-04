@@ -255,6 +255,10 @@ PRODUCT_PACKAGES += \
     android.hardware.ir-service.cm6 \
     android.hardware.ir-V1-ndk
 
+# Input
+PRODUCT_PACKAGES += \
+    com.android.hardware.input.processor
+
 # Kernel
 PRODUCT_ENABLE_UFFD_GC := true
 
