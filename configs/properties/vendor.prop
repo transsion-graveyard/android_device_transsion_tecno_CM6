@@ -49,7 +49,6 @@ ro.vendor.cam_thirdpart_support=true
 ro.vendor.cam_aidl_transerver_support=true
 ro.vendor.cam_aidl_vipscheduler_support=true
 ro.vendor.camkit_enabled=0
-ro.vendor.dolby.dax.version=DAX3_3.14.1.14.r1
 ro.vendor.tranfac.support=2
 ro.vendor.mtk_config_max_dram_size=
 ro.vendor.mtk_eccci_c2k=1
