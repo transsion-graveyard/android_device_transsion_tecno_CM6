@@ -1,0 +1,33 @@
+//
+// Copyright (C) 2026 The LineageOS Project
+//
+// SPDX-License-Identifier: Apache-2.0
+//
+
+cc_library_shared {
+    name: "libcm6_audio_param_parser",
+
+    defaults: [
+        "latest_android_hardware_audio_core_ndk_shared",
+    ],
+
+    system_ext_specific: true,
+    srcs: [
+        "parser.cpp",
+    ],
+
+    shared_libs: [
+        "av-audio-types-aidl-ndk",
+        "libbase",
+        "libbinder_ndk",
+        "liblog",
+        "libmediautils",
+        "libutils",
+    ],
+
+    cflags: [
+        "-Wall",
+        "-Werror",
+        "-Wextra",
+    ],
+}

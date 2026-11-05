@@ -1,0 +1,51 @@
+//
+// Copyright (C) 2026 The LineageOS Project
+//
+// SPDX-License-Identifier: Apache-2.0
+//
+
+cc_library_shared {
+    name: "libaudiopolicymanagercustom",
+
+    srcs: ["AudioPolicyManagerCustom.cpp"],
+
+    defaults: [
+        "latest_android_media_audio_common_types_cpp_shared",
+    ],
+
+    shared_libs: [
+        "libaudiobase",
+        "libaudioclient",
+        "libaudioclient_aidl_conversion",
+        "libaudiofoundation",
+        "libaudiopolicy",
+        "libaudiopolicycomponents",
+        "libaudiopolicyenginedefault",
+        "libaudiopolicymanagerdefault",
+        "libbase",
+        "libbinder",
+        "libcutils",
+        "liblog",
+        "libmedia_helper",
+        "libutils",
+        "libxml2",
+        "audioclient-types-aidl-cpp",
+        "audiopolicy-aidl-cpp",
+        "android.media.audio-aconfig-cc",
+        "android.media.audiopolicy-aconfig-cc",
+        "com.android.media.audio-aconfig-cc",
+        "com.android.media.audioserver-aconfig-cc",
+        "framework-permission-aidl-cpp",
+    ],
+
+    header_libs: [
+        "libaudiopolicycommon",
+        "libaudiopolicyengine_interface_headers",
+        "libaudiopolicymanager_interface_headers",
+    ],
+
+    cflags: [
+        "-Wall",
+        "-Werror",
+    ],
+}

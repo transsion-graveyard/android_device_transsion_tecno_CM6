@@ -71,6 +71,15 @@ PRODUCT_CHECK_PREBUILT_MAX_PAGE_SIZE := false
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio/audio_effects_config.xml:$(TARGET_COPY_OUT_ODM)/etc/vconfig/audio/audio_effects_config.xml
 
+# MTK voice-call volume bridge.
+# AOSP's audio policy does not emit the volumeDevice/volumeIndex parameters
+# consumed by the MTK voice-volume path; this service supplies them.
+# The parser plugin forwards those parameters through the MTK AIDL adapter.
+PRODUCT_PACKAGES += \
+    CM6InCallService \
+    libaudiopolicymanagercustom \
+    libcm6_audio_param_parser
+
 # Audio Alsa
 PRODUCT_PACKAGES += \
     libalsautilsv2 \

@@ -1,0 +1,10 @@
+# The stock A16.3 parameter parser service is kept, but it loads the
+# A17-compatible CM6 parser plugin from the property
+# ro.audio.ihaladaptervendorextension_libname.
+#
+# The service runs as audio_vendor_parameter_parser and dlopen()s a library
+# installed on system_ext. Files under /system_ext/lib64 are labeled
+# system_lib_file, so allow the plugin's read/map/execute operations
+# explicitly.
+allow audio_vendor_parameter_parser system_lib_file:dir r_dir_perms;
+allow audio_vendor_parameter_parser system_lib_file:file { r_file_perms execute map };

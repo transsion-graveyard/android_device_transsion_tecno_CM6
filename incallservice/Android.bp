@@ -1,0 +1,30 @@
+//
+// Copyright (C) 2023 The LineageOS Project
+//
+// SPDX-License-Identifier: Apache-2.0
+//
+
+android_app {
+    name: "CM6InCallService",
+
+    srcs: ["src/**/*.java"],
+
+    certificate: "platform",
+    platform_apis: true,
+    privileged: true,
+
+    optimize: {
+        enabled: false,
+    },
+
+    required: [
+        "privapp-permissions-cm6incall",
+    ],
+}
+
+prebuilt_etc {
+    name: "privapp-permissions-cm6incall",
+    src: "privapp-permissions-cm6incall.xml",
+    filename: "privapp-permissions-cm6incall.xml",
+    sub_dir: "permissions",
+}
