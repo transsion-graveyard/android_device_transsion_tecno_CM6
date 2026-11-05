@@ -9,6 +9,7 @@
 #include <AudioPolicyConfig.h>
 #include <AudioPolicyManager.h>
 #include <EngineLibrary.h>
+#include <com_android_media_audio.h>
 #include <media/AudioDeviceTypeAddr.h>
 #include <system/audio.h>
 #include <utils/Log.h>
@@ -84,9 +85,11 @@ class CM6AudioPolicyManager final : public AudioPolicyManager {
                                int delayMs = 0, bool force = false) override {
         if (volumeSource == toVolumeSource(AUDIO_STREAM_VOICE_CALL, false)
                 && isManagedVoiceRoute(deviceTypes)) {
-            // The incallservice owns earpiece/speaker call gain. Do not send
-            // the framework's 0..1 voice volume to the legacy HAL.
-            return NO_ERROR;
+            // The incallservice owns earpiece/speaker call gain. Keep the
+            // framework output-stream volume update, but do not send the
+            // framework's 0..1 voice volume to the legacy HAL.
+            return setManagedVoiceOutputVolume(curves, volumeSource, index, outputDesc,
+                                               deviceTypes, adjustAttenuation, delayMs, force);
         }
         return AudioPolicyManager::checkAndSetVolume(curves, volumeSource, index, outputDesc,
                                                      deviceTypes, adjustAttenuation, delayMs,
@@ -94,6 +97,42 @@ class CM6AudioPolicyManager final : public AudioPolicyManager {
     }
 
   private:
+    status_t setManagedVoiceOutputVolume(IVolumeCurves& curves, VolumeSource volumeSource,
+                                        int index, const sp<AudioOutputDescriptor>& outputDesc,
+                                        DeviceTypeSet deviceTypes, bool adjustAttenuation,
+                                        int delayMs, bool force) {
+        if (outputDesc->isMutedInternally(volumeSource)) {
+            return NO_ERROR;
+        }
+        if (!outputDesc->canSetVolumeForVolumeSource(volumeSource)) {
+            return NO_ERROR;
+        }
+        if (deviceTypes.empty()) {
+            deviceTypes = outputDesc->devices().types();
+            index = curves.getVolumeIndex(deviceTypes);
+        }
+        if (curves.getVolumeIndexMin() < 0 || curves.getVolumeIndexMax() < 0) {
+            return BAD_VALUE;
+        }
+
+        float volumeDb = computeVolume(curves, volumeSource, index, deviceTypes,
+                                       adjustAttenuation);
+        if (outputDesc->isFixedVolume(deviceTypes)) {
+            volumeDb = 0.0f;
+        }
+
+        bool muted;
+        if (!com_android_media_audio_ring_my_car()) {
+            muted = (index == 0) && (volumeDb != 0.0f);
+        } else {
+            muted = curves.isMuted() && !outputDesc->isFixedVolume(deviceTypes);
+        }
+
+        outputDesc->setVolume(volumeDb, muted, volumeSource, curves.getStreamTypes(), deviceTypes,
+                              delayMs, force, /* isVoiceVolSrc= */ true);
+        return NO_ERROR;
+    }
+
     static bool isManagedVoiceRoute(const DeviceTypeSet& deviceTypes) {
         if (deviceTypes.empty()) {
             return false;
