@@ -143,12 +143,6 @@ ro.apex.updatable=true
 # from variable PRODUCT_SYSTEM_DEFAULT_PROPERTIES
 ####################################
 ro.config.per_app_memcg=false
-persist.log.tag.Telephony=I
-persist.log.tag.Telecom=I
-persist.log.tag.BufferQueueDump=I
-persist.log.tag.BufferQueueProducer=I
-persist.log.tag.SurfaceControl=I
-persist.log.tag.GraphicBuffer=I
 ro.mediatek.version.branch=alps-mp-b0.mssi1
 ro.mediatek.version.release=alps-mp-b0.mp1.rc-V11_reallytek.b0mp1rc.k6993v1.64_P40
 ro.mediatek.version.build.branch=
@@ -233,37 +227,6 @@ ro.tr_microIntelligence.inadvertent.feature.support=1
 ro.tr_microIntelligence.microIntelligence.feature.support=1
 ro.tr_microIntelligence.motion_sickness.feature.support=0
 ro.tr_launcher.standardwidget.preview.feature.support=1
-persist.log.tag=I
-persist.log.tag.BackupManagerService=D
-persist.log.tag.PerformBackupTask=D
-persist.log.tag.KeyValueBackupTask=D
-persist.log.tag.PFTBT=D
-persist.log.tag.SaveUi=V
-persist.log.tag.AutofillSimpleSaveActivity=D
-persist.log.tag.AutofillSession=D
-persist.log.tag.InputDispatcherInboundEvent=I
-persist.log.tag.InputDispatcherOutboundEvent=I
-persist.log.tag.InputDispatcherDispatchCycle=I
-persist.log.tag.InputDispatcherChannelCreation=I
-persist.log.tag.InputDispatcherInjection=I
-persist.log.tag.InputDispatcherFocus=I
-persist.log.tag.InputDispatcherTouchMode=I
-persist.log.tag.InputDispatcherHover=I
-persist.log.tag.InputDispatcherVerifyEvents=I
-persist.log.tag.InputReaderRawEvents=I
-persist.log.tag.InputReaderVirtualKeys=I
-persist.log.tag.InputReaderPointers=I
-persist.log.tag.InputReaderPointerAssignment=I
-persist.log.tag.InputReaderGestures=I
-persist.log.tag.InputReaderVibrator=I
-persist.log.tag.InputReaderStylusFusion=I
-persist.log.tag.InputReaderLightDetails=I
-persist.log.tag.InputTransportMessages=I
-persist.log.tag.InputTransportLifecycle=I
-persist.log.tag.InputTransportPublisher=I
-persist.log.tag.InputTransportConsumer=I
-persist.log.tag.InputTransportResampling=I
-persist.log.tag.InputEventReceiverDispatchCycle=I
 ####################################
 # Adding footer from :applied_backported_fixes
 # with path out_sys/soong/.intermediates/build/make/backported_fixes/applied_backported_fixes/gen/applied_backported_fixes.prop

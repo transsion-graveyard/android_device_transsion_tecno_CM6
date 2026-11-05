@@ -648,6 +648,9 @@ PRODUCT_PACKAGES += \
     android.hardware.sensor.stepdetector.prebuilt.xml \
     features_com.android.virt.xml
 
+# Properties
+include $(LOCAL_PATH)/configs/properties/vendor_logtag.mk
+
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
