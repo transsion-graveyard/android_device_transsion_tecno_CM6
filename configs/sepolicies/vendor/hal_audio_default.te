@@ -9,6 +9,13 @@ allow hal_audio_default sysfs:file { read getattr open };
 allow hal_audio_default sysfs_boot_info:file r_file_perms;
 allow hal_audio_default hf_manager_device:chr_file rw_file_perms;
 
+# AudioALSAUltrasoundOutOfCallController::GetculateGyroFreq() reads the
+# elliptic gyro calibration cache from /mnt/vendor/persist. The stock policy
+# grants only directory search, so even a factory-provisioned cache would be
+# denied. The file is created by the factory/sensor calibration path, not by
+# the audio HAL, so only read access is needed here.
+allow hal_audio_default persist_data_file:file r_file_perms;
+
 rw_dir_file(hal_audio_default, sysfs_batteryinfo)
 rw_dir_file(hal_audio_default, sysfs_therm)
 
