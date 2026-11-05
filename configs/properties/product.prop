@@ -7,7 +7,6 @@ ro.tran.product.version=16.3.0.155SP15_STB261002172110
 # from variable ADDITIONAL_PRODUCT_PROPERTIES
 ####################################
 ro.product.page_size=4096
-ro.build.characteristics=default
 ro.product.cpu.pagesize.max=16384
 # Value overridden by post_process_props.py. Original value: default
 ro.dalvik.vm.enable_uffd_gc=true
