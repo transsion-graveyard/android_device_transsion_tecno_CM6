@@ -10,22 +10,12 @@ ro.tran.system.version=16.3.0.155SP15_STB261002172110
 # from gen_build_prop.py:generate_build_info
 ####################################
 # begin build properties
-ro.build.display.id=BP2A.250605.031.A3 release-keys
-ro.build.version.preview_sdk=0
-ro.build.version.preview_sdk_fingerprint=REL
-ro.build.version.codename=REL
-ro.build.version.all_codenames=REL
-ro.build.version.base_os=
-ro.build.version.min_supported_target_sdk=28
 # ro.product.cpu.abi and ro.product.cpu.abi2 are obsolete,
 # use ro.product.cpu.abilist instead.
 ro.product.cpu.abi=arm64-v8a
 ro.product.locale=en-US
 ro.wifi.channels=
-# ro.build.product is obsolete; use ro.product.device
-ro.build.product=mssi_64_64only_cn_armv82
 # Do not try to parse description or thumbprint
-ro.build.description=sys_mssi_64_64only_cn_armv82-user 16 BP2A.250605.031.A3 185643 release-keys
 # end build properties
 ####################################
 # from device/mediatek/system/common/system.prop
@@ -97,7 +87,6 @@ ro.force.debuggable=0
 ro.mainline.version=2026-03
 dalvik.vm.ps-min-first-save-ms=150000
 debug.stagefright.c2inputsurface=-1
-ro.build.version.trunk=16
 debug.atrace.tags.enableflags=0
 persist.traced.enable=1
 ro.surface_flinger.game_default_frame_rate_override=60
@@ -234,7 +223,6 @@ ro.tr_launcher.standardwidget.preview.feature.support=1
 # The following backported fixes have been applied
 # https://issuetracker.google.com/issues/350037023 with alias 1
 # https://issuetracker.google.com/issues/385124056 with alias 4
-ro.build.backported_fixes.alias_bitset.long_list=18
 # end of file
 
 # InfinityX
