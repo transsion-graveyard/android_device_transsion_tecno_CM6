@@ -122,6 +122,10 @@ public class VolumeChangeService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startid) {
+        if (mHandler != null) {
+            return START_STICKY;
+        }
+
         mAudioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
         mHandler = new Handler(Looper.getMainLooper());
 

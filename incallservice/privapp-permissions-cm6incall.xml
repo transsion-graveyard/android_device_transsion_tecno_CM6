@@ -2,6 +2,5 @@
 <permissions>
     <privapp-permissions package="org.lineageos.mediatek.incallservice">
         <permission name="android.permission.MODIFY_AUDIO_SETTINGS" />
-        <permission name="android.permission.READ_PHONE_STATE" />
     </privapp-permissions>
 </permissions>

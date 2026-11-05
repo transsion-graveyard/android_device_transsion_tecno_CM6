@@ -47,14 +47,4 @@ public class GainUtils {
                 + " (UI volume " + uiIndex + " -> vendor " + vendorIndex + ")");
         AudioSystem.setParameters(parameters);
     }
-
-    /**
-     * Sets the gain level for the built-in earpiece. The active route is
-     * refreshed by VolumeChangeService, which applies the same bridge to the
-     * built-in speaker when the call is routed there.
-     * @param gainIndex The gain level to set.
-     */
-    public static void setGainLevel(int gainIndex) {
-        GainUtils.setGainLevel(AudioDeviceInfo.TYPE_BUILTIN_EARPIECE, gainIndex, AudioSystem.STREAM_VOICE_CALL);
-    }
 }
