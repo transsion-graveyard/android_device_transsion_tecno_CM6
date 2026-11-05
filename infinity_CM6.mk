@@ -24,8 +24,35 @@ PRODUCT_MANUFACTURER := TECNO
 
 PRODUCT_GMS_CLIENTID_BASE := android-transsion
 
-# Whether Including Google Apps (Default: true)
+ifeq ($(TARGET_BUILD_VARIANT),user)
+
+WITH_GAPPS := true
+
+PRODUCT_PACKAGES += \
+    com.google.android.dialer.support \
+    GoogleContacts \
+    GoogleDialer \
+    PrebuiltBugle \
+    CalendarGooglePrebuilt \
+    PrebuiltGmail \
+    Photos \
+    Maps
+
+# Stock Transsion camera replaces AOSP/Lineage Aperture
+PRODUCT_NO_CAMERA := true
+
+## For system, ro.product.name comes from SystemName. For vendor/product/odm, it comes from DeviceProduct.
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    DeviceName=TECNO-CM6 \
+    DeviceProduct=CM6-OP \
+    SystemName=CM6-OP \
+    BuildDesc="sys_mssi_64_64only_cn_armv82-user 16 BP2A.250605.031.A3 185643 release-keys" \
+    BuildSystemDesc="sys_mssi_64_64only_cn_armv82-user 16 BP2A.250605.031.A3 185643 release-keys" \
+    BuildFingerprint=TECNO/CM6-OP/TECNO-CM6:16/BP2A.250605.031.A3/301550012:user/release-keys
+
+else
 WITH_GAPPS := false
+endif
 
 # Infinity
 TARGET_HAS_UDFPS := true
