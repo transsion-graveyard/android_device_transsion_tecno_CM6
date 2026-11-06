@@ -10,6 +10,9 @@ MODULES_PATH := $(PREBUILTS_PATH)/modules
 AB_OTA_UPDATER := true
 AB_OTA_PARTITIONS += \
     boot \
+    vendor_boot \
+    dtbo \
+    vbmeta \
     system \
     system_dlkm \
     system_ext \
