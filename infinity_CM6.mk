@@ -38,6 +38,10 @@ PRODUCT_PACKAGES += \
     Photos \
     Maps
 
+# Share Google Dialer's support library with the framework.
+PRODUCT_COPY_FILES += \
+    vendor/pixel/gms/common/proprietary/product/etc/permissions/com.google.android.dialer.support.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/com.google.android.dialer.support.xml
+
 # Stock Transsion camera replaces AOSP/Lineage Aperture
 PRODUCT_NO_CAMERA := true
 
