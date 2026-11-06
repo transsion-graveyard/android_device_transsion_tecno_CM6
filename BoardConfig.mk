@@ -58,9 +58,6 @@ BOARD_KERNEL_CMDLINE += androidboot.init_fatal_reboot_target=recovery
 BOARD_KERNEL_CMDLINE += androidboot.serialconsole=0
 BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 
-BOARD_BOOTCONFIG += kernel.rcu_nocbs=all
-BOARD_BOOTCONFIG += kernel.rcutree.enable_rcu_lazy=1
-BOARD_BOOTCONFIG += kernel.rcupdate.rcu_cpu_stall_cputime=1
 
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_BASE := 0x3fff8000
