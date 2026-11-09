@@ -5,6 +5,7 @@ DEVICE_PATH := device/transsion/tecno/CM6
 CONFIGS_PATH := $(DEVICE_PATH)/configs
 PREBUILTS_PATH := $(DEVICE_PATH)-prebuilts
 MODULES_PATH := $(PREBUILTS_PATH)/modules
+FIRMWARE_PATH := $(PREBUILTS_PATH)/firmware
 
 # A/B
 AB_OTA_UPDATER := true
@@ -23,6 +24,21 @@ AB_OTA_PARTITIONS += \
     odm_dlkm \
     vbmeta_system \
     vbmeta_vendor
+
+# A/B (firmware)
+AB_OTA_PARTITIONS += \
+    dpm \
+    gz \
+    lk \
+    logo \
+    mcupm \
+    md1img \
+    pi_img \
+    scp \
+    spmfw \
+    sspm \
+    tee \
+    tkv
 
 # Architecture
 TARGET_ARCH := arm64
@@ -142,6 +158,22 @@ $(foreach p, $(call to-upper, $(TREBLE_PARTITIONS)), \
     $(eval BOARD_$(p)IMAGE_FILE_SYSTEM_TYPE := erofs) \
     $(eval TARGET_COPY_OUT_$(p) := $(call to-lower, $(p))))
 endif
+
+# Partitions (firmware)
+BOARD_CUSTOMIMAGES_PARTITION_LIST := dpm gz lk logo mcupm md1img pi_img scp spmfw sspm tee tkv
+
+BOARD_DPM_IMAGE_LIST := $(FIRMWARE_PATH)/dpm.img
+BOARD_GZ_IMAGE_LIST := $(FIRMWARE_PATH)/gz.img
+BOARD_LK_IMAGE_LIST := $(FIRMWARE_PATH)/lk.img
+BOARD_LOGO_IMAGE_LIST := $(FIRMWARE_PATH)/logo.img
+BOARD_MCUPM_IMAGE_LIST := $(FIRMWARE_PATH)/mcupm.img
+BOARD_MD1IMG_IMAGE_LIST := $(FIRMWARE_PATH)/md1img.img
+BOARD_PI_IMG_IMAGE_LIST := $(FIRMWARE_PATH)/pi_img.img
+BOARD_SCP_IMAGE_LIST := $(FIRMWARE_PATH)/scp.img
+BOARD_SPMFW_IMAGE_LIST := $(FIRMWARE_PATH)/spmfw.img
+BOARD_SSPM_IMAGE_LIST := $(FIRMWARE_PATH)/sspm.img
+BOARD_TEE_IMAGE_LIST := $(FIRMWARE_PATH)/tee.img
+BOARD_TKV_IMAGE_LIST := $(FIRMWARE_PATH)/tkv.img
 
 # Platform
 TARGET_BOARD_PLATFORM := mt6789
