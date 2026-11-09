@@ -1,0 +1,16 @@
+//
+// SPDX-FileCopyrightText: The LineageOS Project
+// SPDX-License-Identifier: Apache-2.0
+//
+
+cc_prebuilt_binary {
+    name: "mtk_plpath_utils_cm6_recovery",
+    owner: "transsion/tecno",
+    srcs: ["mtk_plpath_utils"],
+    stem: "mtk_plpath_utils",
+    recovery: true,
+    strip: {
+        none: true,
+    },
+    check_elf_files: false,
+}

@@ -522,6 +522,7 @@ PRODUCT_PACKAGES += \
     init.sensor_2_0.rc \
     init_connectivity.rc \
     init.recovery.mt6789.rc \
+    mtk_plpath_utils_cm6_recovery \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/etc/fstab.mt6789:$(TARGET_VENDOR_RAMDISK_OUT)/first_stage_ramdisk/fstab.mt6789
